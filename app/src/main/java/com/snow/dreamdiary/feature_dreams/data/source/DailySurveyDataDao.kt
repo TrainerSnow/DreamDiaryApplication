@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface DailySurveyDataDao {
 
     @Query("SELECT * FROM dailysurveydata")
-    fun getSurveys(): Flow<List<String>>
+    fun getSurveys(): Flow<List<DailySurveyData>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDailySurveyData(data: DailySurveyData)
