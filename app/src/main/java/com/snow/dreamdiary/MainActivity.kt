@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation
+package com.snow.dreamdiary
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
