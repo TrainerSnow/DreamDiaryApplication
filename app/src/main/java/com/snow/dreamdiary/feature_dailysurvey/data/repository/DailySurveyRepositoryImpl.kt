@@ -4,8 +4,10 @@ import com.snow.dreamdiary.feature_dailysurvey.data.source.DailySurveyDataDao
 import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
 import com.snow.dreamdiary.feature_dailysurvey.domain.repository.DailySurveyRepository
 import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectIndexed
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.take
 
 public class DailySurveyRepositoryImpl(
@@ -21,14 +23,16 @@ public class DailySurveyRepositoryImpl(
     }
 
     override suspend fun canInsertSurvey(): Boolean {
-        val surveys = surveyDao.getSurveys()
+        val surveysFlow = surveyDao.getSurveys()
+        val surveys: List<DailySurveyData> = surveysFlow.first()
         var flag = true
 
-        surveys.collectIndexed { index, value ->
-            val createdAt = value[index].createdAt
-            if(createdAt == TimeUtil.thisDayStartInMillis())
+        surveys.forEach {
+            if(it.createdAt == TimeUtil.thisDayStartInMillis()){
                 flag = false
+            }
         }
+
         return flag
     }
 
