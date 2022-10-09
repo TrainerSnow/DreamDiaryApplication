@@ -9,10 +9,7 @@ import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
 import com.snow.dreamdiary.feature_dreams.data.repository.DreamRepositoryImpl
 import com.snow.dreamdiary.feature_dreams.data.source.DreamDatabase
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
-import com.snow.dreamdiary.feature_dreams.domain.usecase.AddDreamUseCase
-import com.snow.dreamdiary.feature_dreams.domain.usecase.DeleteDreamUseCase
-import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
-import com.snow.dreamdiary.feature_dreams.domain.usecase.GetDreamsUseCase
+import com.snow.dreamdiary.feature_dreams.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,7 +42,8 @@ object AppModule {
         return DreamUseCases(
             getDreams = GetDreamsUseCase(repository),
             deleteDreams = DeleteDreamUseCase(repository),
-            addDream = AddDreamUseCase(repository)
+            addDream = AddDreamUseCase(repository),
+            editDream = EditDreamUseCase(repository)
         )
     }
 
