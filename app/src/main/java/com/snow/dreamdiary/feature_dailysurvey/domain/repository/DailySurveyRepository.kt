@@ -9,4 +9,6 @@ interface DailySurveyRepository {
 
     suspend fun insertDailySurveyData(data: DailySurveyData)
 
+    suspend fun canInsertSurvey(): Boolean
+
 }

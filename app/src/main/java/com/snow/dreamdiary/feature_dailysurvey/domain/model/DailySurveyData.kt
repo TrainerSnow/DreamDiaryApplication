@@ -12,5 +12,6 @@ data class DailySurveyData(
     @IntRange(from = 0, to = 10) val health: Int,
     @IntRange(from = 0, to = 10) val physicalActivity: Int,
     @IntRange(from = 0, to = 10) val comfortness: Int,
-    @PrimaryKey val idn: Int
+    @PrimaryKey val idn: Int,
+    val createdAt: Long
 )
