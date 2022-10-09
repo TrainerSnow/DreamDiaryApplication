@@ -15,6 +15,7 @@ data class Dream(
     @IntRange(from = 0, to = 10) val comfortness: Int,
 
     val createdAt: Long,
+    val dreamtAt: Long,
     val color: Int,
     @PrimaryKey val id: Int
 ) {
