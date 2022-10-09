@@ -12,4 +12,8 @@ import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
 )
 abstract class DailySurveyDataDatabase: RoomDatabase() {
     abstract val dailySurveyDataDao: DailySurveyDataDao
+
+    companion object{
+        const val DATABASE_NAME = "dreams_db"
+    }
 }

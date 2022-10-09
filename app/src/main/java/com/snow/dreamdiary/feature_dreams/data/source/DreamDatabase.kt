@@ -14,4 +14,8 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 @TypeConverters(com.snow.dreamdiary.common.data.TypeConverters::class)
 abstract class DreamDatabase: RoomDatabase() {
     abstract val dreamDao: DreamDao
+
+    companion object{
+        const val DATABASE_NAME = "dreams_db"
+    }
 }
