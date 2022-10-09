@@ -2,6 +2,7 @@ package com.snow.dreamdiary.feature_dreams.data.source;
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 
 @Database(
@@ -10,6 +11,7 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
     ],
     version = 1
 )
+@TypeConverters(com.snow.dreamdiary.feature_dreams.data.source.TypeConverters::class)
 abstract class DreamDatabase: RoomDatabase() {
     abstract val dreamDao: DreamDao
 }
