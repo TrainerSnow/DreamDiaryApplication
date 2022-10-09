@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.domain.model
+package com.snow.dreamdiary.feature_dailysurvey.domain.model
 
 import androidx.annotation.IntRange
 import androidx.room.Entity

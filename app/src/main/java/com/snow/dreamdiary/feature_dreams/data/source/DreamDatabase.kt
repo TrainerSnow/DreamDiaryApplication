@@ -11,7 +11,7 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
     ],
     version = 1
 )
-@TypeConverters(com.snow.dreamdiary.feature_dreams.data.source.TypeConverters::class)
+@TypeConverters(com.snow.dreamdiary.common.data.TypeConverters::class)
 abstract class DreamDatabase: RoomDatabase() {
     abstract val dreamDao: DreamDao
 }

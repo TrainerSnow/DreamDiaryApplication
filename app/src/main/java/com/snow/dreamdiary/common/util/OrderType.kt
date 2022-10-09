@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.domain.util
+package com.snow.dreamdiary.common.util
 
 sealed class OrderType{
     object Ascending: OrderType()

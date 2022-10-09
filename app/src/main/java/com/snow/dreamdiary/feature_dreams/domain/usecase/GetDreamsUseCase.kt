@@ -3,7 +3,7 @@ package com.snow.dreamdiary.feature_dreams.domain.usecase;
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
-import com.snow.dreamdiary.feature_dreams.domain.util.OrderType
+import com.snow.dreamdiary.common.util.OrderType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

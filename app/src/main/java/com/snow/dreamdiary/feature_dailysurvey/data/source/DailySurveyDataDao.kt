@@ -1,10 +1,10 @@
-package com.snow.dreamdiary.feature_dreams.data.source
+package com.snow.dreamdiary.feature_dailysurvey.data.source
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.snow.dreamdiary.feature_dreams.domain.model.DailySurveyData
+import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.data.source;
+package com.snow.dreamdiary.common.data;
 
 import androidx.room.TypeConverter
 import org.json.JSONArray
