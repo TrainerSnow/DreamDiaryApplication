@@ -9,6 +9,7 @@ import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
 import com.snow.dreamdiary.feature_dreams.data.repository.DreamRepositoryImpl
 import com.snow.dreamdiary.feature_dreams.data.source.DreamDatabase
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
+import com.snow.dreamdiary.feature_dreams.domain.usecase.AddDreamUseCase
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DeleteDreamUseCase
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
 import com.snow.dreamdiary.feature_dreams.domain.usecase.GetDreamsUseCase
@@ -43,7 +44,8 @@ object AppModule {
     fun provideDreamUseCases(repository: DreamRepository): DreamUseCases{
         return DreamUseCases(
             getDreams = GetDreamsUseCase(repository),
-            deleteDreams = DeleteDreamUseCase(repository)
+            deleteDreams = DeleteDreamUseCase(repository),
+            addDream = AddDreamUseCase(repository)
         )
     }
 
