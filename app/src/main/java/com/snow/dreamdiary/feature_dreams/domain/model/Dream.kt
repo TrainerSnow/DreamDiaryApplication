@@ -17,7 +17,7 @@ data class Dream(
     val createdAt: Long,
     val dreamtAt: Long,
     val color: Color = dreamColors[0],
-    @PrimaryKey val id: Int
+    @PrimaryKey val id: Int? = null
 ) {
     companion object {
         val dreamColors = listOf(
