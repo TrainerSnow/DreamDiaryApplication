@@ -13,7 +13,9 @@ class DreamRepositoryImpl(
         return dreamDao.getDreams()
     }
 
-    override suspend fun getDreamById(id: Int): Dream? {
+    override suspend fun getDreamById(id: Int?): Dream? {
+        if(id == null)
+            return null
         return dreamDao.getDreamById(id)
     }
 

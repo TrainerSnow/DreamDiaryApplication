@@ -7,7 +7,7 @@ interface DreamRepository {
 
     fun getDreams(): Flow<List<Dream>>
 
-    suspend fun getDreamById(id: Int): Dream?
+    suspend fun getDreamById(id: Int?): Dream?
 
     suspend fun insertDream(dream: Dream)
 
