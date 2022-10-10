@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Dream Diary Application</string>
     <string name="add_dream">Add Dream</string>
+    <string name="cd_back">Back</string>
+    <string name="cd_add">Add</string>
+    <string name="add">Add</string>
 </resources>
