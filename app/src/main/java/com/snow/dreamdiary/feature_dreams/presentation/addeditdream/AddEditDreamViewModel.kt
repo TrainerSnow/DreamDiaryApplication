@@ -3,7 +3,6 @@ package com.snow.dreamdiary.feature_dreams.presentation.addeditdream;
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.common.exception.MessageException
@@ -44,8 +43,6 @@ class AddEditDreamViewModel @Inject constructor(
     private val _dreamtAt = mutableStateOf(LongState())
     val dreamtAt: State<LongState> = _dreamtAt
 
-    private val _dreamColor = mutableStateOf(Dream.dreamColors.random())
-    val dreamColor: State<Color> = _dreamColor
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
@@ -70,7 +67,6 @@ class AddEditDreamViewModel @Inject constructor(
                                     now
                                 else
                                     dreamtAt.value.value,
-                                color = dreamColor.value
                             )
                         )
                         _actionFlow.emit(UIEvent.GoBack)
@@ -112,14 +108,6 @@ class AddEditDreamViewModel @Inject constructor(
             is AddEditDreamEvent.ChangePersons -> {
                 _persons.value = persons.value.copy(
                     text = event.value
-                )
-            }
-            is AddEditDreamEvent.ChangeDreamColor -> {
-                _dreamColor.value = dreamColor.value.copy(
-                    alpha = event.value.alpha,
-                    red = event.value.red,
-                    green = event.value.green,
-                    blue = event.value.blue,
                 )
             }
             AddEditDreamEvent.Cancel -> {

@@ -16,7 +16,5 @@ sealed class AddEditDreamEvent{
 
     data class ChangeDreamtAt(val value: Long): AddEditDreamEvent()
 
-    data class ChangeDreamColor(val value: Color): AddEditDreamEvent()
-
     object Cancel: AddEditDreamEvent()
 }

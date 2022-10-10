@@ -16,10 +16,12 @@ data class Dream(
 
     val createdAt: Long,
     val dreamtAt: Long,
+    @Deprecated("")
     val color: Color = dreamColors[0],
     @PrimaryKey val id: Int? = null
 ) {
     companion object {
+        @Deprecated("")
         val dreamColors = listOf(
             Color(255, 250, 129),
             Color(179, 226, 221),
