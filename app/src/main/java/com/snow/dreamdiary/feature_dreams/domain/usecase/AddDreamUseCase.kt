@@ -7,6 +7,7 @@ public class AddDreamUseCase(
     private val repository: DreamRepository
 ) {
     suspend operator fun invoke(dream: Dream){
+        // TODO: Check if dream has valid inputs!!!! Else throw MessageException
         repository.insertDream(dream)
     }
 }
