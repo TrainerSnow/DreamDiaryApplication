@@ -7,16 +7,16 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Dream(
-    val description: String,
-    val annotation: List<String>,
-    val persons: List<String>,
-    val feelings: List<String>,
-    val locations: List<String>,
-    @IntRange(from = 0, to = 10) val comfortness: Int,
+    val description: String = "",
+    val annotation: String = "",
+    val persons: List<String> = emptyList(),
+    val feelings: List<String> = emptyList(),
+    val locations: List<String> = emptyList(),
+    @IntRange(from = 0, to = 10) val comfortness: Int = 5,
 
     val createdAt: Long,
     val dreamtAt: Long,
-    val color: Int,
+    val color: Color = dreamColors[0],
     @PrimaryKey val id: Int
 ) {
     companion object {
