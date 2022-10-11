@@ -20,9 +20,9 @@ fun BottomNavBarDreams(
     navController: NavHostController
 ) {
     val screens = listOf(
+        BottomNavDreamScreens.AddEditDreamScreen,
         BottomNavDreamScreens.DreamStartScreen,
         BottomNavDreamScreens.OverviewDreamsScreen,
-        BottomNavDreamScreens.AddEditDreamScreen,
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
