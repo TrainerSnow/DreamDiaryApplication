@@ -5,6 +5,7 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
@@ -27,7 +28,9 @@ fun BottomNavBarDreams(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDest = navBackStackEntry?.destination
 
-    BottomNavigation {
+    BottomNavigation(
+        backgroundColor = MaterialTheme.colorScheme.surface
+    ) {
         screens.forEach {
             BottomNavEntry(
                 screen = it,
@@ -57,7 +60,8 @@ fun RowScope.BottomNavEntry(
         icon = {
             Icon(
                 imageVector = screen.icon,
-                contentDescription = stringResource(id = screen.title)
+                contentDescription = stringResource(id = screen.title),
+                tint = MaterialTheme.colorScheme.onSecondaryContainer
             )
         }
     )
