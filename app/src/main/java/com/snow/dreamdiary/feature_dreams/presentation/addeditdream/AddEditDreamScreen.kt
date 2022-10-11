@@ -43,8 +43,6 @@ fun AddEditDreamScreen(
     // TODO: Collect Data and respond!!!
     val actionFlow = viewModel.actionFlow
 
-    val scope = rememberCoroutineScope()
-
     val dialogState = rememberMaterialDialogState()
 
     DreamDiaryApplicationTheme {
