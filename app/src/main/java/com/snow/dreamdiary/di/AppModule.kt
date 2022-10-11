@@ -48,6 +48,9 @@ object AppModule {
             getNewFeelings = GetNewFeelingsUseCase(repository),
             getNewLocations = GetNewLocationsUseCase(repository),
             getNewPersons = GetNewPersonsUseCase(repository),
+            getFeelings = GetFeelingsUseCase(repository),
+            getLocations = GetLocationsUseCase(repository),
+            getPersons = GetPersonsUseCase(repository),
         )
     }
 

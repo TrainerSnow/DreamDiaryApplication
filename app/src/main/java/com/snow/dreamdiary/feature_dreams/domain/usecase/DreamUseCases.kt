@@ -8,4 +8,7 @@ data class DreamUseCases(
     val getNewFeelings: GetNewFeelingsUseCase,
     val getNewLocations: GetNewLocationsUseCase,
     val getNewPersons: GetNewPersonsUseCase,
+    val getFeelings: GetFeelingsUseCase,
+    val getLocations: GetLocationsUseCase,
+    val getPersons: GetPersonsUseCase
 ) {}
