@@ -72,15 +72,9 @@ class AddEditDreamViewModel @Inject constructor(
                 )
             }
             is AddEditDreamEvent.RequestAdd -> {
-                val persons = persons.value.text.split(";").map{
-                    it.trim()
-                }
-                val feelings = feelings.value.text.split(";").map{
-                    it.trim()
-                }
-                val locations = locations.value.text.split(";").map{
-                    it.trim()
-                }
+                val persons = getValuesFromString(persons.value.text)
+                val feelings = getValuesFromString(feelings.value.text)
+                val locations = getValuesFromString(locations.value.text)
 
                 _newPersons.value = dreamUseCases.getNewPersons(persons)
                 _newFeelings.value = dreamUseCases.getNewFeelings(feelings)
@@ -106,15 +100,9 @@ class AddEditDreamViewModel @Inject constructor(
                             Dream(
                                 description = dreamDesc.value.text,
                                 annotation = dreamAnnotation.value.text,
-                                persons = persons.value.text.split(";").map{
-                                    it.trim()
-                                },
-                                feelings = feelings.value.text.split(";").map{
-                                    it.trim()
-                                },
-                                locations = locations.value.text.split(";").map{
-                                    it.trim()
-                                },
+                                persons = getValuesFromString(persons.value.text),
+                                feelings = getValuesFromString(feelings.value.text),
+                                locations = getValuesFromString(locations.value.text),
                                 comfortness = comfortness.value.value,
                                 createdAt = if (dreamtAt.value.value == 0L) now else dreamtAt.value.value,
                                 dreamtAt = if (dreamtAt.value.value == 0L)
@@ -169,6 +157,12 @@ class AddEditDreamViewModel @Inject constructor(
                     _actionFlow.emit(UIEvent.GoBack)
                 }
             }
+        }
+    }
+
+    private fun getValuesFromString(s: String): List<String>{
+        return s.split(",").map{
+            it.trim()
         }
     }
 
