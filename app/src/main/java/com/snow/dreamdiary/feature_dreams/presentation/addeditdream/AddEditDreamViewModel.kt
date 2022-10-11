@@ -72,9 +72,15 @@ class AddEditDreamViewModel @Inject constructor(
                 )
             }
             is AddEditDreamEvent.RequestAdd -> {
-                val persons = persons.value.text.split(";")
-                val feelings = feelings.value.text.split(";")
-                val locations = locations.value.text.split(";")
+                val persons = persons.value.text.split(";").map{
+                    it.trim()
+                }
+                val feelings = feelings.value.text.split(";").map{
+                    it.trim()
+                }
+                val locations = locations.value.text.split(";").map{
+                    it.trim()
+                }
 
                 _newPersons.value = dreamUseCases.getNewPersons(persons)
                 _newFeelings.value = dreamUseCases.getNewFeelings(feelings)
@@ -100,9 +106,15 @@ class AddEditDreamViewModel @Inject constructor(
                             Dream(
                                 description = dreamDesc.value.text,
                                 annotation = dreamAnnotation.value.text,
-                                persons = persons.value.text.split(";"),
-                                feelings = feelings.value.text.split(";"),
-                                locations = locations.value.text.split(";"),
+                                persons = persons.value.text.split(";").map{
+                                    it.trim()
+                                },
+                                feelings = feelings.value.text.split(";").map{
+                                    it.trim()
+                                },
+                                locations = locations.value.text.split(";").map{
+                                    it.trim()
+                                },
                                 comfortness = comfortness.value.value,
                                 createdAt = if (dreamtAt.value.value == 0L) now else dreamtAt.value.value,
                                 dreamtAt = if (dreamtAt.value.value == 0L)
