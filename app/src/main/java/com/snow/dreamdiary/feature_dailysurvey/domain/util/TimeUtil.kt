@@ -4,7 +4,7 @@ import java.util.*
 
 object TimeUtil {
 
-    fun thisDayStartInMillis(): Long{
+    fun thisDayStartInMillis(): Long {
         val now = System.currentTimeMillis()
         val dayStart = millisSinceStartOfToday() - now
         return dayStart

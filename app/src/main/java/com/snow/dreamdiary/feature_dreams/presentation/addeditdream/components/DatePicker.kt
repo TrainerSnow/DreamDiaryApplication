@@ -6,7 +6,6 @@ import com.snow.dreamdiary.R
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.MaterialDialogState
 import com.vanpra.composematerialdialogs.datetime.date.datepicker
-import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import java.time.LocalDate
 
 @Composable
@@ -21,7 +20,7 @@ fun DatePicker(
             negativeButton(LocalContext.current.getString(R.string.cancel))
         }
     ) {
-        datepicker{
+        datepicker {
             onDateSelect(it)
         }
     }

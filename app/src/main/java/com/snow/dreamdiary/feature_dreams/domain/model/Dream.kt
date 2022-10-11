@@ -1,7 +1,6 @@
 package com.snow.dreamdiary.feature_dreams.domain.model
 
 import androidx.annotation.IntRange
-import androidx.compose.ui.graphics.Color
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -18,5 +17,4 @@ data class Dream(
     val dreamtAt: Long,
     @Deprecated("")
     @PrimaryKey val id: Int? = null
-) {
-}
+)

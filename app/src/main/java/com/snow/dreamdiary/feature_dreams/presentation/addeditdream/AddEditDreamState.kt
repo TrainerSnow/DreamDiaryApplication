@@ -1,7 +1,5 @@
 package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
 
-import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
-
 data class AddEditDreamState(
     val description: String = "",
     val annotation: String = "",

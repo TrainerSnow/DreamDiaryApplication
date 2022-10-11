@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.domain.usecase;
+package com.snow.dreamdiary.feature_dreams.domain.usecase
 
 import com.snow.dreamdiary.common.util.OrderType
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
@@ -14,15 +14,15 @@ class GetDreamsUseCase(
         dreamOrder: DreamOrder = DreamOrder.Dreamed(OrderType.Descending)
     ): Flow<List<Dream>> {
         return repository.getDreams().map { dreams ->
-            when(dreamOrder.orderType){
+            when (dreamOrder.orderType) {
                 is OrderType.Ascending -> {
-                    when(dreamOrder){
+                    when (dreamOrder) {
                         is DreamOrder.Dreamed -> dreams.sortedBy { it.dreamtAt }
                         is DreamOrder.Created -> dreams.sortedBy { it.createdAt }
                     }
                 }
                 is OrderType.Descending -> {
-                    when(dreamOrder){
+                    when (dreamOrder) {
                         is DreamOrder.Dreamed -> dreams.sortedByDescending { it.dreamtAt }
                         is DreamOrder.Created -> dreams.sortedByDescending { it.createdAt }
                     }

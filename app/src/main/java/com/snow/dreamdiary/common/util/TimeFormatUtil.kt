@@ -1,16 +1,15 @@
 package com.snow.dreamdiary.common.util
 
 import android.icu.text.SimpleDateFormat
-import android.text.format.DateFormat
 import java.util.*
 
 object TimeFormatUtil {
 
-    fun getTodayFormatted(): String{
+    fun getTodayFormatted(): String {
         return getMillisFormatted(System.currentTimeMillis())
     }
 
-    fun getMillisFormatted(millis: Long): String{
+    fun getMillisFormatted(millis: Long): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = millis
 

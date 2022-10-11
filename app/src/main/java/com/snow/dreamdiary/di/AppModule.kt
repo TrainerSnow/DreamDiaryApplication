@@ -23,7 +23,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDreamDatabase(app: Application): DreamDatabase{
+    fun provideDreamDatabase(app: Application): DreamDatabase {
         return Room.databaseBuilder(
             app,
             DreamDatabase::class.java,
@@ -33,13 +33,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDreamRepository(db: DreamDatabase): DreamRepository{
+    fun provideDreamRepository(db: DreamDatabase): DreamRepository {
         return DreamRepositoryImpl(db.dreamDao)
     }
 
     @Provides
     @Singleton
-    fun provideDreamUseCases(repository: DreamRepository): DreamUseCases{
+    fun provideDreamUseCases(repository: DreamRepository): DreamUseCases {
         return DreamUseCases(
             getDreams = GetDreamsUseCase(repository),
             deleteDreams = DeleteDreamUseCase(repository),
@@ -56,7 +56,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDailySurveyDatabase(app: Application): DailySurveyDataDatabase{
+    fun provideDailySurveyDatabase(app: Application): DailySurveyDataDatabase {
         return Room.databaseBuilder(
             app,
             DailySurveyDataDatabase::class.java,
@@ -66,13 +66,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideSurveyRepository(db: DailySurveyDataDatabase): DailySurveyRepository{
+    fun provideSurveyRepository(db: DailySurveyDataDatabase): DailySurveyRepository {
         return DailySurveyRepositoryImpl(db.dailySurveyDataDao)
     }
 
     @Provides
     @Singleton
-    fun provideSurveyUseCases(repository: DailySurveyRepository): SurveyUseCases{
+    fun provideSurveyUseCases(repository: DailySurveyRepository): SurveyUseCases {
         return SurveyUseCases(
             addSurvey = AddSurveyUseCase(repository)
         )

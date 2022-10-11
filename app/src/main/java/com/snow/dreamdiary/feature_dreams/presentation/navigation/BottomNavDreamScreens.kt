@@ -5,9 +5,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Movie
-import androidx.compose.material.icons.sharp.Add
-import androidx.compose.material.icons.sharp.Home
-import androidx.compose.material.icons.sharp.Movie
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.snow.dreamdiary.R
 

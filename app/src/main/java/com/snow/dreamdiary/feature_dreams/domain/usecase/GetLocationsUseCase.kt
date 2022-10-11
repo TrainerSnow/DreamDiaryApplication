@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.domain.usecase;
+package com.snow.dreamdiary.feature_dreams.domain.usecase
 
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 

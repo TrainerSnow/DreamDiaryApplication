@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.domain.usecase;
+package com.snow.dreamdiary.feature_dreams.domain.usecase
 
 data class DreamUseCases(
     val getDreams: GetDreamsUseCase,
@@ -11,4 +11,4 @@ data class DreamUseCases(
     val getFeelings: GetFeelingsUseCase,
     val getLocations: GetLocationsUseCase,
     val getPersons: GetPersonsUseCase
-) {}
+)

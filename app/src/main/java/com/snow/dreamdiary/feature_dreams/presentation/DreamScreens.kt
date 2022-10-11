@@ -7,16 +7,18 @@ sealed class DreamScreens(val route: String, val args: String = "") {
         route = "route_addeditdreamscreen",
         args = formattedArgName(KEY_DREAM_ID)
     )
+
     object DreamStartScreen : DreamScreens(
         route = "route_mainstartscreen"
     )
+
     object OverviewDreamsScreen : DreamScreens(
         route = "route_overviewdreamsscreen"
     )
 
-    companion object{
+    companion object {
 
-        private fun formattedArgName(arg: String): String{
+        private fun formattedArgName(arg: String): String {
             return "{$arg}"
         }
 

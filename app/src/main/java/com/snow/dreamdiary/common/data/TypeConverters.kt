@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.common.data;
+package com.snow.dreamdiary.common.data
 
 import androidx.room.TypeConverter
 import org.json.JSONArray
@@ -7,12 +7,12 @@ import org.json.JSONObject
 class TypeConverters {
 
     @TypeConverter
-    fun fromString(string: String): List<String>{
+    fun fromString(string: String): List<String> {
         val obj = JSONObject(string)
         val arr = mutableListOf<String>()
         val jsonArr = obj.getJSONArray("values")
 
-        for(i in 0 until jsonArr.length()){
+        for (i in 0 until jsonArr.length()) {
             arr.add(jsonArr.getString(i))
         }
 
@@ -20,7 +20,7 @@ class TypeConverters {
     }
 
     @TypeConverter
-    fun listToString(list: List<String>): String{
+    fun listToString(list: List<String>): String {
         val obj = JSONObject()
         val arr = JSONArray()
 

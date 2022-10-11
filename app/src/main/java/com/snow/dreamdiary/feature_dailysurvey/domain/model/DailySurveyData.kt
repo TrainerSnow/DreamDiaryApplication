@@ -3,7 +3,6 @@ package com.snow.dreamdiary.feature_dailysurvey.domain.model
 import androidx.annotation.IntRange
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.net.IDN
 
 @Entity
 data class DailySurveyData(

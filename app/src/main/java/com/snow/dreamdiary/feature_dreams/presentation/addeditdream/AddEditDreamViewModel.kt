@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.addeditdream;
+package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
@@ -54,9 +54,11 @@ class AddEditDreamViewModel @Inject constructor(
     val newLocations: State<List<String>> = _newLocations
 
 
-    private val _shouldShowDialog = mutableStateOf(BooleanState(
-        value = false
-    ))
+    private val _shouldShowDialog = mutableStateOf(
+        BooleanState(
+            value = false
+        )
+    )
     val shouldShowDialog: State<BooleanState> = _shouldShowDialog
 
 
@@ -160,8 +162,8 @@ class AddEditDreamViewModel @Inject constructor(
         }
     }
 
-    private fun getValuesFromString(s: String): List<String>{
-        return s.split(",").map{
+    private fun getValuesFromString(s: String): List<String> {
+        return s.split(",").map {
             it.trim()
         }
     }

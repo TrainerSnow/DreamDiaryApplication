@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.data.source;
+package com.snow.dreamdiary.feature_dreams.data.source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -12,10 +12,10 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
     version = 1
 )
 @TypeConverters(com.snow.dreamdiary.common.data.TypeConverters::class)
-abstract class DreamDatabase: RoomDatabase() {
+abstract class DreamDatabase : RoomDatabase() {
     abstract val dreamDao: DreamDao
 
-    companion object{
+    companion object {
         const val DATABASE_NAME = "dreams_db"
     }
 }

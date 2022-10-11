@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.addeditdream;
+package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
 
 import android.util.Log
 import android.widget.Toast
@@ -12,12 +12,10 @@ import androidx.compose.material.icons.sharp.CalendarMonth
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -56,13 +54,13 @@ fun AddEditDreamScreen(
 
     val context = LocalContext.current
 
-    
-    LaunchedEffect(key1 = true){
+
+    LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest { event ->
-            when(event){
+            when (event) {
                 is AddEditDreamViewModel.UIEvent.Message -> {
                     val res = event.res
-                    withContext(Dispatchers.IO){
+                    withContext(Dispatchers.IO) {
                         val text = context.getString(res)
                         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
                     }
@@ -283,7 +281,11 @@ fun AddEditDreamScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "${stringResource(id = R.string.selected_date_x)} ${TimeFormatUtil.getMillisFormatted(if(dreamtAt.value == 0L) System.currentTimeMillis() else dreamtAt.value)}",
+                            text = "${stringResource(id = R.string.selected_date_x)} ${
+                                TimeFormatUtil.getMillisFormatted(
+                                    if (dreamtAt.value == 0L) System.currentTimeMillis() else dreamtAt.value
+                                )
+                            }",
                             style = MaterialTheme.typography.titleMedium
                         )
                         IconButton(
@@ -307,7 +309,7 @@ fun AddEditDreamScreen(
                             )
                         }
                     )
-                    if(shouldShowDialog.value){
+                    if (shouldShowDialog.value) {
                         DialogValidateDreamModifiers(
                             onPositiveClick = { viewModel.onEvent(AddEditDreamEvent.Add) },
                             onNegativeClick = { viewModel.onEvent(AddEditDreamEvent.DismissAddRequest) },

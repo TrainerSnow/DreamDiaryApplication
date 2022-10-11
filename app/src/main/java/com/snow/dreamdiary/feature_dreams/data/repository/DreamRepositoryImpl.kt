@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.data.repository;
+package com.snow.dreamdiary.feature_dreams.data.repository
 
 import com.snow.dreamdiary.feature_dreams.data.source.DreamDao
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
@@ -10,7 +10,7 @@ import org.json.JSONObject
 
 class DreamRepositoryImpl(
     private val dreamDao: DreamDao
-): DreamRepository {
+) : DreamRepository {
 
     override fun getDreams(): Flow<List<Dream>> {
         return dreamDao.getDreams()
@@ -30,13 +30,13 @@ class DreamRepositoryImpl(
             val obj = JSONObject(jsonString)
             val jsonArr = obj.getJSONArray("values")
 
-            for(i in 0 until jsonArr.length()){
+            for (i in 0 until jsonArr.length()) {
                 val person = jsonArr.getString(i)
 
-                if(personsMap.containsKey(person)){
+                if (personsMap.containsKey(person)) {
                     val currentValue = personsMap[person] ?: continue
                     personsMap[person] = currentValue + 1
-                }else{
+                } else {
                     personsMap[person] = 1
                 }
             }
@@ -59,13 +59,13 @@ class DreamRepositoryImpl(
             val obj = JSONObject(jsonString)
             val jsonArr = obj.getJSONArray("values")
 
-            for(i in 0 until jsonArr.length()){
+            for (i in 0 until jsonArr.length()) {
                 val feeling = jsonArr.getString(i)
 
-                if(feelingsMap.containsKey(feeling)){
+                if (feelingsMap.containsKey(feeling)) {
                     val currentValue = feelingsMap[feeling] ?: continue
                     feelingsMap[feeling] = currentValue + 1
-                }else{
+                } else {
                     feelingsMap[feeling] = 1
                 }
             }
@@ -88,13 +88,13 @@ class DreamRepositoryImpl(
             val obj = JSONObject(jsonString)
             val jsonArr = obj.getJSONArray("values")
 
-            for(i in 0 until jsonArr.length()){
+            for (i in 0 until jsonArr.length()) {
                 val location = jsonArr.getString(i)
 
-                if(locationsMap.containsKey(location)){
+                if (locationsMap.containsKey(location)) {
                     val currentValue = locationsMap[location] ?: continue
                     locationsMap[location] = currentValue + 1
-                }else{
+                } else {
                     locationsMap[location] = 1
                 }
             }
@@ -104,7 +104,7 @@ class DreamRepositoryImpl(
     }
 
     override suspend fun getDreamById(id: Int?): Dream? {
-        if(id == null)
+        if (id == null)
             return null
         return dreamDao.getDreamById(id)
     }

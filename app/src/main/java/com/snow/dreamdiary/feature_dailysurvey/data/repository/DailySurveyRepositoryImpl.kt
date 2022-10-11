@@ -1,18 +1,15 @@
-package com.snow.dreamdiary.feature_dailysurvey.data.repository;
+package com.snow.dreamdiary.feature_dailysurvey.data.repository
 
 import com.snow.dreamdiary.feature_dailysurvey.data.source.DailySurveyDataDao
 import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
 import com.snow.dreamdiary.feature_dailysurvey.domain.repository.DailySurveyRepository
 import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
-import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.take
 
-public class DailySurveyRepositoryImpl(
+class DailySurveyRepositoryImpl(
     private val surveyDao: DailySurveyDataDao
-): DailySurveyRepository {
+) : DailySurveyRepository {
 
     override fun getSurveyDatas(): Flow<List<DailySurveyData>> {
         return surveyDao.getSurveys()
@@ -28,7 +25,7 @@ public class DailySurveyRepositoryImpl(
         var flag = true
 
         surveys.forEach {
-            if(it.createdAt == TimeUtil.thisDayStartInMillis()){
+            if (it.createdAt == TimeUtil.thisDayStartInMillis()) {
                 flag = false
             }
         }
