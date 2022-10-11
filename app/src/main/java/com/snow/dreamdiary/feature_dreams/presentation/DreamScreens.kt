@@ -7,7 +7,7 @@ sealed class DreamScreens(val route: String, val args: String = "") {
         route = "route_addeditdreamscreen",
         args = formattedArgName(KEY_DREAM_ID)
     )
-    object MainStartScreen : DreamScreens(
+    object DreamStartScreen : DreamScreens(
         route = "route_mainstartscreen"
     )
     object OverviewDreamsScreen : DreamScreens(

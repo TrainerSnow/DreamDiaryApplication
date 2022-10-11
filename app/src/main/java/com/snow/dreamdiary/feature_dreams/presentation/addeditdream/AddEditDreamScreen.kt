@@ -27,6 +27,7 @@ import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 @Composable
 fun AddEditDreamScreen(
     navController: NavController,
+    dreamId: Int = -1,
     viewModel: AddEditDreamViewModel = hiltViewModel()
 ) {
     val descState = viewModel.dreamDesc.value
