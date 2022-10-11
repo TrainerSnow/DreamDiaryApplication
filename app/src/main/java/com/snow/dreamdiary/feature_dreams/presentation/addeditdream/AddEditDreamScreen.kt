@@ -25,6 +25,7 @@ import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.common.util.TimeUtil
 import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DatePicker
+import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DialogValidateDreamModifiers
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import kotlinx.coroutines.Dispatchers
@@ -50,6 +51,8 @@ fun AddEditDreamScreen(
 
     val comfortState = viewModel.comfortness.value
     val dreamtAt = viewModel.dreamtAt.value
+
+    val shouldShowDialog = viewModel.shouldShowDialog.value
 
     val context = LocalContext.current
 
@@ -97,7 +100,7 @@ fun AddEditDreamScreen(
                 ExtendedFloatingActionButton(
                     onClick = {
                         viewModel.onEvent(
-                            AddEditDreamEvent.Add
+                            AddEditDreamEvent.RequestAdd
                         )
                     },
                     text = {
@@ -304,7 +307,16 @@ fun AddEditDreamScreen(
                             )
                         }
                     )
-
+                    if(shouldShowDialog.value){
+                        DialogValidateDreamModifiers(
+                            onPositiveClick = { viewModel.onEvent(AddEditDreamEvent.Add) },
+                            onNegativeClick = { viewModel.onEvent(AddEditDreamEvent.DismissAddRequest) },
+                            onDismissRequest = { viewModel.onEvent(AddEditDreamEvent.DismissAddRequest) },
+                            newPersons = viewModel.newPersons.value,
+                            newLocations = viewModel.newLocations.value,
+                            newFeelings = viewModel.newFeelings.value
+                        )
+                    }
                 }
             }
         }

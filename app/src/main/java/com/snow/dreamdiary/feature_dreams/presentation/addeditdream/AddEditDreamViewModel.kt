@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.common.exception.MessageException
+import com.snow.dreamdiary.common.util.BooleanState
 import com.snow.dreamdiary.common.util.IntState
 import com.snow.dreamdiary.common.util.LongState
 import com.snow.dreamdiary.common.util.StringState
@@ -43,6 +44,21 @@ class AddEditDreamViewModel @Inject constructor(
     private val _dreamtAt = mutableStateOf(LongState())
     val dreamtAt: State<LongState> = _dreamtAt
 
+    private val _newPersons = mutableStateOf(listOf<String>())
+    val newPersons: State<List<String>> = _newPersons
+
+    private val _newFeelings = mutableStateOf(listOf<String>())
+    val newFeelings: State<List<String>> = _newFeelings
+
+    private val _newLocations = mutableStateOf(listOf<String>())
+    val newLocations: State<List<String>> = _newLocations
+
+
+    private val _shouldShowDialog = mutableStateOf(BooleanState(
+        value = false
+    ))
+    val shouldShowDialog: State<BooleanState> = _shouldShowDialog
+
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
@@ -50,6 +66,32 @@ class AddEditDreamViewModel @Inject constructor(
     //To be called from the Screen class
     fun onEvent(event: AddEditDreamEvent) {
         when (event) {
+            is AddEditDreamEvent.DismissAddRequest -> {
+                _shouldShowDialog.value = shouldShowDialog.value.copy(
+                    value = false
+                )
+            }
+            is AddEditDreamEvent.RequestAdd -> {
+                val persons = persons.value.text.split(";")
+                val feelings = feelings.value.text.split(";")
+                val locations = locations.value.text.split(";")
+
+                _newPersons.value = dreamUseCases.getNewPersons(persons)
+                _newFeelings.value = dreamUseCases.getNewFeelings(feelings)
+                _newLocations.value = dreamUseCases.getNewLocations(locations)
+
+                if (
+                    listOf(_newPersons.value, _newFeelings.value, _newLocations.value).any {
+                        it.isNotEmpty()
+                    }
+                ) {
+                    _shouldShowDialog.value = shouldShowDialog.value.copy(
+                        value = true
+                    )
+                } else {
+                    onEvent(AddEditDreamEvent.Add)
+                }
+            }
             is AddEditDreamEvent.Add -> {
                 viewModelScope.launch {
                     val now = System.currentTimeMillis()

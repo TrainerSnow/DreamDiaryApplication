@@ -2,6 +2,7 @@ package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
 
 sealed class AddEditDreamEvent{
     object Add : AddEditDreamEvent()
+    object RequestAdd : AddEditDreamEvent()
     data class ChangeDescription(val value: String) : AddEditDreamEvent()
     data class ChangeAnnotation(val value: String): AddEditDreamEvent()
 
@@ -14,4 +15,5 @@ sealed class AddEditDreamEvent{
     data class ChangeDreamtAt(val value: Long): AddEditDreamEvent()
 
     object Cancel: AddEditDreamEvent()
+    object DismissAddRequest : AddEditDreamEvent()
 }
