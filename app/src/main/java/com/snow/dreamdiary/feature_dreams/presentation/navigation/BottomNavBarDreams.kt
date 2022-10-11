@@ -45,14 +45,17 @@ fun BottomNavBarDreams(
 fun RowScope.BottomNavEntry(
     screen: BottomNavDreamScreens,
     currentDest: NavDestination?,
-    navController: NavController
+    navController: NavHostController
 ) {
     BottomNavigationItem(
         selected = currentDest?.hierarchy?.any {
             it.route == screen.route
         } == true,
         onClick = {
-            navController.navigate(screen.route)
+            navController.navigate(screen.route){
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
         },
         label = {
             Text(text = stringResource(id = screen.title))
