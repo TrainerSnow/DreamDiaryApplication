@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.snow.dreamdiary.R
+import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.common.util.TimeUtil
 import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DatePicker
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
@@ -256,7 +257,7 @@ fun AddEditDreamScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "${stringResource(id = R.string.selected_date_x)} ${dreamtAt.value}",
+                            text = "${stringResource(id = R.string.selected_date_x)} ${TimeFormatUtil.getMillisFormatted(dreamtAt.value)}",
                             style = MaterialTheme.typography.titleMedium
                         )
                         IconButton(

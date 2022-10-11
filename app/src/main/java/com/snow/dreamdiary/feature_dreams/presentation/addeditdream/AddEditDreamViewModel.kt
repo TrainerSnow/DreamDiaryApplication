@@ -40,7 +40,9 @@ class AddEditDreamViewModel @Inject constructor(
     private val _comfortness = mutableStateOf(IntState())
     val comfortness: State<IntState> = _comfortness
 
-    private val _dreamtAt = mutableStateOf(LongState())
+    private val _dreamtAt = mutableStateOf(LongState(
+        value = System.currentTimeMillis()
+    ))
     val dreamtAt: State<LongState> = _dreamtAt
 
 
