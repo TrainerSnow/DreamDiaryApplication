@@ -15,4 +15,7 @@
     <string name="cancel">Cancel</string>
     <string name="selected_date_x">Selected Date:</string>
     <string name="cd_pick_date">Pick a Date</string>
+    <string name="home">HOme</string>
+    <string name="addeditdream">Add Dream</string>
+    <string name="view_dreams">View Dreams</string>
 </resources>
