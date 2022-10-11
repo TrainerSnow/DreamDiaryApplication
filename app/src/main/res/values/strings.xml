@@ -4,4 +4,15 @@
     <string name="cd_back">Back</string>
     <string name="cd_add">Add</string>
     <string name="add">Add</string>
+    <string name="write_dream">Write a description of your dream here</string>
+    <string name="write_annotation">Write annotations about your dream here</string>
+    <string name="write_persons">Write the persons from your dream here, separated by semicolon (;)</string>
+    <string name="write_feelings">Write the feelings from your dream here, separated by semicolon (;)</string>
+    <string name="write_locations">Write the locations from your dream here, separated by semicolon (;)</string>
+    <string name="select_comfortness">Select how comfortable you felt during the dream (0 = bad, 10 = good)</string>
+    <string name="select_date_dreamt">Select when you dreamt this dream (optional, default = today)</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="selected_date_x">Selected Date:</string>
+    <string name="cd_pick_date">Pick a Date</string>
 </resources>

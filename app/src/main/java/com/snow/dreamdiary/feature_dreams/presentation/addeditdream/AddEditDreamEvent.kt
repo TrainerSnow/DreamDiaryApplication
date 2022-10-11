@@ -1,11 +1,8 @@
 package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
 
-import androidx.compose.ui.graphics.Color
-import com.snow.dreamdiary.feature_dreams.domain.model.Dream
-
 sealed class AddEditDreamEvent{
-    data class Add(val dream: Dream): AddEditDreamEvent()
-    data class ChangeDescription(val value: String): AddEditDreamEvent()
+    object Add : AddEditDreamEvent()
+    data class ChangeDescription(val value: String) : AddEditDreamEvent()
     data class ChangeAnnotation(val value: String): AddEditDreamEvent()
 
     data class ChangePersons(val value: String): AddEditDreamEvent()
