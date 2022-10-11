@@ -44,7 +44,10 @@ object AppModule {
             getDreams = GetDreamsUseCase(repository),
             deleteDreams = DeleteDreamUseCase(repository),
             addDream = AddDreamUseCase(repository),
-            editDream = EditDreamUseCase(repository)
+            editDream = EditDreamUseCase(repository),
+            getNewFeelings = GetNewFeelingsUseCase(repository),
+            getNewLocations = GetNewLocationsUseCase(repository),
+            getNewPersons = GetNewPersonsUseCase(repository),
         )
     }
 

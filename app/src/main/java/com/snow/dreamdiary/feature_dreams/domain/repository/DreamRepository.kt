@@ -7,6 +7,12 @@ interface DreamRepository {
 
     fun getDreams(): Flow<List<Dream>>
 
+    fun getPersons(): List<String>
+
+    fun getFeelings(): List<String>
+
+    fun getLocations(): List<String>
+
     suspend fun getDreamById(id: Int?): Dream?
 
     suspend fun insertDream(dream: Dream)
