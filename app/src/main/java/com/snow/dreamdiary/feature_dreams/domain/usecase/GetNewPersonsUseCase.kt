@@ -10,6 +10,6 @@ class GetNewPersonsUseCase(
     ): List<String> {
         val existingPersons = repository.getPersons()
 
-        return newPersons.subtract(existingPersons.toSet()).toList()
+        return newPersons.subtract(existingPersons.keys).toList()
     }
 }

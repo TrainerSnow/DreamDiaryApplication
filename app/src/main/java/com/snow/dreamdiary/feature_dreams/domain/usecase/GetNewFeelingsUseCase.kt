@@ -10,6 +10,6 @@ class GetNewFeelingsUseCase(
     ): List<String> {
         val existingFeelings = repository.getFeelings()
 
-        return newFeelings.subtract(existingFeelings.toSet()).toList()
+        return newFeelings.subtract(existingFeelings.keys).toList()
     }
 }

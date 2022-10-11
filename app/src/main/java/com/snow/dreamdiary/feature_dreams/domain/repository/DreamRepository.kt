@@ -7,11 +7,11 @@ interface DreamRepository {
 
     fun getDreams(): Flow<List<Dream>>
 
-    fun getPersons(): List<String>
+    fun getPersons(): HashMap<String, Int>
 
-    fun getFeelings(): List<String>
+    fun getFeelings(): HashMap<String, Int>
 
-    fun getLocations(): List<String>
+    fun getLocations(): HashMap<String, Int>
 
     suspend fun getDreamById(id: Int?): Dream?
 

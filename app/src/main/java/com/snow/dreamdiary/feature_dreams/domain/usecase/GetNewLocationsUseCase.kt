@@ -10,6 +10,6 @@ class GetNewLocationsUseCase(
     ): List<String> {
         val existingLocations = repository.getLocations()
 
-        return newLocations.subtract(existingLocations.toSet()).toList()
+        return newLocations.subtract(existingLocations.keys).toList()
     }
 }
