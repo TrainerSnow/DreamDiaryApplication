@@ -14,6 +14,10 @@ sealed class DreamScreens(val route: String, val args: String = "") {
         route = "route_overviewdreamsscreen"
     )
 
+    fun routeWithArgument(value: Any): String{
+        return "${this.route}/$value"
+    }
+
     companion object{
 
         private fun formattedArgName(arg: String): String{
