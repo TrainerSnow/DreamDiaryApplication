@@ -1,5 +1,6 @@
 package com.snow.dreamdiary.feature_dreams.presentation.addeditdream;
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -22,6 +23,8 @@ import com.snow.dreamdiary.common.util.TimeUtil
 import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DatePicker
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
+
+private const val TAG = "AddEditDreamScreen"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -226,10 +229,11 @@ fun AddEditDreamScreen(
                     Slider(
                         value = comfortState.value.toFloat(),
                         onValueChange = { value ->
+                            Log.d(TAG, "AddEditDreamScreen: changed slider value to $value")
                             viewModel.onEvent(AddEditDreamEvent.ChangeComfortness(value.toInt()))
                         },
                         valueRange = 0F..10F,
-                        steps = 1
+                        steps = 10
                     )
 
                     Divider(
