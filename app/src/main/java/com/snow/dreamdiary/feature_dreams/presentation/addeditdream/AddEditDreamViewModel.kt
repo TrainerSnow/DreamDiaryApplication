@@ -40,9 +40,7 @@ class AddEditDreamViewModel @Inject constructor(
     private val _comfortness = mutableStateOf(IntState())
     val comfortness: State<IntState> = _comfortness
 
-    private val _dreamtAt = mutableStateOf(LongState(
-        value = System.currentTimeMillis()
-    ))
+    private val _dreamtAt = mutableStateOf(LongState())
     val dreamtAt: State<LongState> = _dreamtAt
 
 
@@ -64,7 +62,7 @@ class AddEditDreamViewModel @Inject constructor(
                                 feelings = feelings.value.text.split(";"),
                                 locations = locations.value.text.split(";"),
                                 comfortness = comfortness.value.value,
-                                createdAt = now,
+                                createdAt = if (dreamtAt.value.value == 0L) now else dreamtAt.value.value,
                                 dreamtAt = if (dreamtAt.value.value == 0L)
                                     now
                                 else

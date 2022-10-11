@@ -1,6 +1,7 @@
 package com.snow.dreamdiary.feature_dreams.presentation.addeditdream;
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -10,9 +11,11 @@ import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material.icons.sharp.CalendarMonth
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,6 +27,9 @@ import com.snow.dreamdiary.common.util.TimeUtil
 import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DatePicker
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.withContext
 
 private const val TAG = "AddEditDreamScreen"
 
@@ -45,8 +51,25 @@ fun AddEditDreamScreen(
     val comfortState = viewModel.comfortness.value
     val dreamtAt = viewModel.dreamtAt.value
 
-    // TODO: Collect Data and respond!!!
-    val actionFlow = viewModel.actionFlow
+    val context = LocalContext.current
+
+    
+    LaunchedEffect(key1 = true){
+        viewModel.actionFlow.collectLatest { event ->
+            when(event){
+                is AddEditDreamViewModel.UIEvent.Message -> {
+                    val res = event.res
+                    withContext(Dispatchers.IO){
+                        val text = context.getString(res)
+                        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+                    }
+                }
+                AddEditDreamViewModel.UIEvent.GoBack -> {
+                    navController.navigateUp()
+                }
+            }
+        }
+    }
 
     val dialogState = rememberMaterialDialogState()
 
@@ -257,7 +280,7 @@ fun AddEditDreamScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "${stringResource(id = R.string.selected_date_x)} ${TimeFormatUtil.getMillisFormatted(dreamtAt.value)}",
+                            text = "${stringResource(id = R.string.selected_date_x)} ${TimeFormatUtil.getMillisFormatted(if(dreamtAt.value == 0L) System.currentTimeMillis() else dreamtAt.value)}",
                             style = MaterialTheme.typography.titleMedium
                         )
                         IconButton(
