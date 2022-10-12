@@ -18,6 +18,7 @@
     <string name="home">Home</string>
     <string name="addeditdream">Add Dream</string>
     <string name="view_dreams">View Dreams</string>
+    <string name="view_dream_x">View Dream from %s</string>
     <string name="detected_new_values">Detected new values, that weren\'t existing before.</string>
     <string name="persons">Persons</string>
     <string name="feelings">Feelings</string>
@@ -33,4 +34,5 @@
     <string name="delete">Delete</string>
     <string name="cd_edit">Edit</string>
     <string name="edit">Edit</string>
+    <string name="cd_next">Next</string>
 </resources>

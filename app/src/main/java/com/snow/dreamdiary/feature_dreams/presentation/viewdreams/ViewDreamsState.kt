@@ -8,6 +8,6 @@ data class ViewDreamsState(
     val dreams: List<Dream> = emptyList(),
     val sortingOrder: DreamOrder = DreamOrder.Dreamed(OrderType.Descending),
     val isOrderMenuExpanded: Boolean = false,
-    val currentDreamIndex: Int = 0,
-    val currentDream: Dream? = dreams.getOrNull(currentDreamIndex)
+    val currentDreamIndex: Int = 0
+
 )

@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.AddEditDreamScreen
 import com.snow.dreamdiary.feature_dreams.presentation.startscreen.DreamStartScreen
-import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.ViewDReamsScreen
+import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.ViewDreamsScreen
 
 @Composable
 fun BottomNavGraphDreams(
@@ -29,7 +29,7 @@ fun BottomNavGraphDreams(
         composable(
             route = BottomNavDreamScreens.OverviewDreamsScreen.route
         ) {
-            ViewDReamsScreen(navController = navController)
+            ViewDreamsScreen(navController = navController)
         }
     }
 }

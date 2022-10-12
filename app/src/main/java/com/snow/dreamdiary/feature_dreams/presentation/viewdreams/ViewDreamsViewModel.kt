@@ -8,16 +8,21 @@ import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ViewDreamsViewModel @Inject constructor(
     private val dreamUseCases: DreamUseCases
 ) : ViewModel() {
+
+    private val TAG = "ViewDreamsViewModel"
 
     private val _state = mutableStateOf(ViewDreamsState())
     val state: State<ViewDreamsState> = _state
@@ -25,7 +30,7 @@ class ViewDreamsViewModel @Inject constructor(
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
 
-    var refreshDreamsJob: Job? = null
+    private var refreshDreamsJob: Job? = null
 
     init {
         refreshDreams(_state.value.sortingOrder)
@@ -59,16 +64,13 @@ class ViewDreamsViewModel @Inject constructor(
                     viewModelScope.launch {
                         _actionFlow.emit(UIEvent.Message(R.string.reached_last_dream))
                     }
-                    return
+                }else{
+                    val nextIndex = currentDreamIndex + 1
+
+                    _state.value = state.value.copy(
+                        currentDreamIndex = nextIndex
+                    )
                 }
-
-                val nextIndex = currentDreamIndex + 1
-                val nextDream = _state.value.dreams[nextIndex]
-
-                _state.value = state.value.copy(
-                    currentDream = nextDream,
-                    currentDreamIndex = nextIndex
-                )
             }
             ViewDreamsEvent.OpenOrderMenu -> {
                 _state.value = state.value.copy(
@@ -76,23 +78,19 @@ class ViewDreamsViewModel @Inject constructor(
                 )
             }
             ViewDreamsEvent.RecentDream -> {
-                val dreamsSize = _state.value.dreams.size
                 val currentDreamIndex = _state.value.currentDreamIndex
 
                 if (currentDreamIndex == 0) {
                     viewModelScope.launch {
                         _actionFlow.emit(UIEvent.Message(R.string.reached_first_dream))
                     }
-                    return
+                }else{
+                    val nextIndex = currentDreamIndex - 1
+
+                    _state.value = state.value.copy(
+                        currentDreamIndex = nextIndex
+                    )
                 }
-
-                val nextIndex = currentDreamIndex + 1
-                val nextDream = _state.value.dreams[nextIndex]
-
-                _state.value = state.value.copy(
-                    currentDream = nextDream,
-                    currentDreamIndex = nextIndex
-                )
             }
 
         }
@@ -103,13 +101,13 @@ class ViewDreamsViewModel @Inject constructor(
         refreshDreamsJob?.cancel()
 
         refreshDreamsJob = viewModelScope.launch {
-            dreamUseCases.getDreams(dreamOrder = order)
-                .onEach {
-                    _state.value = state.value.copy(
-                        dreams = it,
-                        sortingOrder = order
-                    )
-                }
+
+            _state.value = state.value.copy(
+                dreams = dreamUseCases.getDreams(dreamOrder = order)
+                    .first(),
+                sortingOrder = order
+            )
+
         }
     }
 
