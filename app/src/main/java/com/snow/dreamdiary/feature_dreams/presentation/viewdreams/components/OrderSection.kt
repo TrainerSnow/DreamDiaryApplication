@@ -1,10 +1,10 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components;
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material.icons.rounded.FilterListOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -16,14 +16,11 @@ import com.snow.dreamdiary.common.util.OrderType
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
 
 @Composable
-fun OrderSection(
+fun OrderButtonGroup(
     order: DreamOrder,
     onOrderChange: (DreamOrder) -> Unit,
-    modifier: Modifier
 ) {
-    Column(
-        modifier = modifier
-    ) {
+    Column{
         Row {
             LabeledRadioButton(
                 onClick = {
@@ -80,20 +77,19 @@ fun CompleteOrderSection(
     isExpanded: Boolean
 ) {
     Row {
-        if (isExpanded) {
-            OrderSection(
-                modifier = Modifier
-                    .weight(4F),
+        AnimatedVisibility(
+            modifier = Modifier
+                .weight(4F),
+            visible = isExpanded,
+            enter = fadeIn() + slideInVertically(),
+            exit = fadeOut() + slideOutVertically(),
+        ) {
+            OrderButtonGroup(
                 order = order,
                 onOrderChange = onOrderChange
             )
-        } else {
-            Spacer(
-                modifier = Modifier
-                    .weight(4F)
-            )
         }
-
+        Spacer(modifier = Modifier.weight(1F))
         IconButton(
             onClick = onExpandClick
         ) {

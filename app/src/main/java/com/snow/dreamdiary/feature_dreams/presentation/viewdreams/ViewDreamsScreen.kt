@@ -88,7 +88,6 @@ fun ViewDreamsScreen(
                     isExpanded = state.value.isOrderMenuExpanded
                 )
 
-
                 if (currentDream != null) {
                     DreamItem(
                         dream = currentDream,
