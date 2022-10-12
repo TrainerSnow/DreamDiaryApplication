@@ -51,6 +51,7 @@ object AppModule {
             getFeelings = GetFeelingsUseCase(repository),
             getLocations = GetLocationsUseCase(repository),
             getPersons = GetPersonsUseCase(repository),
+            getDreamById = FindDreamByIdUseCase(repository)
         )
     }
 

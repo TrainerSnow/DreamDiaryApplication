@@ -25,4 +25,6 @@
     <string name="sure_add_new_modifiers">Are you sure that you want to add these values?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="reached_last_dream">You don\'t have any more dreams after this one.</string>
+    <string name="reached_first_dream">You have no dreams before this one.</string>
 </resources>

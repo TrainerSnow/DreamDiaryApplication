@@ -10,5 +10,6 @@ data class DreamUseCases(
     val getNewPersons: GetNewPersonsUseCase,
     val getFeelings: GetFeelingsUseCase,
     val getLocations: GetLocationsUseCase,
-    val getPersons: GetPersonsUseCase
+    val getPersons: GetPersonsUseCase,
+    val getDreamById: FindDreamByIdUseCase
 )
