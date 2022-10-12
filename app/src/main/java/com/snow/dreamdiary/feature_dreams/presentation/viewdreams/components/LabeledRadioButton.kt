@@ -24,7 +24,6 @@ fun LabeledRadioButton(
             selected = selected,
             onClick = onClick
         )
-        Spacer(modifier = Modifier.width(12.dp))
         Text(
             text = text,
             style = MaterialTheme.typography.titleSmall

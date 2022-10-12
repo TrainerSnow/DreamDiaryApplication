@@ -1,6 +1,8 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components;
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -15,7 +17,7 @@ fun OrderSection(
     onOrderChange: (DreamOrder) -> Unit
 ) {
     Column {
-        Row {
+        Row{
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(DreamOrder.Created(order.orderType))
@@ -23,7 +25,6 @@ fun OrderSection(
                 text = stringResource(id = R.string.order_created),
                 selected = order is DreamOrder.Created
             )
-            Spacer(modifier = Modifier.width(12.dp))
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(DreamOrder.Dreamed(order.orderType))
@@ -32,9 +33,6 @@ fun OrderSection(
                 selected = order is DreamOrder.Dreamed
             )
         }
-
-        Spacer(modifier = Modifier.height(12.dp))
-
         Row {
             LabeledRadioButton(
                 onClick = {
@@ -49,7 +47,6 @@ fun OrderSection(
                 text = stringResource(id = R.string.order_descending),
                 selected = order.orderType == OrderType.Descending
             )
-            Spacer(modifier = Modifier.width(12.dp))
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(
