@@ -11,7 +11,6 @@ sealed class ViewDreamsEvent{
     object NextDream: ViewDreamsEvent()
     object RecentDream: ViewDreamsEvent()
 
-    object OpenOrderMenu: ViewDreamsEvent()
-    object CloseOrderMenu: ViewDreamsEvent()
+    object ToggleOrderMenu: ViewDreamsEvent()
 
 }

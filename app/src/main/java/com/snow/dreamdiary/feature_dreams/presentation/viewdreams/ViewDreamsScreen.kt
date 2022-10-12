@@ -1,14 +1,10 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewdreams
 
 import android.widget.Toast
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
-import androidx.compose.material.icons.rounded.ArrowForward
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -20,6 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.TimeFormatUtil
+import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.CompleteOrderSection
 import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.DreamItem
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import kotlinx.coroutines.flow.collectLatest
@@ -80,6 +77,18 @@ fun ViewDreamsScreen(
                 modifier = Modifier
                     .padding(it)
             ) {
+                CompleteOrderSection(
+                    order = state.value.sortingOrder,
+                    onOrderChange = { order ->
+                        viewModel.onEvent(ViewDreamsEvent.RenewOrder(order))
+                    },
+                    onExpandClick = {
+                        viewModel.onEvent(ViewDreamsEvent.ToggleOrderMenu)
+                    },
+                    isExpanded = state.value.isOrderMenuExpanded
+                )
+
+
                 if (currentDream != null) {
                     DreamItem(
                         dream = currentDream,

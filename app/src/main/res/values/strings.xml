@@ -39,4 +39,5 @@
     <string name="order_created">Created</string>
     <string name="order_ascending">Ascending</string>
     <string name="order_descending">Descending</string>
+    <string name="cd_expand_sort_menu">Toggle sort mode</string>
 </resources>

@@ -1,12 +1,16 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components;
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.FilterList
+import androidx.compose.material.icons.rounded.FilterListOff
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.OrderType
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
@@ -14,10 +18,13 @@ import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
 @Composable
 fun OrderSection(
     order: DreamOrder,
-    onOrderChange: (DreamOrder) -> Unit
+    onOrderChange: (DreamOrder) -> Unit,
+    modifier: Modifier
 ) {
-    Column {
-        Row{
+    Column(
+        modifier = modifier
+    ) {
+        Row {
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(DreamOrder.Created(order.orderType))
@@ -62,5 +69,38 @@ fun OrderSection(
             )
         }
 
+    }
+}
+
+@Composable
+fun CompleteOrderSection(
+    order: DreamOrder,
+    onOrderChange: (DreamOrder) -> Unit,
+    onExpandClick: () -> Unit,
+    isExpanded: Boolean
+) {
+    Row {
+        if (isExpanded) {
+            OrderSection(
+                modifier = Modifier
+                    .weight(4F),
+                order = order,
+                onOrderChange = onOrderChange
+            )
+        } else {
+            Spacer(
+                modifier = Modifier
+                    .weight(4F)
+            )
+        }
+
+        IconButton(
+            onClick = onExpandClick
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.FilterListOff,
+                contentDescription = stringResource(id = R.string.cd_expand_sort_menu)
+            )
+        }
     }
 }

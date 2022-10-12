@@ -51,9 +51,9 @@ class ViewDreamsViewModel @Inject constructor(
             is ViewDreamsEvent.RenewOrder -> {
                 refreshDreams(event.dreamOrder)
             }
-            ViewDreamsEvent.CloseOrderMenu -> {
+            ViewDreamsEvent.ToggleOrderMenu -> {
                 _state.value = state.value.copy(
-                    isOrderMenuExpanded = false
+                    isOrderMenuExpanded = !state.value.isOrderMenuExpanded
                 )
             }
             ViewDreamsEvent.NextDream -> {
@@ -71,11 +71,6 @@ class ViewDreamsViewModel @Inject constructor(
                         currentDreamIndex = nextIndex
                     )
                 }
-            }
-            ViewDreamsEvent.OpenOrderMenu -> {
-                _state.value = state.value.copy(
-                    isOrderMenuExpanded = true
-                )
             }
             ViewDreamsEvent.RecentDream -> {
                 val currentDreamIndex = _state.value.currentDreamIndex
