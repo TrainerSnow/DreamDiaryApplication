@@ -40,8 +40,7 @@ class ViewDreamsViewModel @Inject constructor(
         when (event) {
             is ViewDreamsEvent.DeleteDream -> {
                 viewModelScope.launch {
-                    val dream = dreamUseCases.getDreamById(event.dreamId) ?: return@launch
-                    dreamUseCases.deleteDreams(dream)
+                    dreamUseCases.deleteDreams(event.dream)
                     // TODO: Keep reference to deleted dream, enable restoring deleted dreams
                 }
             }

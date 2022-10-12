@@ -20,6 +20,7 @@ import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.CompleteOrderSection
 import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.DreamItem
+import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.DreamSelectorSection
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import kotlinx.coroutines.flow.collectLatest
 
@@ -94,7 +95,12 @@ fun ViewDreamsScreen(
                     },
                     isExpanded = state.value.isOrderMenuExpanded
                 )
-                Spacer(modifier = Modifier.weight(1F))
+
+                DreamSelectorSection(
+                    onNextClick = { viewModel.onEvent(ViewDreamsEvent.NextDream) },
+                    onRecentClick = { viewModel.onEvent(ViewDreamsEvent.RecentDream) }
+                )
+
                 if (currentDream != null) {
                     DreamItem(
                         modifier = Modifier
@@ -102,8 +108,8 @@ fun ViewDreamsScreen(
                                 animationSpec = tween(300)
                             ),
                         dream = currentDream,
-                        onDeleteClick = { /*TODO*/ },
-                        onEditClick = { /*TODO*/ }
+                        onDeleteClick = { viewModel.onEvent(ViewDreamsEvent.DeleteDream(currentDream)) },
+                        onEditClick = { viewModel.onEvent(ViewDreamsEvent.EditDream(currentDream))}
                     )
                 }
             }

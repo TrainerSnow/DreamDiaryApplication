@@ -15,6 +15,7 @@ data class Dream(
 
     val createdAt: Long,
     val dreamtAt: Long,
-    @Deprecated("")
+
+
     @PrimaryKey val id: Int? = null
 )
