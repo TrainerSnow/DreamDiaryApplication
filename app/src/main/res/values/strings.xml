@@ -35,4 +35,8 @@
     <string name="cd_edit">Edit</string>
     <string name="edit">Edit</string>
     <string name="cd_next">Next</string>
+    <string name="order_dreamed">Dreamed</string>
+    <string name="order_created">Created</string>
+    <string name="order_ascending">Ascending</string>
+    <string name="order_descending">Descending</string>
 </resources>
