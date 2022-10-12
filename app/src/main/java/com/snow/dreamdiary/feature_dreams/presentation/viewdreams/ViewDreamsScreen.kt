@@ -4,7 +4,6 @@ import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material3.*
@@ -61,7 +60,7 @@ fun ViewDreamsScreen(
                     },
                     title = {
                         Text(
-                            if (currentDream == null)
+                            text = if (currentDream == null)
                                 stringResource(id = R.string.view_dreams)
                             else
                                 String.format(
