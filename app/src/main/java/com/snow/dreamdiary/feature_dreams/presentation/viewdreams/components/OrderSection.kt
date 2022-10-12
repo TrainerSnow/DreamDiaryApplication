@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material.icons.rounded.FilterListOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -100,7 +101,7 @@ fun CompleteOrderSection(
                 onClick = onExpandClick
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.FilterListOff,
+                    imageVector = Icons.Rounded.FilterList,
                     contentDescription = stringResource(id = R.string.cd_expand_sort_menu)
                 )
             }
