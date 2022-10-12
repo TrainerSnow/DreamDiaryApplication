@@ -80,22 +80,6 @@ fun ViewDreamsScreen(
                 modifier = Modifier
                     .padding(it)
             ) {
-
-                Row {
-                    Icon(
-                        modifier = Modifier
-                            .clickable { viewModel.onEvent(ViewDreamsEvent.RecentDream) },
-                        imageVector = Icons.Rounded.ArrowBack,
-                        contentDescription = stringResource(id = R.string.cd_back)
-                    )
-                    Icon(
-                        modifier = Modifier
-                            .clickable { viewModel.onEvent(ViewDreamsEvent.NextDream) },
-                        imageVector = Icons.Rounded.ArrowForward,
-                        contentDescription = stringResource(id = R.string.cd_next)
-                    )
-
-                }
                 if (currentDream != null) {
                     DreamItem(
                         dream = currentDream,
