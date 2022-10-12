@@ -4,9 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Delete
+import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -17,7 +18,9 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 
 @Composable
 fun DreamItem(
-    dream: Dream
+    dream: Dream,
+    onEditClick: () -> Unit,
+    onDeleteClick: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -75,6 +78,41 @@ fun DreamItem(
                         items = dream.locations
                     )
                 }
+                
+                Spacer(modifier = Modifier.height(24.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+                    OutlinedButton(
+                        onClick = onDeleteClick,
+                        
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Delete,
+                            contentDescription = stringResource(id = R.string.cd_delete)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(id = R.string.delete)
+                        )
+                    }
+
+                    Button(
+                        onClick = onEditClick,
+
+                        ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Edit,
+                            contentDescription = stringResource(id = R.string.cd_edit)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(id = R.string.edit)
+                        )
+                    }
+                }
             }
         }
     }
@@ -96,33 +134,4 @@ private fun DreamModifierSection(
         )
     }
     Spacer(modifier = Modifier.height(8.dp))
-}
-
-@Preview(showSystemUi = false, showBackground = true)
-@Composable
-fun DefaultDreamItemPreview() {
-    val now = System.currentTimeMillis()
-    DreamItem(
-        dream = Dream(
-            description = "I ran down hill",
-            annotation = "I woke up",
-            persons = listOf(
-                "Meike",
-                "Niklas",
-                "Papa",
-                "Jona"
-            ),
-            feelings = listOf(
-                "Happy",
-                "Sad"
-            ),
-            locations = listOf(
-                "Emmendingen",
-                "Zuhause"
-            ),
-            comfortness = 8,
-            createdAt = now,
-            dreamtAt = now
-        )
-    )
 }
