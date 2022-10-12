@@ -26,7 +26,7 @@ fun DreamItem(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(12.dp)
+            .padding(top = 12.dp)
             .background(MaterialTheme.colorScheme.background)
     ) {
         Card(

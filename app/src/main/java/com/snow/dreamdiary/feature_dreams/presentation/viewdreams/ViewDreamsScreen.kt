@@ -3,19 +3,18 @@ package com.snow.dreamdiary.feature_dreams.presentation.viewdreams
 import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
@@ -79,7 +78,12 @@ fun ViewDreamsScreen(
         ) {
             Column(
                 modifier = Modifier
-                    .padding(it)
+                    .padding(
+                        start = it.calculateStartPadding(LayoutDirection.Ltr) + 12.dp,
+                        end = it.calculateEndPadding(LayoutDirection.Ltr) + 12.dp,
+                        top = it.calculateTopPadding() + 12.dp,
+                        bottom = it.calculateBottomPadding() + 12.dp
+                    )
             ) {
                 CompleteOrderSection(
                     order = state.value.sortingOrder,
