@@ -41,6 +41,7 @@ class ViewDreamsViewModel @Inject constructor(
             is ViewDreamsEvent.DeleteDream -> {
                 viewModelScope.launch {
                     dreamUseCases.deleteDreams(event.dream)
+                    refreshDreams(_state.value.sortingOrder)
                     // TODO: Keep reference to deleted dream, enable restoring deleted dreams
                 }
             }
