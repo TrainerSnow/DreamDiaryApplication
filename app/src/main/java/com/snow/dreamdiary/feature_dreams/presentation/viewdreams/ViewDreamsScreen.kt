@@ -1,7 +1,10 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewdreams
 
 import android.widget.Toast
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -9,6 +12,7 @@ import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -87,9 +91,13 @@ fun ViewDreamsScreen(
                     },
                     isExpanded = state.value.isOrderMenuExpanded
                 )
-
+                Spacer(modifier = Modifier.weight(1F))
                 if (currentDream != null) {
                     DreamItem(
+                        modifier = Modifier
+                            .animateContentSize(
+                                animationSpec = tween(300)
+                            ),
                         dream = currentDream,
                         onDeleteClick = { /*TODO*/ },
                         onEditClick = { /*TODO*/ }

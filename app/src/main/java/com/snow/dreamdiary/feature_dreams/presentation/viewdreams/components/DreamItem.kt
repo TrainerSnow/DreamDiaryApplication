@@ -18,12 +18,13 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 
 @Composable
 fun DreamItem(
+    modifier: Modifier,
     dream: Dream,
     onEditClick: () -> Unit,
     onDeleteClick: () -> Unit
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(12.dp)
             .background(MaterialTheme.colorScheme.background)
