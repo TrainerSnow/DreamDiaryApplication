@@ -27,4 +27,6 @@
     <string name="yes">Yes</string>
     <string name="reached_last_dream">You don\'t have any more dreams after this one.</string>
     <string name="reached_first_dream">You have no dreams before this one.</string>
+    <string name="description">Description</string>
+    <string name="annotation">Annotation</string>
 </resources>
