@@ -1,6 +1,8 @@
 package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
 
+import android.app.DatePickerDialog
 import android.util.Log
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -25,7 +27,6 @@ import com.snow.dreamdiary.common.util.TimeUtil
 import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DatePicker
 import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DialogValidateDreamModifiers
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
-import com.vanpra.composematerialdialogs.rememberMaterialDialogState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
@@ -54,6 +55,20 @@ fun AddEditDreamScreen(
 
     val context = LocalContext.current
 
+    val datePickerDialog = DatePickerDialog(
+        context,
+        { _:
+          DatePicker, year: Int, month: Int, dayOfMonth: Int ->
+            viewModel.onEvent(
+                AddEditDreamEvent.ChangeDreamtAt(
+                    TimeUtil.millisFromDateDescription(
+                        year, month, dayOfMonth
+                    )
+                )
+            )
+        }, TimeUtil.currentYear(), TimeUtil.currentMonthOfYear(), TimeUtil.currentDayOfMonth()
+    )
+
 
     LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest { event ->
@@ -72,7 +87,6 @@ fun AddEditDreamScreen(
         }
     }
 
-    val dialogState = rememberMaterialDialogState()
 
     DreamDiaryApplicationTheme {
         Scaffold(
@@ -289,7 +303,7 @@ fun AddEditDreamScreen(
                             style = MaterialTheme.typography.titleMedium
                         )
                         IconButton(
-                            onClick = { dialogState.show() }
+                            onClick = { datePickerDialog.show() }
                         ) {
                             Icon(
                                 imageVector = Icons.Sharp.CalendarMonth,
@@ -297,18 +311,6 @@ fun AddEditDreamScreen(
                             )
                         }
                     }
-                    DatePicker(
-                        dialogState = dialogState,
-                        onDateSelect = { newDate ->
-                            viewModel.onEvent(
-                                AddEditDreamEvent.ChangeDreamtAt(
-                                    TimeUtil.millisFromLocalDate(
-                                        newDate
-                                    )
-                                )
-                            )
-                        }
-                    )
                     if (shouldShowDialog.value) {
                         DialogValidateDreamModifiers(
                             onPositiveClick = { viewModel.onEvent(AddEditDreamEvent.Add) },
