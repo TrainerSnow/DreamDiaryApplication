@@ -163,7 +163,7 @@ class AddEditDreamViewModel @Inject constructor(
     }
 
     private fun getValuesFromString(s: String): List<String> {
-        return s.split(",").map {
+        return s.split(";").map {
             it.trim()
         }
     }
