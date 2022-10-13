@@ -3,6 +3,7 @@ package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.common.exception.MessageException
@@ -12,6 +13,7 @@ import com.snow.dreamdiary.common.util.LongState
 import com.snow.dreamdiary.common.util.StringState
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.KEY_DREAM_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -20,6 +22,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddEditDreamViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     private val dreamUseCases: DreamUseCases
 ) : ViewModel() {
 
@@ -52,6 +55,9 @@ class AddEditDreamViewModel @Inject constructor(
 
     private val _newLocations = mutableStateOf(listOf<String>())
     val newLocations: State<List<String>> = _newLocations
+
+    private val _dreamId = mutableStateOf<Int?>(savedStateHandle[KEY_DREAM_ID])
+    val dreamId: State<Int?> = _dreamId
 
 
     private val _shouldShowDialog = mutableStateOf(

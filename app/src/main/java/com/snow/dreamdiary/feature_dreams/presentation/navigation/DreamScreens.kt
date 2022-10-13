@@ -9,24 +9,28 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.snow.dreamdiary.R
 
 
-sealed class BottomNavDreamScreens(
+sealed class DreamScreens(
     val route: String,
     @StringRes val title: Int,
     val icon: ImageVector
 ) {
-    object AddEditDreamScreen : BottomNavDreamScreens(
-        route = "route_addeditdreamscreen",
+    object AddEditDreamScreen : DreamScreens(
+        route = "route_addeditdreamscreen?$KEY_DREAM_ID={$KEY_DREAM_ID}",
         title = R.string.addeditdream,
         icon = Icons.Rounded.Add
-    )
+    ){
+        fun passDreamId(id: Int): String{
+            return "route_addeditdreamscreen?$KEY_DREAM_ID=$id"
+        }
+    }
 
-    object DreamStartScreen : BottomNavDreamScreens(
+    object DreamStartScreen : DreamScreens(
         route = "route_mainstartscreen",
         title = R.string.home,
         icon = Icons.Rounded.Home
     )
 
-    object OverviewDreamsScreen : BottomNavDreamScreens(
+    object OverviewDreamsScreen : DreamScreens(
         route = "route_overviewdreamsscreen",
         title = R.string.view_dreams,
         icon = Icons.Rounded.Movie

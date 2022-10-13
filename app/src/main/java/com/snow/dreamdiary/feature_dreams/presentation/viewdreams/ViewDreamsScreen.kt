@@ -23,6 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.TimeFormatUtil
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.CompleteOrderSection
 import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.DreamItem
 import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.DreamSelectorSection
@@ -49,6 +50,13 @@ fun ViewDreamsScreen(
             when (event) {
                 is ViewDreamsViewModel.UIEvent.Message -> {
                     Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()
+                }
+                is ViewDreamsViewModel.UIEvent.Edit -> {
+                    val id = event.dream.id
+                    if(id == null)
+                        navController.navigate(DreamScreens.AddEditDreamScreen.route)
+                    else
+                        navController.navigate(DreamScreens.AddEditDreamScreen.passDreamId(id))
                 }
             }
         }

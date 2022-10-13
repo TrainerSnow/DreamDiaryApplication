@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.R
+import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -46,7 +47,9 @@ class ViewDreamsViewModel @Inject constructor(
                 }
             }
             is ViewDreamsEvent.EditDream -> {
-                // TODO: Implement this: send user to AddEditDream with ID as argument
+                viewModelScope.launch {
+                    _actionFlow.emit(UIEvent.Edit(state.value.dreams[state.value.currentDreamIndex]))
+                }
             }
             is ViewDreamsEvent.RenewOrder -> {
                 refreshDreams(event.dreamOrder)
@@ -108,6 +111,7 @@ class ViewDreamsViewModel @Inject constructor(
 
     sealed class UIEvent {
         data class Message(@StringRes val message: Int) : UIEvent()
+        data class Edit(val dream: Dream) : UIEvent()
     }
 
 }

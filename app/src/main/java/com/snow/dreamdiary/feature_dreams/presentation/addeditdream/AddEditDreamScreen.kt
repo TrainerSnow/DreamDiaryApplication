@@ -36,7 +36,6 @@ private const val TAG = "AddEditDreamScreen"
 @Composable
 fun AddEditDreamScreen(
     navController: NavController,
-    dreamId: Int = -1,
     viewModel: AddEditDreamViewModel = hiltViewModel()
 ) {
     val descState = viewModel.dreamDesc.value
@@ -51,6 +50,10 @@ fun AddEditDreamScreen(
     val dreamtAt = viewModel.dreamtAt.value
 
     val shouldShowDialog = viewModel.shouldShowDialog.value
+
+    val dreamId = viewModel.dreamId
+
+    Log.d(TAG, "AddEditDreamScreen: Dream id: ${dreamId.value}")
 
     val context = LocalContext.current
 
