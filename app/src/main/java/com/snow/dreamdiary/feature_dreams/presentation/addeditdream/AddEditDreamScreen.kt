@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.sharp.Add
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material.icons.sharp.CalendarMonth
@@ -119,12 +121,18 @@ fun AddEditDreamScreen(
                     },
                     text = {
                         Text(
-                            text = stringResource(id = R.string.add)
+                            text = if(dreamId.value == -1)
+                                stringResource(id = R.string.add)
+                            else
+                                stringResource(id = R.string.edit)
                         )
                     },
                     icon = {
                         Icon(
-                            imageVector = Icons.Sharp.Add,
+                            imageVector = if(dreamId.value == -1)
+                                Icons.Rounded.Add
+                            else
+                                Icons.Rounded.Edit,
                             contentDescription = stringResource(id = R.string.cd_add)
                         )
                     }
