@@ -1,28 +1,35 @@
 package com.snow.dreamdiary.feature_dreams.presentation
 
-const val KEY_DREAM_ID = "dream_id"
+import androidx.annotation.StringRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Movie
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.snow.dreamdiary.R
 
-sealed class DreamScreens(val route: String, val args: String = "") {
-    object AddEditDreamScreen : DreamScreens(
+
+sealed class BottomNavDreamScreens(
+    val route: String,
+    @StringRes val title: Int,
+    val icon: ImageVector
+) {
+    object AddEditDreamScreen : BottomNavDreamScreens(
         route = "route_addeditdreamscreen",
-        args = formattedArgName(KEY_DREAM_ID)
+        title = R.string.addeditdream,
+        icon = Icons.Rounded.Add
     )
 
-    object DreamStartScreen : DreamScreens(
-        route = "route_mainstartscreen"
+    object DreamStartScreen : BottomNavDreamScreens(
+        route = "route_mainstartscreen",
+        title = R.string.home,
+        icon = Icons.Rounded.Home
     )
 
-    object OverviewDreamsScreen : DreamScreens(
-        route = "route_overviewdreamsscreen"
+    object OverviewDreamsScreen : BottomNavDreamScreens(
+        route = "route_overviewdreamsscreen",
+        title = R.string.view_dreams,
+        icon = Icons.Rounded.Movie
     )
-
-    companion object {
-
-        private fun formattedArgName(arg: String): String {
-            return "{$arg}"
-        }
-
-    }
 }
-
 

@@ -13,6 +13,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.snow.dreamdiary.feature_dreams.presentation.BottomNavDreamScreens
 
 @Composable
 fun BottomNavBarDreams(
