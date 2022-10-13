@@ -92,7 +92,9 @@ fun ViewDreamsScreen(
                 Spacer(modifier = Modifier.weight(1F))
                 DreamSelectorSection(
                     onNextClick = { viewModel.onEvent(ViewDreamsEvent.NextDream) },
-                    onRecentClick = { viewModel.onEvent(ViewDreamsEvent.RecentDream) }
+                    onRecentClick = { viewModel.onEvent(ViewDreamsEvent.RecentDream) },
+                    currentNum = state.value.currentDreamIndex + 1,
+                    maxNum = state.value.dreams.size
                 )
                 
                 if(currentDream != null){
