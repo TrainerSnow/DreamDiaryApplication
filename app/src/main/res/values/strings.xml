@@ -41,4 +41,5 @@
     <string name="order_descending">Descending</string>
     <string name="cd_expand_sort_menu">Toggle sort mode</string>
     <string name="no_dream_found">No dreams were found</string>
+    <string name="order_comfort">Comfortness</string>
 </resources>

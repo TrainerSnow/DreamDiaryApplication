@@ -36,15 +36,22 @@ fun OrderButtonGroup(
                 text = stringResource(id = R.string.order_dreamed),
                 selected = order is DreamOrder.Dreamed
             )
+            LabeledRadioButton(
+                onClick = {
+                    onOrderChange(DreamOrder.Comfortness(order.orderType))
+                },
+                text = stringResource(id = R.string.order_comfort),
+                selected = order is DreamOrder.Comfortness
+            )
         }
         Row {
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(
-                        if (order is DreamOrder.Dreamed){
-                            DreamOrder.Dreamed(OrderType.Descending)
-                        }else{
-                            DreamOrder.Created(OrderType.Descending)
+                        when(order){
+                            is DreamOrder.Dreamed -> DreamOrder.Dreamed(OrderType.Descending)
+                            is DreamOrder.Created -> DreamOrder.Created(OrderType.Descending)
+                            is DreamOrder.Comfortness -> DreamOrder.Comfortness(OrderType.Descending)
                         }
                     )
                 },
@@ -54,10 +61,10 @@ fun OrderButtonGroup(
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(
-                        if (order is DreamOrder.Dreamed){
-                            DreamOrder.Dreamed(OrderType.Ascending)
-                        }else{
-                            DreamOrder.Created(OrderType.Ascending)
+                        when(order){
+                            is DreamOrder.Dreamed -> DreamOrder.Dreamed(OrderType.Ascending)
+                            is DreamOrder.Created -> DreamOrder.Created(OrderType.Ascending)
+                            is DreamOrder.Comfortness -> DreamOrder.Comfortness(OrderType.Ascending)
                         }
                     )
                 },

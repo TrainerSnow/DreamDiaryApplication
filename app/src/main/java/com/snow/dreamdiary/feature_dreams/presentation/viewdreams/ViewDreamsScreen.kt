@@ -1,5 +1,6 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewdreams
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
@@ -85,7 +86,10 @@ fun ViewDreamsScreen(
             ) {
                 CompleteOrderSection(
                     order = state.value.sortingOrder,
-                    onOrderChange = { viewModel.onEvent(ViewDreamsEvent.RenewOrder(it)) },
+                    onOrderChange = {
+                        Log.d("ViewDreamsScreen", "ViewDreamsScreen: new Order: $it")
+                        viewModel.onEvent(ViewDreamsEvent.RenewOrder(it))
+                                    },
                     onExpandClick = { viewModel.onEvent(ViewDreamsEvent.ToggleOrderMenu) },
                     isExpanded = state.value.isOrderMenuExpanded
                 )

@@ -19,12 +19,14 @@ class GetDreamsUseCase(
                     when (dreamOrder) {
                         is DreamOrder.Dreamed -> dreams.sortedBy { it.dreamtAt }
                         is DreamOrder.Created -> dreams.sortedBy { it.createdAt }
+                        is DreamOrder.Comfortness -> dreams.sortedBy { it.comfortness }
                     }
                 }
                 is OrderType.Descending -> {
                     when (dreamOrder) {
                         is DreamOrder.Dreamed -> dreams.sortedByDescending { it.dreamtAt }
                         is DreamOrder.Created -> dreams.sortedByDescending { it.createdAt }
+                        is DreamOrder.Comfortness -> dreams.sortedByDescending { it.comfortness }
                     }
                 }
             }
