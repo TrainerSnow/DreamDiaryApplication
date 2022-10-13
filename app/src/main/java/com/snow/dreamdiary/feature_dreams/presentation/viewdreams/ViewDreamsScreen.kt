@@ -3,13 +3,16 @@ package com.snow.dreamdiary.feature_dreams.presentation.viewdreams
 import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.LayoutDirection
@@ -75,42 +78,40 @@ fun ViewDreamsScreen(
                     )
                 )
             }
-        ) {
+        ) { paddingValues ->
             Column(
                 modifier = Modifier
-                    .padding(
-                        start = it.calculateStartPadding(LayoutDirection.Ltr) + 12.dp,
-                        end = it.calculateEndPadding(LayoutDirection.Ltr) + 12.dp,
-                        top = it.calculateTopPadding() + 12.dp,
-                        bottom = it.calculateBottomPadding() + 12.dp
-                    )
+                    .padding(paddingValues)
             ) {
                 CompleteOrderSection(
                     order = state.value.sortingOrder,
-                    onOrderChange = { order ->
-                        viewModel.onEvent(ViewDreamsEvent.RenewOrder(order))
-                    },
-                    onExpandClick = {
-                        viewModel.onEvent(ViewDreamsEvent.ToggleOrderMenu)
-                    },
+                    onOrderChange = { viewModel.onEvent(ViewDreamsEvent.RenewOrder(it)) },
+                    onExpandClick = { viewModel.onEvent(ViewDreamsEvent.ToggleOrderMenu) },
                     isExpanded = state.value.isOrderMenuExpanded
                 )
-
+                Spacer(modifier = Modifier.weight(1F))
                 DreamSelectorSection(
                     onNextClick = { viewModel.onEvent(ViewDreamsEvent.NextDream) },
                     onRecentClick = { viewModel.onEvent(ViewDreamsEvent.RecentDream) }
                 )
-
-                if (currentDream != null) {
+                
+                if(currentDream != null){
                     DreamItem(
-                        modifier = Modifier
-                            .animateContentSize(
-                                animationSpec = tween(300)
-                            ),
+                        modifier = Modifier,
                         dream = currentDream,
-                        onDeleteClick = { viewModel.onEvent(ViewDreamsEvent.DeleteDream(currentDream)) },
-                        onEditClick = { viewModel.onEvent(ViewDreamsEvent.EditDream(currentDream))}
+                        onEditClick = { viewModel.onEvent(ViewDreamsEvent.EditDream(currentDream)) },
+                        onDeleteClick = { viewModel.onEvent(ViewDreamsEvent.DeleteDream(currentDream)) }
                     )
+                }else{
+                    Box(
+                        modifier = Modifier
+                            .background(Color.Transparent),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.no_dream_found)
+                        )
+                    }
                 }
             }
         }

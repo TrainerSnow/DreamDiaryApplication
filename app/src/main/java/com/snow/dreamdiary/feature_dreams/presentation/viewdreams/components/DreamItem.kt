@@ -1,5 +1,7 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -27,6 +29,9 @@ fun DreamItem(
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
+            .animateContentSize(
+                tween()
+            )
     ) {
         Card(
             modifier = Modifier
@@ -78,17 +83,17 @@ fun DreamItem(
                         items = dream.locations
                     )
                 }
-                
+
                 Spacer(modifier = Modifier.height(24.dp))
-                
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
                     OutlinedButton(
                         onClick = onDeleteClick,
-                        
-                    ) {
+
+                        ) {
                         Icon(
                             imageVector = Icons.Rounded.Delete,
                             contentDescription = stringResource(id = R.string.cd_delete)

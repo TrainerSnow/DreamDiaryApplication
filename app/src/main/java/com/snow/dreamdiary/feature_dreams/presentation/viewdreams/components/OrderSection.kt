@@ -4,15 +4,13 @@ import androidx.compose.animation.*
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.FilterList
-import androidx.compose.material.icons.rounded.FilterListOff
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.OrderType
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
@@ -78,33 +76,28 @@ fun CompleteOrderSection(
     onExpandClick: () -> Unit,
     isExpanded: Boolean
 ) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer
-        )
-    ) {
-        Row {
-            AnimatedVisibility(
-                modifier = Modifier
-                    .weight(4F),
-                visible = isExpanded,
-                enter = fadeIn() + slideInVertically(),
-                exit = fadeOut() + slideOutVertically(),
-            ) {
-                OrderButtonGroup(
-                    order = order,
-                    onOrderChange = onOrderChange
-                )
-            }
-            Spacer(modifier = Modifier.weight(1F))
-            IconButton(
-                onClick = onExpandClick
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.FilterList,
-                    contentDescription = stringResource(id = R.string.cd_expand_sort_menu)
-                )
-            }
+    Row {
+        AnimatedVisibility(
+            modifier = Modifier
+                .weight(4F),
+            visible = isExpanded,
+            enter = fadeIn() + slideInVertically(),
+            exit = fadeOut() + slideOutVertically(),
+        ) {
+            OrderButtonGroup(
+                order = order,
+                onOrderChange = onOrderChange
+            )
+        }
+        Spacer(modifier = Modifier.weight(1F))
+        IconButton(
+            onClick = onExpandClick
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.FilterList,
+                contentDescription = stringResource(id = R.string.cd_expand_sort_menu)
+            )
         }
     }
+
 }
