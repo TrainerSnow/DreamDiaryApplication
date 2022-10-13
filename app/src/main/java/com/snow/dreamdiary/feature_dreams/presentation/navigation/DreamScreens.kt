@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation
+package com.snow.dreamdiary.feature_dreams.presentation.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
