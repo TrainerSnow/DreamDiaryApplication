@@ -32,7 +32,7 @@ fun BottomNavGraphDreams(
                     name = KEY_DREAM_ID
                 ) {
                     type = NavType.IntType
-                    defaultValue = 22
+                    defaultValue = -1
                 })
         ) {
             AddEditDreamScreen(navController = navController)
