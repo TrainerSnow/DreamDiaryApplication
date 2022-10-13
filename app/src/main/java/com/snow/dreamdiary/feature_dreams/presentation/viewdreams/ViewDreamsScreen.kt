@@ -93,7 +93,8 @@ fun ViewDreamsScreen(
                     onExpandClick = { viewModel.onEvent(ViewDreamsEvent.ToggleOrderMenu) },
                     isExpanded = state.value.isOrderMenuExpanded
                 )
-                Spacer(modifier = Modifier.weight(1F))
+                if(state.value.dreams.isNotEmpty())
+                    Spacer(modifier = Modifier.weight(1F))
                 DreamSelectorSection(
                     onNextClick = { viewModel.onEvent(ViewDreamsEvent.NextDream) },
                     onRecentClick = { viewModel.onEvent(ViewDreamsEvent.RecentDream) },
