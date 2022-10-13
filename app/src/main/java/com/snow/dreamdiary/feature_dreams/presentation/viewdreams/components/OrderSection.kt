@@ -84,9 +84,8 @@ fun CompleteOrderSection(
     isExpanded: Boolean
 ) {
     Row {
+        Spacer(modifier = Modifier.weight(1F))
         AnimatedVisibility(
-            modifier = Modifier
-                .weight(4F),
             visible = isExpanded,
             enter = fadeIn() + slideInVertically(),
             exit = fadeOut() + slideOutVertically(),
@@ -96,7 +95,6 @@ fun CompleteOrderSection(
                 onOrderChange = onOrderChange
             )
         }
-        Spacer(modifier = Modifier.weight(1F))
         IconButton(
             onClick = onExpandClick
         ) {
