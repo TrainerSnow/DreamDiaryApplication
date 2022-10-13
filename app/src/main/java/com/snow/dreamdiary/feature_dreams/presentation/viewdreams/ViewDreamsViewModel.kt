@@ -60,7 +60,7 @@ class ViewDreamsViewModel @Inject constructor(
                 val dreamsSize = _state.value.dreams.size
                 val currentDreamIndex = _state.value.currentDreamIndex
 
-                if (currentDreamIndex == dreamsSize - 1) {
+                if (currentDreamIndex > dreamsSize - 1) {
                     viewModelScope.launch {
                         _actionFlow.emit(UIEvent.Message(R.string.reached_last_dream))
                     }
