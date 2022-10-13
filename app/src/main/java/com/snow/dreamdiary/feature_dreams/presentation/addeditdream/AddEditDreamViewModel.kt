@@ -15,6 +15,7 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.KEY_DREAM_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -47,6 +48,9 @@ class AddEditDreamViewModel @Inject constructor(
     private val _dreamtAt = mutableStateOf(LongState())
     val dreamtAt: State<LongState> = _dreamtAt
 
+    private val _createdAt = mutableStateOf(LongState())
+    val createdAt: State<LongState> = _createdAt
+
     private val _newPersons = mutableStateOf(listOf<String>())
     val newPersons: State<List<String>> = _newPersons
 
@@ -58,6 +62,30 @@ class AddEditDreamViewModel @Inject constructor(
 
     private val _dreamId = mutableStateOf<Int?>(savedStateHandle[KEY_DREAM_ID])
     val dreamId: State<Int?> = _dreamId
+
+    init {
+        if (_dreamId.value != null) {
+            val id = _dreamId.value as Int
+            if (id != -1) {
+                viewModelScope.launch {
+                    val toEditDream = dreamUseCases.getDreamById(id)
+                    if (toEditDream == null) {
+                        this.cancel()
+                        return@launch
+                    }
+
+                    _dreamDesc.value.text = toEditDream.description
+                    _dreamAnnotation.value.text = toEditDream.annotation
+                    _persons.value.text = toEditDream.persons.joinToString(";")
+                    _feelings.value.text = toEditDream.feelings.joinToString(";")
+                    _locations.value.text = toEditDream.locations.joinToString(";")
+                    _dreamtAt.value.value = toEditDream.dreamtAt
+                    _createdAt.value.value = toEditDream.createdAt
+
+                }
+            }
+        }
+    }
 
 
     private val _shouldShowDialog = mutableStateOf(
@@ -80,6 +108,21 @@ class AddEditDreamViewModel @Inject constructor(
                 )
             }
             is AddEditDreamEvent.RequestAdd -> {
+
+                if(_dreamId.value != null){
+                    val id = _dreamId.value as Int
+                    if(id != -1){
+                        viewModelScope.launch {
+                            val dreamToEdit = dreamUseCases.getDreamById(id)
+                            if(dreamToEdit == null){
+                                this.cancel()
+                                return@launch
+                            }
+                            dreamUseCases.deleteDreams(dreamToEdit)
+                        }
+                    }
+                }
+
                 val persons = getValuesFromString(persons.value.text)
                 val feelings = getValuesFromString(feelings.value.text)
                 val locations = getValuesFromString(locations.value.text)
@@ -112,7 +155,10 @@ class AddEditDreamViewModel @Inject constructor(
                                 feelings = getValuesFromString(feelings.value.text),
                                 locations = getValuesFromString(locations.value.text),
                                 comfortness = comfortness.value.value,
-                                createdAt = if (dreamtAt.value.value == 0L) now else dreamtAt.value.value,
+                                createdAt = if (dreamtAt.value.value == 0L)
+                                    now
+                                else
+                                    dreamtAt.value.value,
                                 dreamtAt = if (dreamtAt.value.value == 0L)
                                     now
                                 else
