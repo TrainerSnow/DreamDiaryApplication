@@ -41,7 +41,11 @@ fun DreamSelectorSection(
         Spacer(modifier = Modifier.weight(1F))
 
         Text(
-            text = "$currentNum/$maxNum",
+            text = if (maxNum == 0) {
+                "-/-"
+            } else {
+                "$currentNum/$maxNum"
+            },
             style = MaterialTheme.typography.bodyMedium
         )
 
