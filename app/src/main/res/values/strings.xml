@@ -45,4 +45,7 @@
     <string name="searhc_mode">Searchmode</string>
     <string name="options_overview">Options Overview</string>
     <string name="search_dreams">Search dreams</string>
+    <string name="search_by_modifiers">Search by Persons/Feelings/Locations</string>
+    <string name="search_by_comfortness">Search by comfortness</string>
+    <string name="search_by_time">Search by time</string>
 </resources>
