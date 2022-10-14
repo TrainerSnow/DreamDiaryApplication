@@ -1,7 +1,7 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchmode
 
-import com.snow.dreamdiary.feature_dreams.presentation.navigation.BottomNavScreens
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 
 sealed class SearchModeEvent{
-    data class OpenScreen(val screen: BottomNavScreens): SearchModeEvent()
+    data class OpenScreen(val screen: DreamScreens) : SearchModeEvent()
 }
