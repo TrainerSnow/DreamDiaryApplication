@@ -1,3 +1,7 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchconfig
 
-data class SearchConfigState(val n: Int = 0)
+import com.snow.dreamdiary.feature_dreams.domain.util.DreamSearchModes
+
+data class SearchConfigState(
+    val mode: DreamSearchModes
+)
