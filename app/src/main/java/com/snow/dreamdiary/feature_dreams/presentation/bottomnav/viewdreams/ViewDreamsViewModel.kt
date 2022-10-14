@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.viewdreams;
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams;
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State

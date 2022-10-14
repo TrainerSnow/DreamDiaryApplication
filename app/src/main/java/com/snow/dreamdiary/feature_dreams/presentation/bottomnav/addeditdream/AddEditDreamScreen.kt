@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.addeditdream
 
 import android.app.DatePickerDialog
 import android.util.Log
@@ -26,7 +26,7 @@ import androidx.navigation.NavController
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.common.util.TimeUtil
-import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components.DialogValidateDreamModifiers
+import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.addeditdream.components.DialogValidateDreamModifiers
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest

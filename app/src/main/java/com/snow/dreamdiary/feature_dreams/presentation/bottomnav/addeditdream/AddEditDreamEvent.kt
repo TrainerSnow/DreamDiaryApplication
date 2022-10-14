@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.addeditdream
 
 sealed class AddEditDreamEvent {
     object Add : AddEditDreamEvent()

@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.addeditdream.components
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.addeditdream.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

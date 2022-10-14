@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.viewdreams
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams
 
 import android.util.Log
 import android.widget.Toast
@@ -24,9 +24,9 @@ import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
-import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.CompleteOrderSection
-import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.DreamItem
-import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components.DreamSelectorSection
+import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.CompleteOrderSection
+import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.DreamItem
+import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.DreamSelectorSection
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import kotlinx.coroutines.flow.collectLatest
 

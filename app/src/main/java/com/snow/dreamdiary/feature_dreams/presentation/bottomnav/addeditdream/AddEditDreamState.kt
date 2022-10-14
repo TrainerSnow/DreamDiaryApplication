@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.addeditdream
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.addeditdream
 
 data class AddEditDreamState(
     val description: String = "",

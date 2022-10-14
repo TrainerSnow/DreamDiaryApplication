@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.viewdreams.components
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

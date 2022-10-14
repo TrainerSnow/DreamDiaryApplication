@@ -6,9 +6,9 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.snow.dreamdiary.feature_dreams.presentation.addeditdream.AddEditDreamScreen
-import com.snow.dreamdiary.feature_dreams.presentation.startscreen.DreamStartScreen
-import com.snow.dreamdiary.feature_dreams.presentation.viewdreams.ViewDreamsScreen
+import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.addeditdream.AddEditDreamScreen
+import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.startscreen.DreamStartScreen
+import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.ViewDreamsScreen
 
 const val KEY_DREAM_ID = "dream_id"
 

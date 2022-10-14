@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.startscreen;
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.startscreen;
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

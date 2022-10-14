@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.viewdreams
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams
 
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamOrder
