@@ -10,7 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bydreamt.SearchDreamtViewModel
 
 @Composable
 fun SearchModifierScreen(
@@ -23,7 +22,7 @@ fun SearchModifierScreen(
             .fillMaxSize(),
         contentAlignment = Alignment.Center
 
-    ){
+    ) {
         Text(
             text = "SearchModifierScreen",
             style = MaterialTheme.typography.displayMedium

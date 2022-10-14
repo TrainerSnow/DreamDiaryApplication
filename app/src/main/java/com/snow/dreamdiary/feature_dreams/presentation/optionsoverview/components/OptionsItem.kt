@@ -6,8 +6,8 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
-import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,7 +61,8 @@ fun OptionsItem(
     }
 }
 
-private fun getColorPair(dark: Boolean, num: Int): List<Color> = if(dark) darkGradients[num % darkGradients.size] else lightGradients[num % lightGradients.size]
+private fun getColorPair(dark: Boolean, num: Int): List<Color> =
+    if (dark) darkGradients[num % darkGradients.size] else lightGradients[num % lightGradients.size]
 
 
 val darkGradients: List<List<Color>> = listOf(
@@ -118,7 +119,7 @@ val lightGradients: List<List<Color>> = listOf(
     ),
 )
 
-private fun getRandomGradientType(colors: List<Color>): Brush{
+private fun getRandomGradientType(colors: List<Color>): Brush {
     return listOf(
         Brush.horizontalGradient(colors),
         Brush.linearGradient(colors),

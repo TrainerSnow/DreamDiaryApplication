@@ -21,7 +21,7 @@ fun SearchComfortnessScreen(
             .fillMaxSize(),
         contentAlignment = Alignment.Center
 
-    ){
+    ) {
         Text(
             text = "SearchComfortnessScreen",
             style = MaterialTheme.typography.displayMedium

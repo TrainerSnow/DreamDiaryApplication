@@ -22,7 +22,7 @@ fun SearchDreamtScreen(
             .fillMaxSize(),
         contentAlignment = Alignment.Center
 
-    ){
+    ) {
         Text(
             text = "SearchDreamtScreen",
             style = MaterialTheme.typography.displayMedium

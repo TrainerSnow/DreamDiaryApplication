@@ -1,8 +1,10 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchmode.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
-import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -22,13 +24,15 @@ fun SearchModeButton(
             .defaultMinSize(minHeight = 52.dp)
             .fillMaxWidth(fraction = 0.85F),
         onClick = onclick
-    ){
+    ) {
         Icon(
             imageVector = icon,
             contentDescription = text
         )
-        Spacer(modifier = Modifier
-            .width(12.dp))
+        Spacer(
+            modifier = Modifier
+                .width(12.dp)
+        )
         Text(
             text = text,
             style = MaterialTheme.typography.titleMedium

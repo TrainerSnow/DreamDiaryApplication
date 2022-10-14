@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.startscreen;
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.startscreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,15 +10,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-public class StartScreenViewModel @Inject constructor(
+class StartScreenViewModel @Inject constructor(
 
-): ViewModel() {
+) : ViewModel() {
 
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
 
-    fun onEvent(event: StartScreenEvent){
+    fun onEvent(event: StartScreenEvent) {
         when (event) {
             is StartScreenEvent.OpenScreen -> {
                 viewModelScope.launch {
@@ -28,7 +28,7 @@ public class StartScreenViewModel @Inject constructor(
         }
     }
 
-    sealed class UIEvent{
-        data class OpenScreen(val screen: BottomNavScreens): UIEvent()
+    sealed class UIEvent {
+        data class OpenScreen(val screen: BottomNavScreens) : UIEvent()
     }
 }

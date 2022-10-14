@@ -48,7 +48,7 @@ fun ViewDreamsScreen(
                 }
                 is ViewDreamsViewModel.UIEvent.Edit -> {
                     val id = event.dream.id
-                    if(id == null)
+                    if (id == null)
                         navController.navigate(BottomNavScreens.AddEditDreamScreen.route)
                     else
                         navController.navigate(BottomNavScreens.AddEditDreamScreen.passDreamId(id))
@@ -93,11 +93,11 @@ fun ViewDreamsScreen(
                     onOrderChange = {
                         Log.d("ViewDreamsScreen", "ViewDreamsScreen: new Order: $it")
                         viewModel.onEvent(ViewDreamsEvent.RenewOrder(it))
-                                    },
+                    },
                     onExpandClick = { viewModel.onEvent(ViewDreamsEvent.ToggleOrderMenu) },
                     isExpanded = state.value.isOrderMenuExpanded
                 )
-                if(state.value.dreams.isNotEmpty())
+                if (state.value.dreams.isNotEmpty())
                     Spacer(modifier = Modifier.weight(1F))
                 DreamSelectorSection(
                     onNextClick = { viewModel.onEvent(ViewDreamsEvent.NextDream) },
@@ -105,15 +105,15 @@ fun ViewDreamsScreen(
                     currentNum = state.value.currentDreamIndex + 1,
                     maxNum = state.value.dreams.size
                 )
-                
-                if(currentDream != null){
+
+                if (currentDream != null) {
                     DreamItem(
                         modifier = Modifier,
                         dream = currentDream,
                         onEditClick = { viewModel.onEvent(ViewDreamsEvent.EditDream(currentDream)) },
                         onDeleteClick = { viewModel.onEvent(ViewDreamsEvent.DeleteDream(currentDream)) }
                     )
-                }else{
+                } else {
                     Box(
                         modifier = Modifier
                             .background(Color.Transparent)

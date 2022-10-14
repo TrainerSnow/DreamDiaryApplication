@@ -1,14 +1,10 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchmode
 
-import android.widget.Space
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Scale
 import androidx.compose.material.icons.rounded.Timer
-import androidx.compose.material3.Text
-import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -27,7 +23,7 @@ fun SearchModeScreen(
     viewModel: SearchModeViewModel = hiltViewModel()
 ) {
 
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest {
             when (it) {
                 is SearchModeViewModel.UIEvent.GoToScreen -> navController.navigate(it.screen.route)
@@ -41,7 +37,7 @@ fun SearchModeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
 
-    ){
+        ) {
 
         SearchModeButton(
             onclick = { viewModel.onEvent(SearchModeEvent.OpenSearchModifiers) },

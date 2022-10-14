@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.optionsoverview;
+package com.snow.dreamdiary.feature_dreams.presentation.optionsoverview
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,14 +10,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-public class OptionsOverviewViewModel @Inject constructor(
+class OptionsOverviewViewModel @Inject constructor(
 
-): ViewModel() {
+) : ViewModel() {
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
 
-    fun onEvent(event: OptionsOverviewEvent){
+    fun onEvent(event: OptionsOverviewEvent) {
         when (event) {
             is OptionsOverviewEvent.GoToScreen -> {
                 viewModelScope.launch {
@@ -27,8 +27,8 @@ public class OptionsOverviewViewModel @Inject constructor(
         }
     }
 
-    sealed class UIEvent{
-        data class GoToScreen(val screen: DreamScreens): UIEvent()
+    sealed class UIEvent {
+        data class GoToScreen(val screen: DreamScreens) : UIEvent()
     }
 
 }

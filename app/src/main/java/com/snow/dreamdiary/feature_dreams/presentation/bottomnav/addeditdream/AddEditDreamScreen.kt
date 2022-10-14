@@ -120,7 +120,7 @@ fun AddEditDreamScreen(
                     },
                     text = {
                         Text(
-                            text = if(dreamId.value == -1)
+                            text = if (dreamId.value == -1)
                                 stringResource(id = R.string.add)
                             else
                                 stringResource(id = R.string.edit)
@@ -128,7 +128,7 @@ fun AddEditDreamScreen(
                     },
                     icon = {
                         Icon(
-                            imageVector = if(dreamId.value == -1)
+                            imageVector = if (dreamId.value == -1)
                                 Icons.Rounded.Add
                             else
                                 Icons.Rounded.Edit,

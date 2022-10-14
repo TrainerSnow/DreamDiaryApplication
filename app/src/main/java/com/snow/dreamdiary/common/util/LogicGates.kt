@@ -1,17 +1,15 @@
 package com.snow.dreamdiary.common.util
 
-import java.util.jar.Attributes.Name
-
-sealed interface LogicGate{
+sealed interface LogicGate {
     fun <T> eval(
         values: List<T>,
         condition: (T) -> Boolean
     ): Boolean
 
-    object And: LogicGate{
+    object And : LogicGate {
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
-            values.forEach{
-                if(!condition(it)){
+            values.forEach {
+                if (!condition(it)) {
                     return false
                 }
             }
@@ -19,10 +17,10 @@ sealed interface LogicGate{
         }
     }
 
-    object Or: LogicGate{
+    object Or : LogicGate {
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
-            values.forEach{
-                if(condition(it)){
+            values.forEach {
+                if (condition(it)) {
                     return true
                 }
             }
@@ -30,11 +28,11 @@ sealed interface LogicGate{
         }
     }
 
-    object Xor: LogicGate{
+    object Xor : LogicGate {
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
             var trueInputs = 0
-            values.forEach{
-                if(condition(it)){
+            values.forEach {
+                if (condition(it)) {
                     trueInputs += 1
                 }
             }
@@ -42,26 +40,26 @@ sealed interface LogicGate{
         }
     }
 
-    object Nand: LogicGate{
+    object Nand : LogicGate {
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
             return And.eval(values, condition).not()
         }
     }
 
-    object Nor: LogicGate{
+    object Nor : LogicGate {
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
             return Or.eval(values, condition).not()
         }
     }
 
-    object XNor: LogicGate{
+    object XNor : LogicGate {
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
             return Xor.eval(values, condition).not()
         }
     }
 
-    companion object{
-        fun fromName(s: String): LogicGate{
+    companion object {
+        fun fromName(s: String): LogicGate {
             return when (s) {
                 And.javaClass.name -> And
                 Or.javaClass.name -> Or

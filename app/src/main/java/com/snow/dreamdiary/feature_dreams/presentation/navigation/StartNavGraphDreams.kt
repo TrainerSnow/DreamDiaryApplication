@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.navigation;
+package com.snow.dreamdiary.feature_dreams.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

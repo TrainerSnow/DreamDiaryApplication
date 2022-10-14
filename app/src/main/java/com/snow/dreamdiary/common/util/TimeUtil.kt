@@ -19,19 +19,19 @@ object TimeUtil {
         return calendar.timeInMillis
     }
 
-    fun currentYear(): Int{
+    fun currentYear(): Int {
         val calendar = Calendar.getInstance()
 
         return calendar.get(Calendar.YEAR)
     }
 
-    fun currentMonthOfYear(): Int{
+    fun currentMonthOfYear(): Int {
         val calendar = Calendar.getInstance()
 
         return calendar.get(Calendar.MONTH)
     }
 
-    fun currentDayOfMonth(): Int{
+    fun currentDayOfMonth(): Int {
         val calendar = Calendar.getInstance()
 
         return calendar.get(Calendar.DAY_OF_MONTH)

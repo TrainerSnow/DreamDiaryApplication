@@ -2,7 +2,9 @@ package com.snow.dreamdiary.feature_dreams.presentation.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Movie
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.snow.dreamdiary.R
 
@@ -16,8 +18,8 @@ sealed class BottomNavScreens(
         route = "route_addeditdreamscreen?$KEY_DREAM_ID={$KEY_DREAM_ID}",
         title = R.string.addeditdream,
         icon = Icons.Rounded.Add
-    ){
-        fun passDreamId(id: Int): String{
+    ) {
+        fun passDreamId(id: Int): String {
             return "route_addeditdreamscreen?$KEY_DREAM_ID=$id"
         }
     }

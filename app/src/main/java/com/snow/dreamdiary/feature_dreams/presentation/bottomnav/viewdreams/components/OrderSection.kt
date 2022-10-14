@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components;
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,7 @@ fun OrderButtonGroup(
     order: DreamOrder,
     onOrderChange: (DreamOrder) -> Unit,
 ) {
-    Column{
+    Column {
         Row {
             LabeledRadioButton(
                 onClick = {
@@ -48,7 +48,7 @@ fun OrderButtonGroup(
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(
-                        when(order){
+                        when (order) {
                             is DreamOrder.Dreamed -> DreamOrder.Dreamed(OrderType.Descending)
                             is DreamOrder.Created -> DreamOrder.Created(OrderType.Descending)
                             is DreamOrder.Comfortness -> DreamOrder.Comfortness(OrderType.Descending)
@@ -61,7 +61,7 @@ fun OrderButtonGroup(
             LabeledRadioButton(
                 onClick = {
                     onOrderChange(
-                        when(order){
+                        when (order) {
                             is DreamOrder.Dreamed -> DreamOrder.Dreamed(OrderType.Ascending)
                             is DreamOrder.Created -> DreamOrder.Created(OrderType.Ascending)
                             is DreamOrder.Comfortness -> DreamOrder.Comfortness(OrderType.Ascending)

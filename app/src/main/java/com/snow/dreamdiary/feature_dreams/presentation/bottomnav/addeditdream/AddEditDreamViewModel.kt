@@ -109,12 +109,12 @@ class AddEditDreamViewModel @Inject constructor(
             }
             is AddEditDreamEvent.RequestAdd -> {
 
-                if(_dreamId.value != null){
+                if (_dreamId.value != null) {
                     val id = _dreamId.value as Int
-                    if(id != -1){
+                    if (id != -1) {
                         viewModelScope.launch {
                             val dreamToEdit = dreamUseCases.getDreamById(id)
-                            if(dreamToEdit == null){
+                            if (dreamToEdit == null) {
                                 this.cancel()
                                 return@launch
                             }

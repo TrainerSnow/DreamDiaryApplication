@@ -5,17 +5,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -31,7 +26,7 @@ fun OptionsOverviewScreen(
     viewModel: OptionsOverviewViewModel = hiltViewModel()
 ) {
 
-    LaunchedEffect(key1 = true,){
+    LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest {
             when (it) {
                 is OptionsOverviewViewModel.UIEvent.GoToScreen -> navController.navigate(it.screen.route)
@@ -49,7 +44,7 @@ fun OptionsOverviewScreen(
             verticalArrangement = Arrangement.spacedBy(24.dp),
             horizontalArrangement = Arrangement.spacedBy(24.dp),
             contentPadding = PaddingValues(horizontal = 24.dp, vertical = 24.dp)
-        ){
+        ) {
             item {
                 OptionsItem(
                     text = stringResource(id = R.string.search_dreams),
@@ -59,7 +54,7 @@ fun OptionsOverviewScreen(
                 )
             }
 
-            items(count = 4, key = null){ i ->
+            items(count = 4, key = null) { i ->
                 OptionsItem(
                     text = "Item nr $i",
                     icon = Icons.Rounded.Search,

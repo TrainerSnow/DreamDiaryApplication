@@ -30,7 +30,7 @@ fun DreamSelectorSection(
         IconButton(
             onClick = onRecentClick,
 
-        ) {
+            ) {
             Icon(
                 modifier = Modifier
                     .size(82.dp),

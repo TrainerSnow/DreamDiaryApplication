@@ -1,5 +1,3 @@
-package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortness;
+package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortness
 
-sealed class SearchComfortnessEvent {
-
-}
+sealed class SearchComfortnessEvent

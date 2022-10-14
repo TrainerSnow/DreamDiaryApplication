@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.searchmode;
+package com.snow.dreamdiary.feature_dreams.presentation.searchmode
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-public class SearchModeViewModel @Inject constructor(
+class SearchModeViewModel @Inject constructor(
 
-): ViewModel() {
+) : ViewModel() {
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
 
-    fun onEvent(event: SearchModeEvent){
+    fun onEvent(event: SearchModeEvent) {
         when (event) {
             is SearchModeEvent.OpenScreen -> {
 
@@ -56,7 +56,7 @@ public class SearchModeViewModel @Inject constructor(
         }
     }
 
-    sealed class UIEvent{
+    sealed class UIEvent {
         data class GoToScreen(val screen: DreamScreens) : UIEvent()
     }
 

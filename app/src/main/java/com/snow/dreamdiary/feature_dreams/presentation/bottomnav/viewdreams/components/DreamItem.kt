@@ -62,21 +62,21 @@ fun DreamItem(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
 
-                if(dream.persons.isNotEmpty()){
+                if (dream.persons.isNotEmpty()) {
                     DreamModifierSection(
                         name = stringResource(id = R.string.persons),
                         items = dream.persons
                     )
                 }
 
-                if(dream.feelings.isNotEmpty()){
+                if (dream.feelings.isNotEmpty()) {
                     DreamModifierSection(
                         name = stringResource(id = R.string.feelings),
                         items = dream.feelings
                     )
                 }
 
-                if(dream.locations.isNotEmpty()){
+                if (dream.locations.isNotEmpty()) {
                     DreamModifierSection(
                         name = stringResource(id = R.string.locations),
                         items = dream.locations

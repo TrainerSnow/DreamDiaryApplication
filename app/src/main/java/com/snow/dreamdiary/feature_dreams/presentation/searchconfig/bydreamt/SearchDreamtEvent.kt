@@ -1,5 +1,3 @@
-package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bydreamt;
+package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bydreamt
 
-sealed class SearchDreamtEvent {
-
-}
+sealed class SearchDreamtEvent

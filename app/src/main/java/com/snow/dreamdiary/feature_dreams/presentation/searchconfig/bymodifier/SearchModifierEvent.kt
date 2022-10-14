@@ -1,5 +1,3 @@
-package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier;
+package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier
 
-sealed class SearchModifierEvent {
-
-}
+sealed class SearchModifierEvent

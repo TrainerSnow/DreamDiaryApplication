@@ -14,22 +14,25 @@ sealed class DreamScreens(
         route = "route_optionsoverviewscreen"
     )
 
-    data class SearchDreamtScreen(override var route: String = "route_searchdreamtscreen/{$KEY_MODE}"): DreamScreens(route){
-        fun withMode(mode: DreamSearchModes.ByDreamt): SearchDreamtScreen{
+    data class SearchDreamtScreen(override var route: String = "route_searchdreamtscreen/{$KEY_MODE}") :
+        DreamScreens(route) {
+        fun withMode(mode: DreamSearchModes.ByDreamt): SearchDreamtScreen {
             this.route = this.route.replace("{$KEY_MODE}", mode.toJson().toString())
             return this
         }
     }
 
-    data class SearchModifierScreen(override var route: String = "route_searchmodifierscreen/{$KEY_MODE}"): DreamScreens(route){
-        fun withMode(mode: DreamSearchModes.ByModifier): SearchModifierScreen{
+    data class SearchModifierScreen(override var route: String = "route_searchmodifierscreen/{$KEY_MODE}") :
+        DreamScreens(route) {
+        fun withMode(mode: DreamSearchModes.ByModifier): SearchModifierScreen {
             this.route = this.route.replace("{$KEY_MODE}", mode.toJson().toString())
             return this
         }
     }
 
-    data class SearchComfortnessScreen(override var route: String = "route_searchcomfortnessscreen/{$KEY_MODE}"): DreamScreens(route){
-        fun withMode(mode: DreamSearchModes.ByComfortness): SearchComfortnessScreen{
+    data class SearchComfortnessScreen(override var route: String = "route_searchcomfortnessscreen/{$KEY_MODE}") :
+        DreamScreens(route) {
+        fun withMode(mode: DreamSearchModes.ByComfortness): SearchComfortnessScreen {
             this.route = this.route.replace("{$KEY_MODE}", mode.toJson().toString())
             return this
         }
@@ -38,8 +41,8 @@ sealed class DreamScreens(
     @Deprecated("Don't use, won't work")
     object SearchConfigScreen : DreamScreens(
         route = "route_searchconfigscreen/{mode}"
-    ){
-        fun withDreamSearchMode(mode: DreamSearchModes): String{
+    ) {
+        fun withDreamSearchMode(mode: DreamSearchModes): String {
             val modeJson = when (mode) {
                 is DreamSearchModes.ByComfortness -> mode.toJson()
                 is DreamSearchModes.ByDreamt -> mode.toJson()

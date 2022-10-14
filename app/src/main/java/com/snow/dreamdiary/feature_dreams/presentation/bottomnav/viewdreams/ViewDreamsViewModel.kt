@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams;
+package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
@@ -66,7 +66,7 @@ class ViewDreamsViewModel @Inject constructor(
                     viewModelScope.launch {
                         _actionFlow.emit(UIEvent.Message(R.string.reached_last_dream))
                     }
-                }else{
+                } else {
                     val nextIndex = currentDreamIndex + 1
 
                     _state.value = state.value.copy(
@@ -81,7 +81,7 @@ class ViewDreamsViewModel @Inject constructor(
                     viewModelScope.launch {
                         _actionFlow.emit(UIEvent.Message(R.string.reached_first_dream))
                     }
-                }else{
+                } else {
                     val nextIndex = currentDreamIndex - 1
 
                     _state.value = state.value.copy(
