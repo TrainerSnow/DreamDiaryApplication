@@ -1,9 +1,12 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchmode
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import android.widget.Space
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Face
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Scale
+import androidx.compose.material.icons.rounded.Timer
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
@@ -11,9 +14,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
+import com.snow.dreamdiary.feature_dreams.presentation.searchmode.components.SearchModeButton
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -34,33 +39,30 @@ fun SearchModeScreen(
         modifier = Modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceAround
+        verticalArrangement = Arrangement.Center,
+
     ){
 
-        // TODO: Change these buttons to custom ones with color and icon
+        SearchModeButton(
+            onclick = { viewModel.onEvent(SearchModeEvent.OpenSearchModifiers) },
+            text = stringResource(id = R.string.search_by_modifiers),
+            icon = Icons.Rounded.Person
+        )
 
-        Button(
-            onClick = { viewModel.onEvent(SearchModeEvent.OpenSearchModifiers) }
-        ){
-            Text(
-                text = stringResource(id = R.string.search_by_modifiers)
-            )
-        }
+        Spacer(modifier = Modifier.height(24.dp))
 
-        Button(
-            onClick = { viewModel.onEvent(SearchModeEvent.OpenSearchComfortness) }
-        ){
-            Text(
-                text = stringResource(id = R.string.search_by_comfortness)
-            )
-        }
+        SearchModeButton(
+            onclick = { viewModel.onEvent(SearchModeEvent.OpenSearchComfortness) },
+            text = stringResource(id = R.string.search_by_comfortness),
+            icon = Icons.Rounded.Scale
+        )
 
-        Button(
-            onClick = { viewModel.onEvent(SearchModeEvent.OpenSearchDreamt) }
-        ){
-            Text(
-                text = stringResource(id = R.string.search_by_time)
-            )
-        }
+        Spacer(modifier = Modifier.height(24.dp))
+
+        SearchModeButton(
+            onclick = { viewModel.onEvent(SearchModeEvent.OpenSearchDreamt) },
+            text = stringResource(id = R.string.search_by_time),
+            icon = Icons.Rounded.Timer
+        )
     }
 }
