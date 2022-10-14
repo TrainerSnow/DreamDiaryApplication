@@ -2,6 +2,7 @@ package com.snow.dreamdiary.feature_dreams.presentation.searchmode;
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.snow.dreamdiary.feature_dreams.domain.util.DreamSearchModes
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,23 +22,29 @@ public class SearchModeViewModel @Inject constructor(
         when (event) {
             is SearchModeEvent.OpenScreen -> {
                 viewModelScope.launch {
-                    _actionFlow.emit(UIEvent.GoToScreen(event.screen))
+                    _actionFlow.emit(UIEvent.GoToScreen(event.screen.route))
                 }
             }
             SearchModeEvent.OpenSearchComfortness -> {
-
+                viewModelScope.launch {
+                    _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.SearchConfigScreen.withDreamSearchMode(DreamSearchModes.ByComfortness())))
+                }
             }
             SearchModeEvent.OpenSearchModifiers -> {
-
+                viewModelScope.launch {
+                    _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.SearchConfigScreen.withDreamSearchMode(DreamSearchModes.ByModifier())))
+                }
             }
             SearchModeEvent.OpenSearchDreamt -> {
-
+                viewModelScope.launch {
+                    _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.SearchConfigScreen.withDreamSearchMode(DreamSearchModes.ByDreamt())))
+                }
             }
         }
     }
 
     sealed class UIEvent{
-        data class GoToScreen(val screen: DreamScreens): UIEvent()
+        data class GoToScreen(val screen: String): UIEvent()
     }
 
 }

@@ -7,18 +7,29 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun SearchModeScreen(
     navController: NavHostController,
     viewModel: SearchModeViewModel = hiltViewModel()
 ) {
+
+    LaunchedEffect(key1 = true){
+        viewModel.actionFlow.collectLatest {
+            when (it) {
+                is SearchModeViewModel.UIEvent.GoToScreen -> navController.navigate(it.screen)
+            }
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize(),

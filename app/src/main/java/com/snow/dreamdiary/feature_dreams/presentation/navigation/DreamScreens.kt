@@ -17,14 +17,14 @@ sealed class DreamScreens(
     object SearchConfigScreen : DreamScreens(
         route = "route_searchconfigscreen/{mode}"
     ){
-        fun withDreamSearchMode(mode: DreamSearchModes): SearchConfigScreen{
+        fun withDreamSearchMode(mode: DreamSearchModes): String{
             val modeJson = when (mode) {
                 is DreamSearchModes.ByComfortness -> mode.toJson()
                 is DreamSearchModes.ByDreamt -> mode.toJson()
                 is DreamSearchModes.ByModifier -> mode.toJson()
             }
-            SearchConfigScreen.route.replace("mode", modeJson.toString())
-            return SearchConfigScreen
+            return SearchConfigScreen.route.replace("mode", modeJson.toString())
+
         }
     }
 }
