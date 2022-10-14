@@ -18,15 +18,15 @@ fun BottomNavGraphDreams(
 ) {
     NavHost(
         navController = navController,
-        startDestination = DreamScreens.DreamStartScreen.route
+        startDestination = BottomNavScreens.DreamStartScreen.route
     ) {
         composable(
-            route = DreamScreens.DreamStartScreen.route
+            route = BottomNavScreens.DreamStartScreen.route
         ) {
             DreamStartScreen(navControllerBottomNav = navController)
         }
         composable(
-            route = DreamScreens.AddEditDreamScreen.route,
+            route = BottomNavScreens.AddEditDreamScreen.route,
             arguments = listOf(
                 navArgument(
                     name = KEY_DREAM_ID
@@ -38,7 +38,7 @@ fun BottomNavGraphDreams(
             AddEditDreamScreen(navController = navController)
         }
         composable(
-            route = DreamScreens.OverviewDreamsScreen.route
+            route = BottomNavScreens.OverviewDreamsScreen.route
         ) {
             ViewDreamsScreen(navController = navController)
         }

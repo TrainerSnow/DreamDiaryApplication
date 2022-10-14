@@ -19,9 +19,9 @@ fun BottomNavBarDreams(
     navController: NavHostController
 ) {
     val screens = listOf(
-        DreamScreens.AddEditDreamScreen,
-        DreamScreens.DreamStartScreen,
-        DreamScreens.OverviewDreamsScreen,
+        BottomNavScreens.AddEditDreamScreen,
+        BottomNavScreens.DreamStartScreen,
+        BottomNavScreens.OverviewDreamsScreen,
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -42,7 +42,7 @@ fun BottomNavBarDreams(
 
 @Composable
 fun RowScope.BottomNavEntry(
-    screen: DreamScreens,
+    screen: BottomNavScreens,
     currentDest: NavDestination?,
     navController: NavHostController
 ) {

@@ -21,7 +21,7 @@ import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.CompleteOrderSection
 import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.DreamItem
 import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.DreamSelectorSection
-import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.BottomNavScreens
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
 import kotlinx.coroutines.flow.collectLatest
 
@@ -49,9 +49,9 @@ fun ViewDreamsScreen(
                 is ViewDreamsViewModel.UIEvent.Edit -> {
                     val id = event.dream.id
                     if(id == null)
-                        navController.navigate(DreamScreens.AddEditDreamScreen.route)
+                        navController.navigate(BottomNavScreens.AddEditDreamScreen.route)
                     else
-                        navController.navigate(DreamScreens.AddEditDreamScreen.passDreamId(id))
+                        navController.navigate(BottomNavScreens.AddEditDreamScreen.passDreamId(id))
                 }
             }
         }

@@ -2,7 +2,7 @@ package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.startscreen;
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.BottomNavScreens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -29,6 +29,6 @@ public class StartScreenViewModel @Inject constructor(
     }
 
     sealed class UIEvent{
-        data class OpenScreen(val screen: DreamScreens): UIEvent()
+        data class OpenScreen(val screen: BottomNavScreens): UIEvent()
     }
 }
