@@ -24,6 +24,15 @@ public class SearchModeViewModel @Inject constructor(
                     _actionFlow.emit(UIEvent.GoToScreen(event.screen))
                 }
             }
+            SearchModeEvent.OpenSearchComfortness -> {
+
+            }
+            SearchModeEvent.OpenSearchModifiers -> {
+
+            }
+            SearchModeEvent.OpenSearchTime -> {
+
+            }
         }
     }
 
