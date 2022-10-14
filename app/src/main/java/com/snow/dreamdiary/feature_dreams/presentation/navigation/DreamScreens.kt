@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Movie
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.snow.dreamdiary.R
 
@@ -34,6 +35,12 @@ sealed class DreamScreens(
         route = "route_overviewdreamsscreen",
         title = R.string.view_dreams,
         icon = Icons.Rounded.Movie
+    )
+
+    object SearchModeScreen : DreamScreens(
+        route = "route_searchmodescreen",
+        title = R.string.searhc_mode,
+        icon = Icons.Rounded.Search
     )
 }
 
