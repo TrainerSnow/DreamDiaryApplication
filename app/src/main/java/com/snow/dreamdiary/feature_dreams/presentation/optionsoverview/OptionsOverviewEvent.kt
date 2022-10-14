@@ -1,5 +1,7 @@
 package com.snow.dreamdiary.feature_dreams.presentation.optionsoverview
 
-sealed class OptionsOverviewEvent{
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 
+sealed class OptionsOverviewEvent{
+    data class GoToScreen(val screen: DreamScreens): OptionsOverviewEvent()
 }
