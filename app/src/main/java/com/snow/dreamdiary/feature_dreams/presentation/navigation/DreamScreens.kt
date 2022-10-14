@@ -23,7 +23,7 @@ sealed class DreamScreens(
                 is DreamSearchModes.ByDreamt -> mode.toJson()
                 is DreamSearchModes.ByModifier -> mode.toJson()
             }
-            return SearchConfigScreen.route.replace("mode", modeJson.toString())
+            return SearchConfigScreen.route.replace("{mode}", modeJson.toString())
 
         }
     }
