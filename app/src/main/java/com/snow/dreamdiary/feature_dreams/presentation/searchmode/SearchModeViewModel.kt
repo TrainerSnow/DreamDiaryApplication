@@ -30,7 +30,7 @@ public class SearchModeViewModel @Inject constructor(
             SearchModeEvent.OpenSearchModifiers -> {
 
             }
-            SearchModeEvent.OpenSearchTime -> {
+            SearchModeEvent.OpenSearchDreamt -> {
 
             }
         }

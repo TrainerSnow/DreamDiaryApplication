@@ -7,5 +7,5 @@ sealed class SearchModeEvent{
 
     object OpenSearchModifiers: SearchModeEvent()
     object OpenSearchComfortness: SearchModeEvent()
-    object OpenSearchTime: SearchModeEvent()
+    object OpenSearchDreamt: SearchModeEvent()
 }

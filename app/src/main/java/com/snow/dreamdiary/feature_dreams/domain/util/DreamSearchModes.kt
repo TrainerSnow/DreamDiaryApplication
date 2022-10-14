@@ -4,5 +4,4 @@ sealed class DreamSearchModes{
     object ByModifier: DreamSearchModes()
     object ByComfortness: DreamSearchModes()
     object ByDreamt: DreamSearchModes()
-    object ByCreated: DreamSearchModes()
 }

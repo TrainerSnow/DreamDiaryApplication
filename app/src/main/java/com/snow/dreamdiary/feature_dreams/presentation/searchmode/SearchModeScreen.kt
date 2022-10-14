@@ -45,7 +45,7 @@ fun SearchModeScreen(
         }
 
         Button(
-            onClick = { viewModel.onEvent(SearchModeEvent.OpenSearchTime) }
+            onClick = { viewModel.onEvent(SearchModeEvent.OpenSearchDreamt) }
         ){
             Text(
                 text = stringResource(id = R.string.search_by_time)
