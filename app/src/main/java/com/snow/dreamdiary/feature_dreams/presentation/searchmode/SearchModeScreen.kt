@@ -25,7 +25,7 @@ fun SearchModeScreen(
     LaunchedEffect(key1 = true){
         viewModel.actionFlow.collectLatest {
             when (it) {
-                is SearchModeViewModel.UIEvent.GoToScreen -> navController.navigate(it.screen)
+                is SearchModeViewModel.UIEvent.GoToScreen -> navController.navigate(it.screen.route)
             }
         }
     }
