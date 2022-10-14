@@ -23,7 +23,7 @@ fun BottomNavGraphDreams(
         composable(
             route = DreamScreens.DreamStartScreen.route
         ) {
-            DreamStartScreen(navController = navController)
+            DreamStartScreen(navControllerBottomNav = navController)
         }
         composable(
             route = DreamScreens.AddEditDreamScreen.route,

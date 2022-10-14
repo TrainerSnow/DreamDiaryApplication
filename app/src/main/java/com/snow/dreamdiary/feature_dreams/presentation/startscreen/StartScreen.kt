@@ -7,16 +7,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.StartNavGraphDreams
 
 @Composable
 fun DreamStartScreen(
-    navController: NavHostController
+    navControllerBottomNav: NavHostController
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "DreamStartScreen")
-    }
+    val navController = rememberNavController()
+
+    StartNavGraphDreams(navController = navController)
 }

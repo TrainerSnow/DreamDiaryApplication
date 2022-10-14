@@ -13,7 +13,7 @@ fun StartNavGraphDreams(
 ) {
     NavHost(
         navController = navController,
-        startDestination = DreamScreens.DreamStartScreen.route
+        startDestination = DreamScreens.OptionsOverviewScreen.route
     ) {
         composable(
             route = DreamScreens.SearchModeScreen.route
