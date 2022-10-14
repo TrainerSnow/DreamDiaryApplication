@@ -1,7 +1,14 @@
 package com.snow.dreamdiary.feature_dreams.domain.util
 
-sealed class DreamModifier{
-    object Person: DreamModifier()
-    object Feeling: DreamModifier()
-    object Location: DreamModifier()
+enum class DreamModifier{
+    Person,
+    Feeling,
+    Location
+    ;
+
+    companion object{
+        fun fromString(s: String): DreamModifier{
+            return valueOf(s)
+        }
+    }
 }

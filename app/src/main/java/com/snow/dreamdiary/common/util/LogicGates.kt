@@ -1,5 +1,7 @@
 package com.snow.dreamdiary.common.util
 
+import java.util.jar.Attributes.Name
+
 sealed interface LogicGate{
     fun <T> eval(
         values: List<T>,
@@ -55,6 +57,20 @@ sealed interface LogicGate{
     object XNor: LogicGate{
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
             return Xor.eval(values, condition).not()
+        }
+    }
+
+    companion object{
+        fun fromName(s: String): LogicGate{
+            return when (s) {
+                And.javaClass.name -> And
+                Or.javaClass.name -> Or
+                Xor.javaClass.name -> Xor
+                Nand.javaClass.name -> Nand
+                Nor.javaClass.name -> Nor
+                XNor.javaClass.name -> XNor
+                else -> throw IllegalArgumentException("No LogicGate found for name '$s'")
+            }
         }
     }
 }
