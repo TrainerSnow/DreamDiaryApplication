@@ -8,6 +8,7 @@ private const val KEY_MODE_NAME = "modename"
 
 private const val KEY_MODIFIER = "modifier"
 private const val KEY_VALUES = "values"
+private const val KEY_VALUE = "value"
 private const val KEY_GATE = "gate"
 
 private const val KEY_FROM = "fromval"
@@ -19,18 +20,20 @@ private const val KEY_TO_TIME = "fromtime"
 
 sealed class DreamSearchModes {
     data class ByModifier(
-        val modifier: DreamModifier = DreamModifier.Person,
-        val values: List<String> = listOf(""),
+        val values: HashMap<String, DreamModifier> = hashMapOf(),
         val gate: LogicGate = LogicGate.And
     ) : DreamSearchModes() {
         fun toJson(): JSONObject {
             val valuesArr = JSONArray()
             this.values.forEach {
-                valuesArr.put(it)
+                valuesArr.put(
+                    JSONObject()
+                        .put(KEY_VALUE, it.key)
+                        .put(KEY_MODIFIER, it.value)
+                )
             }
             return JSONObject().apply {
                 put(KEY_MODE_NAME, this@ByModifier.javaClass.name)
-                put(KEY_MODIFIER, modifier.name)
                 put(KEY_VALUES, valuesArr)
                 put(KEY_GATE, gate.javaClass.name)
             }
@@ -67,14 +70,16 @@ sealed class DreamSearchModes {
         fun fromJson(obj: JSONObject): DreamSearchModes {
             return when (obj.get(KEY_MODE_NAME)) {
                 ByModifier().javaClass.name -> {
-                    val values = mutableListOf<String>()
+                    val values: HashMap<String, DreamModifier> = hashMapOf()
                     val jArr = obj.getJSONArray(KEY_VALUES)
                     for(i in 0 until jArr.length()){
-                        values.add(jArr.getString(i))
+                        values.put(
+                            jArr.getJSONObject(i).getString(KEY_VALUES),
+                            DreamModifier.valueOf(jArr.getJSONObject(i).getString(KEY_MODIFIER))
+                        )
                     }
 
                     ByModifier(
-                        modifier = DreamModifier.fromString(obj.getString(KEY_MODIFIER)),
                         values = values,
                         gate = LogicGate.fromName(obj.getString(KEY_GATE))
                     )
