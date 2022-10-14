@@ -1,17 +1,10 @@
 package com.snow.dreamdiary.common.util
 
-sealed interface LogicGates{
+sealed interface LogicGate{
     fun <T> eval(
         values: List<T>,
         condition: (T) -> Boolean
     ): Boolean
-
-    interface LogicGate{
-        fun <T> eval(
-            values: List<T>,
-            condition: (T) -> Boolean
-        ): Boolean
-    }
 
     object And: LogicGate{
         override fun <T> eval(values: List<T>, condition: (T) -> Boolean): Boolean {
