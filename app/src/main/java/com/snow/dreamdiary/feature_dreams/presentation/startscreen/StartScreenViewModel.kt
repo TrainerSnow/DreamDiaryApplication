@@ -7,9 +7,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-public class StartScreenViewModel(
+public class StartScreenViewModel @Inject constructor(
 
 ): ViewModel() {
 
