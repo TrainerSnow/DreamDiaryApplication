@@ -21,30 +21,43 @@ public class SearchModeViewModel @Inject constructor(
     fun onEvent(event: SearchModeEvent){
         when (event) {
             is SearchModeEvent.OpenScreen -> {
-                viewModelScope.launch {
-                    _actionFlow.emit(UIEvent.GoToScreen(event.screen.route))
-                }
+
             }
             SearchModeEvent.OpenSearchComfortness -> {
                 viewModelScope.launch {
-                    _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.SearchConfigScreen.withDreamSearchMode(DreamSearchModes.ByComfortness())))
+                    _actionFlow.emit(
+                        UIEvent.GoToScreen(
+                            screen = DreamScreens.SearchComfortnessScreen()
+                                .withMode(DreamSearchModes.ByComfortness())
+                        )
+                    )
                 }
             }
             SearchModeEvent.OpenSearchModifiers -> {
                 viewModelScope.launch {
-                    _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.SearchConfigScreen.withDreamSearchMode(DreamSearchModes.ByModifier())))
+                    _actionFlow.emit(
+                        UIEvent.GoToScreen(
+                            screen = DreamScreens.SearchModifierScreen()
+                                .withMode(DreamSearchModes.ByModifier())
+                        )
+                    )
                 }
             }
             SearchModeEvent.OpenSearchDreamt -> {
                 viewModelScope.launch {
-                    _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.SearchConfigScreen.withDreamSearchMode(DreamSearchModes.ByDreamt())))
+                    _actionFlow.emit(
+                        UIEvent.GoToScreen(
+                            screen = DreamScreens.SearchDreamtScreen()
+                                .withMode(DreamSearchModes.ByDreamt())
+                        )
+                    )
                 }
             }
         }
     }
 
     sealed class UIEvent{
-        data class GoToScreen(val screen: String): UIEvent()
+        data class GoToScreen(val screen: DreamScreens) : UIEvent()
     }
 
 }
