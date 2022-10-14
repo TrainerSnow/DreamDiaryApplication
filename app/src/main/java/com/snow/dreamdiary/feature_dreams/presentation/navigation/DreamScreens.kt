@@ -2,10 +2,7 @@ package com.snow.dreamdiary.feature_dreams.presentation.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.Movie
-import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.snow.dreamdiary.R
 
@@ -41,6 +38,12 @@ sealed class DreamScreens(
         route = "route_searchmodescreen",
         title = R.string.searhc_mode,
         icon = Icons.Rounded.Search
+    )
+
+    object OptionsOverviewScreen : DreamScreens(
+        route = "route_optionsoverviewscreen",
+        title = R.string.options_overview,
+        icon = Icons.Rounded.List
     )
 }
 
