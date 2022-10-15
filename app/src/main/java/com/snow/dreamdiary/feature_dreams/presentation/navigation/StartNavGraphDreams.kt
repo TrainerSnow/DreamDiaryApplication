@@ -7,11 +7,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.snow.dreamdiary.feature_dreams.presentation.optionsoverview.OptionsOverviewScreen
-import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.SearchConfigScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortness.SearchComfortnessScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bydreamt.SearchDreamtScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier.SearchModifierScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchmode.SearchModeScreen
+import com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams.ViewDreamsSearchedScreen
 
 const val KEY_MODE = "mode"
 
@@ -65,6 +65,17 @@ fun StartNavGraphDreams(
                 })
         ) {
             SearchModifierScreen(navController = navController)
+        }
+        composable(
+            route = DreamScreens.ViewSearchedDreamsScreen().route,
+            arguments = listOf(
+                navArgument(
+                    name = KEY_MODE
+                ) {
+                    type = NavType.StringType
+                })
+        ) {
+            ViewDreamsSearchedScreen(navController = navController)
         }
 
     }

@@ -38,6 +38,14 @@ sealed class DreamScreens(
         }
     }
 
+    data class ViewSearchedDreamsScreen(override var route: String = "route_viewsearcheddreamsscreen/{$KEY_MODE}") :
+        DreamScreens(route) {
+        fun withMode(mode: DreamSearchModes.ByComfortness): ViewSearchedDreamsScreen {
+            this.route = this.route.replace("{$KEY_MODE}", mode.toJson().toString())
+            return this
+        }
+    }
+
     @Deprecated("Don't use, won't work")
     object SearchConfigScreen : DreamScreens(
         route = "route_searchconfigscreen/{mode}"
