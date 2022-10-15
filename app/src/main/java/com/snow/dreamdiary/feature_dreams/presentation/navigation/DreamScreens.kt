@@ -40,7 +40,7 @@ sealed class DreamScreens(
 
     data class ViewSearchedDreamsScreen(override var route: String = "route_viewsearcheddreamsscreen/{$KEY_MODE}") :
         DreamScreens(route) {
-        fun withMode(mode: DreamSearchModes.ByComfortness): ViewSearchedDreamsScreen {
+        fun withMode(mode: DreamSearchModes): ViewSearchedDreamsScreen {
             this.route = this.route.replace("{$KEY_MODE}", mode.toJson().toString())
             return this
         }
