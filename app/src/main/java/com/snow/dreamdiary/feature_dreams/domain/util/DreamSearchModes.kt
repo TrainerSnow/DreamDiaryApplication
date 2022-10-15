@@ -20,16 +20,14 @@ private const val KEY_TO_TIME = "fromtime"
 
 sealed class DreamSearchModes {
     data class ByModifier(
-        val values: HashMap<String, DreamModifier> = hashMapOf(),
+        val values: List<String> = emptyList(),
         val gate: LogicGate = LogicGate.And
     ) : DreamSearchModes() {
         fun toJson(): JSONObject {
             val valuesArr = JSONArray()
             this.values.forEach {
                 valuesArr.put(
-                    JSONObject()
-                        .put(KEY_VALUE, it.key)
-                        .put(KEY_MODIFIER, it.value)
+                    it
                 )
             }
             return JSONObject().apply {
@@ -70,13 +68,10 @@ sealed class DreamSearchModes {
         fun fromJson(obj: JSONObject): DreamSearchModes {
             return when (obj.get(KEY_MODE_NAME)) {
                 ByModifier().javaClass.name -> {
-                    val values: HashMap<String, DreamModifier> = hashMapOf()
+                    val values: MutableList<String> = mutableListOf()
                     val jArr = obj.getJSONArray(KEY_VALUES)
                     for (i in 0 until jArr.length()) {
-                        values[
-                                jArr.getJSONObject(i).getString(KEY_VALUES)
-                        ] =
-                            DreamModifier.valueOf(jArr.getJSONObject(i).getString(KEY_MODIFIER))
+                        values.add(jArr.getString(i))
                     }
 
                     ByModifier(
