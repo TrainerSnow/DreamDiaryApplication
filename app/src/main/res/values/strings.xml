@@ -64,4 +64,6 @@
     <string name="from_comfortness">From comfortness</string>
     <string name="select_comfortness_range">Select the comfortness range that should be used by the search</string>
     <string name="to_comfortness">To comfortness</string>
+    <string name="input_numbers_range_10">Please input only numbers from 0 - 10</string>
+    <string name="from_larger_to">The from value cannot be larger or equal than the to value</string>
 </resources>
