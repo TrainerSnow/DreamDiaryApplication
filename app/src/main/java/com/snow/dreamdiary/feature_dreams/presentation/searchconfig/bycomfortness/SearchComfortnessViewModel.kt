@@ -62,6 +62,10 @@ class SearchComfortnessViewModel @Inject constructor(
                         )
                     )
 
+                    viewModelScope.launch {
+                        _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.ViewSearchedDreamsScreen().withMode(_state.value.mode)))
+                    }
+
                 } catch (e: NumberFormatException) {
                     viewModelScope.launch {
                         _actionFlow.emit(UIEvent.Message(R.string.input_numbers_range_10))

@@ -4,10 +4,12 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,7 +40,13 @@ class SearchDreamtViewModel @Inject constructor(
                 )
             }
             SearchDreamtEvent.StartSearch -> {
-
+                viewModelScope.launch {
+                    _actionFlow.emit(
+                        UIEvent.GoToScreen(
+                            DreamScreens.ViewSearchedDreamsScreen().withMode(_state.value.mode)
+                        )
+                    )
+                }
             }
         }
     }
