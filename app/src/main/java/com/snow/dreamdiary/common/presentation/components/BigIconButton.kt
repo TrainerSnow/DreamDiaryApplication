@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.searchmode.components
+package com.snow.dreamdiary.common.presentation.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SearchModeButton(
+fun BigIconButton(
     text: String,
     onclick: () -> Unit,
     icon: ImageVector

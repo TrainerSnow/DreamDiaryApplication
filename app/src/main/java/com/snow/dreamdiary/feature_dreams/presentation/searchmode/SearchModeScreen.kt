@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
-import com.snow.dreamdiary.feature_dreams.presentation.searchmode.components.SearchModeButton
+import com.snow.dreamdiary.common.presentation.components.BigIconButton
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -39,7 +39,7 @@ fun SearchModeScreen(
 
         ) {
 
-        SearchModeButton(
+        BigIconButton(
             onclick = { viewModel.onEvent(SearchModeEvent.OpenSearchModifiers) },
             text = stringResource(id = R.string.search_by_modifiers),
             icon = Icons.Rounded.Person
@@ -47,7 +47,7 @@ fun SearchModeScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        SearchModeButton(
+        BigIconButton(
             onclick = { viewModel.onEvent(SearchModeEvent.OpenSearchComfortness) },
             text = stringResource(id = R.string.search_by_comfortness),
             icon = Icons.Rounded.Scale
@@ -55,7 +55,7 @@ fun SearchModeScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        SearchModeButton(
+        BigIconButton(
             onclick = { viewModel.onEvent(SearchModeEvent.OpenSearchDreamt) },
             text = stringResource(id = R.string.search_by_time),
             icon = Icons.Rounded.Timer

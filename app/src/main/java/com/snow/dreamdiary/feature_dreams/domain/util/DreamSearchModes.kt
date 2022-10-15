@@ -20,7 +20,7 @@ private const val KEY_TO_TIME = "fromtime"
 
 sealed class DreamSearchModes {
     data class ByModifier(
-        val values: List<String> = emptyList(),
+        val values: MutableList<String> = mutableListOf(),
         val gate: LogicGate = LogicGate.And
     ) : DreamSearchModes() {
         fun toJson(): JSONObject {

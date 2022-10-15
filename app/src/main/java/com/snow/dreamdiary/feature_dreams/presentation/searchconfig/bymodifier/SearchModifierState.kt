@@ -1,3 +1,9 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier
 
-data class SearchModifierState(val n: Int = 0)
+import com.snow.dreamdiary.feature_dreams.domain.util.DreamSearchModes
+
+data class SearchModifierState(
+    val mode: DreamSearchModes.ByModifier = DreamSearchModes.ByModifier(),
+    val textFieldInput: String = "",
+    val showDialog: Boolean = false
+)

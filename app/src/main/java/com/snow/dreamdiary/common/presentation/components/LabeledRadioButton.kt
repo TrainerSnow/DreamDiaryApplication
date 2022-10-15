@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components
+package com.snow.dreamdiary.common.presentation.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.MaterialTheme

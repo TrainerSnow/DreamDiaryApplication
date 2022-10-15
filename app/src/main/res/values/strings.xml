@@ -48,4 +48,14 @@
     <string name="search_by_modifiers">Search by Persons/Feelings/Locations</string>
     <string name="search_by_comfortness">Search by comfortness</string>
     <string name="search_by_time">Search by time</string>
+    <string name="write_modifiers_search">Write the name of the person/feeling/location you want to search for here. Seperate multiple values with a semicolon(;)</string>
+    <string name="select_logic_gate">Select the logic gate that should be used in the search. Default: NOT</string>
+    <string name="gate_and">AND</string>
+    <string name="gate_or">OR</string>
+    <string name="gate_xor">XOR</string>
+    <string name="gate_nand">NAND</string>
+    <string name="gate_nor">NOR</string>
+    <string name="gate_xnor">XNOR</string>
+    <string name="current_gate">"Currently using "</string>
+    <string name="search">Search</string>
 </resources>
