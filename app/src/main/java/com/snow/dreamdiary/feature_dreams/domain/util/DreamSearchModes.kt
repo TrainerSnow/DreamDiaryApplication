@@ -73,10 +73,10 @@ sealed class DreamSearchModes {
                     val values: HashMap<String, DreamModifier> = hashMapOf()
                     val jArr = obj.getJSONArray(KEY_VALUES)
                     for (i in 0 until jArr.length()) {
-                        values.put(
-                            jArr.getJSONObject(i).getString(KEY_VALUES),
+                        values[
+                                jArr.getJSONObject(i).getString(KEY_VALUES)
+                        ] =
                             DreamModifier.valueOf(jArr.getJSONObject(i).getString(KEY_MODIFIER))
-                        )
                     }
 
                     ByModifier(

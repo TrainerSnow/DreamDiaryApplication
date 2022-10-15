@@ -22,8 +22,6 @@ class ViewDreamsViewModel @Inject constructor(
     private val dreamUseCases: DreamUseCases
 ) : ViewModel() {
 
-    private val TAG = "ViewDreamsViewModel"
-
     private val _state = mutableStateOf(ViewDreamsState())
     val state: State<ViewDreamsState> = _state
 
