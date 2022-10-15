@@ -1,7 +1,6 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.*
@@ -56,7 +55,7 @@ fun SearchModifierScreen(
                     bottom = 8.dp
                 )
         )
-        OutlinedButton(
+        Button(
             onClick = { viewModel.onEvent(SearchModifierEvent.ToggleDialogShow(show = true)) },
         ) {
             Text(
@@ -64,10 +63,18 @@ fun SearchModifierScreen(
             )
         }
 
-        BigIconButton(
-            text = stringResource(id = R.string.search),
-            onclick = { viewModel.onEvent(SearchModifierEvent.StartSearch) },
-            icon = Icons.Rounded.Search)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            BigIconButton(
+                text = stringResource(id = R.string.search),
+                onclick = { viewModel.onEvent(SearchModifierEvent.StartSearch) },
+                icon = Icons.Rounded.Search
+            )
+        }
 
 
         if (
