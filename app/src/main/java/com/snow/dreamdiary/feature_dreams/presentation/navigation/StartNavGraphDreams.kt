@@ -67,16 +67,5 @@ fun StartNavGraphDreams(
             SearchModifierScreen(navController = navController)
         }
 
-        composable(
-            route = DreamScreens.SearchConfigScreen.route,
-            arguments = listOf(
-                navArgument(
-                    name = KEY_MODE
-                ) {
-                    type = NavType.StringType
-                })
-        ) {
-            SearchConfigScreen(navController = navController)
-        }
     }
 }
