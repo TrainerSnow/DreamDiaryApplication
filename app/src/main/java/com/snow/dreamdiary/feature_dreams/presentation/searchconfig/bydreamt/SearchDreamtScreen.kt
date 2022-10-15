@@ -91,7 +91,7 @@ fun SearchDreamtScreen(
             Text(
                 text = "${stringResource(id = R.string.from_date)} ${
                     TimeFormatUtil.getMillisFormatted(
-                        viewModel.state.value.dreamtFrom
+                        viewModel.state.value.mode.fromTime
                     )
                 }",
                 style = MaterialTheme.typography.titleMedium
@@ -112,7 +112,7 @@ fun SearchDreamtScreen(
             Text(
                 text = "${stringResource(id = R.string.to_date)} ${
                     TimeFormatUtil.getMillisFormatted(
-                        viewModel.state.value.dreamtTo
+                        viewModel.state.value.mode.toTime
                     )
                 }",
                 style = MaterialTheme.typography.titleMedium

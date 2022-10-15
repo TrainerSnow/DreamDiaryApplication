@@ -25,12 +25,16 @@ class SearchDreamtViewModel @Inject constructor(
         when (event) {
             is SearchDreamtEvent.ChangeDreamtFrom -> {
                 _state.value = state.value.copy(
-                    dreamtFrom = event.value
+                    mode = state.value.mode.copy(
+                        fromTime = event.value
+                    )
                 )
             }
             is SearchDreamtEvent.ChangeDreamtTo -> {
                 _state.value = state.value.copy(
-                    dreamtTo = event.value
+                    mode = state.value.mode.copy(
+                        toTime = event.value
+                    )
                 )
             }
             SearchDreamtEvent.StartSearch -> {
