@@ -1,30 +1,98 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortness
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.snow.dreamdiary.R
+import com.snow.dreamdiary.common.presentation.components.BigIconButton
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchComfortnessScreen(
     viewModel: SearchComfortnessViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-    Box(
-        modifier = androidx.compose.ui.Modifier
-            .background(MaterialTheme.colorScheme.tertiary)
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
-
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
     ) {
+
         Text(
-            text = "SearchComfortnessScreen",
-            style = MaterialTheme.typography.displayMedium
+            text = stringResource(id = R.string.select_comfortness_range),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
+            modifier = Modifier
+                .padding(
+                    bottom = 8.dp
+                )
         )
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .padding(bottom = 12.dp)
+        ) {
+            Text(
+                text = stringResource(id = R.string.from_comfortness),
+                style = MaterialTheme.typography.titleMedium
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            OutlinedTextField(
+                value = viewModel.state.value.from.toString(),
+                onValueChange = { text: String ->
+                    viewModel.onEvent(
+                        SearchComfortnessEvent.ChangeFromValue(
+                            text
+                        )
+                    )
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .padding(bottom = 12.dp)
+        ) {
+            Text(
+                text = stringResource(id = R.string.to_comfortness),
+                style = MaterialTheme.typography.titleMedium
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            OutlinedTextField(
+                value = viewModel.state.value.to,
+                onValueChange = { text: String ->
+                    viewModel.onEvent(SearchComfortnessEvent.ChangeToValue(text))
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            )
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            BigIconButton(
+                text = stringResource(id = R.string.search),
+                onclick = { viewModel.onEvent(SearchComfortnessEvent.StartSearch) },
+                icon = Icons.Rounded.Search
+            )
+        }
     }
 }

@@ -61,4 +61,7 @@
     <string name="from_date">"From date: "</string>
     <string name="to_date">"To date: "</string>
     <string name="select_date_range">Select the date range that should be used by the search</string>
+    <string name="from_comfortness">From comfortness</string>
+    <string name="select_comfortness_range">Select the comfortness range that should be used by the search</string>
+    <string name="to_comfortness">To comfortness</string>
 </resources>
