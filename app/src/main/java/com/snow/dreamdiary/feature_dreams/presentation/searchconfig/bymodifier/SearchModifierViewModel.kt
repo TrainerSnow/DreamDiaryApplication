@@ -6,6 +6,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.snow.dreamdiary.common.util.extensions.splitTrimmed
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
 
@@ -16,6 +18,9 @@ class SearchModifierViewModel @Inject constructor(
 
     private val _state = mutableStateOf(SearchModifierState())
     val state: State<SearchModifierState> = _state
+
+    private val _actionFlow = MutableSharedFlow<UIEvent>()
+    val actionFlow = _actionFlow.asSharedFlow()
 
     fun onEvent(event: SearchModifierEvent) {
         when (event) {
@@ -43,5 +48,9 @@ class SearchModifierViewModel @Inject constructor(
 
             }
         }
+    }
+
+    sealed class UIEvent{
+
     }
 }

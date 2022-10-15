@@ -11,6 +11,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -22,12 +23,20 @@ import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.presentation.components.BigIconButton
 import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.common.util.TimeUtil
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun SearchDreamtScreen(
     viewModel: SearchDreamtViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
+
+
+    LaunchedEffect(key1 = true){
+        viewModel.actionFlow.collectLatest {
+
+        }
+    }
 
     val datePickerDialogFrom = DatePickerDialog(
         LocalContext.current,
