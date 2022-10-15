@@ -26,7 +26,11 @@ fun SearchModifierScreen(
 
     LaunchedEffect(key1 = true){
         viewModel.actionFlow.collectLatest {
-
+            when (it) {
+                is SearchModifierViewModel.UIEvent.GoToScreen -> {
+                    navController.navigate(it.screen.route)
+                }
+            }
         }
     }
 

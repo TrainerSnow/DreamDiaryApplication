@@ -38,6 +38,9 @@ fun SearchComfortnessScreen(
                 is SearchComfortnessViewModel.UIEvent.Message -> {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
+                is SearchComfortnessViewModel.UIEvent.GoToScreen -> {
+                    navController.navigate(it.screen.route)
+                }
             }
         }
     }

@@ -34,7 +34,11 @@ fun SearchDreamtScreen(
 
     LaunchedEffect(key1 = true){
         viewModel.actionFlow.collectLatest {
-
+            when (it) {
+                is SearchDreamtViewModel.UIEvent.GoToScreen -> {
+                    navController.navigate(it.screen.route)
+                }
+            }
         }
     }
 

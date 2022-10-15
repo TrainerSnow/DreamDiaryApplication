@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.R
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -72,6 +73,7 @@ class SearchComfortnessViewModel @Inject constructor(
 
     sealed class UIEvent {
         data class Message(@StringRes val message: Int) : UIEvent()
+        data class GoToScreen(val screen: DreamScreens): UIEvent()
     }
 
 }

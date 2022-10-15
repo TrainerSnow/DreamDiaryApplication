@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.snow.dreamdiary.common.util.extensions.splitTrimmed
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -51,6 +52,6 @@ class SearchModifierViewModel @Inject constructor(
     }
 
     sealed class UIEvent{
-
+        data class GoToScreen(val screen: DreamScreens) : UIEvent()
     }
 }
