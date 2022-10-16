@@ -19,10 +19,12 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 
 @Composable
 fun DreamItem(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     dream: Dream,
     onEditClick: () -> Unit,
-    onDeleteClick: () -> Unit
+    onDeleteClick: () -> Unit,
+    showButtons: Boolean = true,
+    takeMaxSize: Boolean = true
 ) {
     Box(
         modifier = modifier
@@ -33,14 +35,21 @@ fun DreamItem(
             )
     ) {
         Card(
-            modifier = Modifier
-                .fillMaxSize()
-
+            modifier = if (takeMaxSize)
+                Modifier
+                    .fillMaxSize()
+            else
+                Modifier
+                    .fillMaxWidth()
         ) {
             Column(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .verticalScroll(rememberScrollState())
+                modifier = if (takeMaxSize)
+                    Modifier
+                        .padding(8.dp)
+                        .verticalScroll(rememberScrollState())
+                else
+                    Modifier
+                        .padding(8.dp)
             ) {
                 Text(
                     text = stringResource(id = R.string.description),
@@ -85,36 +94,38 @@ fun DreamItem(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceAround
-                ) {
-                    OutlinedButton(
-                        onClick = onDeleteClick,
+                if (showButtons) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround
+                    ) {
+                        OutlinedButton(
+                            onClick = onDeleteClick,
 
-                        ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Delete,
-                            contentDescription = stringResource(id = R.string.cd_delete)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = stringResource(id = R.string.delete)
-                        )
-                    }
+                            ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Delete,
+                                contentDescription = stringResource(id = R.string.cd_delete)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = stringResource(id = R.string.delete)
+                            )
+                        }
 
-                    Button(
-                        onClick = onEditClick,
+                        Button(
+                            onClick = onEditClick,
 
-                        ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Edit,
-                            contentDescription = stringResource(id = R.string.cd_edit)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = stringResource(id = R.string.edit)
-                        )
+                            ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Edit,
+                                contentDescription = stringResource(id = R.string.cd_edit)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = stringResource(id = R.string.edit)
+                            )
+                        }
                     }
                 }
             }

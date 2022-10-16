@@ -3,6 +3,7 @@ package com.snow.dreamdiary.feature_dreams.domain.usecase
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamSearchModes
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.last
 
 public class GetDreamsForSearchConfig(
@@ -17,7 +18,7 @@ public class GetDreamsForSearchConfig(
     }
 
     private suspend fun getDreamsSearchedModifiers(searchMode: DreamSearchModes.ByModifier): List<Dream> {
-        val dreams = repository.getDreams().last()
+        val dreams = repository.getDreams().first()
         val filteredDreams: MutableList<Dream> = mutableListOf()
 
         dreams.forEach { dream ->

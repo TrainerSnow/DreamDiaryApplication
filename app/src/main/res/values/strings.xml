@@ -66,4 +66,6 @@
     <string name="to_comfortness">To comfortness</string>
     <string name="input_numbers_range_10">Please input only numbers from 0 - 10</string>
     <string name="from_larger_to">The from value cannot be larger or equal than the to value</string>
+    <string name="dreams_found">"Dreams found: "</string>
+    <string name="time_needed">"Time needed: "</string>
 </resources>
