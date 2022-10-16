@@ -48,7 +48,7 @@
     <string name="search_by_modifiers">Search by Persons/Feelings/Locations</string>
     <string name="search_by_comfortness">Search by comfortness</string>
     <string name="search_by_time">Search by time</string>
-    <string name="write_modifiers_search">Write the name of the person/feeling/location you want to search for here. Seperate multiple values with a semicolon(;)</string>
+    <string name="write_modifiers_search">Write the name of the person/feeling/location you want to search for here. Separate multiple values with a semicolon(;)</string>
     <string name="select_logic_gate">Select the logic gate that should be used in the search. Default: NOT</string>
     <string name="gate_and">AND</string>
     <string name="gate_or">OR</string>
@@ -64,7 +64,7 @@
     <string name="from_comfortness">From comfortness</string>
     <string name="select_comfortness_range">Select the comfortness range that should be used by the search</string>
     <string name="to_comfortness">To comfortness</string>
-    <string name="input_numbers_range_10">Please input only numbers from 0 - 10</string>
+    <string name="input_numbers_range_10">Please input only numbers from 0 – 10</string>
     <string name="from_larger_to">The from value cannot be larger or equal than the to value</string>
     <string name="dreams_found">"Dreams found: "</string>
     <string name="time_needed">"Time needed: "</string>
