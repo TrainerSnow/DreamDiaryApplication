@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -54,11 +55,20 @@ fun OptionsOverviewScreen(
                 )
             }
 
-            items(count = 4, key = null) { i ->
+            item {
+                OptionsItem(
+                    text = stringResource(id = R.string.daily_survey),
+                    icon = Icons.Rounded.EditNote,
+                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.DailySurveyScreen)) },
+                    num = 0
+                )
+            }
+
+            items(count = 3, key = null) { i ->
                 OptionsItem(
                     text = "Item nr $i",
                     icon = Icons.Rounded.Search,
-                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.SearchModeScreen)) },
+                    onClick = { },
                     num = i + 1
                 )
             }

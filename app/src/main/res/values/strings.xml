@@ -77,4 +77,5 @@
     <string name="how_health">How healthy have you been during this day? (0 = Bad, 10 = Good)</string>
     <string name="how_comfortness">How comfortable have you been during this day? (0 = Bad, 10 = Good)</string>
     <string name="how_activity">How physically active have you been during this day? (0 = Bad, 10 = Good)</string>
+    <string name="daily_survey">Take daily survey</string>
 </resources>
