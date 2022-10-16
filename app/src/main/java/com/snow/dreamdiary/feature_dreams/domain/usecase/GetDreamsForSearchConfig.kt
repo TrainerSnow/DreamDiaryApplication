@@ -36,7 +36,7 @@ public class GetDreamsForSearchConfig(
     }
 
     private suspend fun getDreamsSearchedDate(searchMode: DreamSearchModes.ByDreamt): List<Dream> {
-        val dreams = repository.getDreams().last()
+        val dreams = repository.getDreams().first()
         val filteredDreams: MutableList<Dream> = mutableListOf()
 
         dreams.forEach { dream ->
@@ -49,7 +49,7 @@ public class GetDreamsForSearchConfig(
     }
 
     private suspend fun getDreamsSearchedComfortness(searchMode: DreamSearchModes.ByComfortness): List<Dream> {
-        val dreams = repository.getDreams().last()
+        val dreams = repository.getDreams().first()
         val filteredDreams: MutableList<Dream> = mutableListOf()
 
         dreams.forEach { dream ->
