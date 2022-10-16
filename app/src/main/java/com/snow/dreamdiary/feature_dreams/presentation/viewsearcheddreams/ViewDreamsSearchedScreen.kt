@@ -2,6 +2,8 @@ package com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -37,17 +39,15 @@ fun ViewDreamsSearchedScreen(
                 timeNeeded = timeNeeded
             )
 
-            LazyColumn(
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                items(
-                    count = dreams.size
-                ) {
+                dreams.forEach {
                     DreamItem(
-
-                        dream = dreams[it],
+                        dream = it,
                         onEditClick = {},
                         onDeleteClick = {},
                         takeMaxSize = false,
