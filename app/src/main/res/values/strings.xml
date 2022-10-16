@@ -68,4 +68,6 @@
     <string name="from_larger_to">The from value cannot be larger or equal than the to value</string>
     <string name="dreams_found">"Dreams found: "</string>
     <string name="time_needed">"Time needed: "</string>
+    <string name="comfortness">Comfortness</string>
+    <string name="comfortness_x">"Comfortness: "</string>
 </resources>
