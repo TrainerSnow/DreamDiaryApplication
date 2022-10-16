@@ -71,4 +71,10 @@
     <string name="comfortness">Comfortness</string>
     <string name="comfortness_x">"Comfortness: "</string>
     <string name="dreamt">Dreamt</string>
+    <string name="did_dream_today">Check this if you dreamt atleast one dream today.</string>
+    <string name="how_many_dreams">Enter how many dreams you had today.</string>
+    <string name="how_much_slept">How many hours did you sleep this day?</string>
+    <string name="how_health">How healthy have you been during this day? (0 = Bad, 10 = Good)</string>
+    <string name="how_comfortness">How comfortable have you been during this day? (0 = Bad, 10 = Good)</string>
+    <string name="how_activity">How physically active have you been during this day? (0 = Bad, 10 = Good)</string>
 </resources>
