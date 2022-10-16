@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.snow.dreamdiary.R
+import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 
 @Composable
@@ -94,19 +95,25 @@ fun DreamItem(
                     )
                 }
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.comfortness_x),
-                        style = MaterialTheme.typography.titleLarge
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = dream.comfortness.toString(),
-                        style = MaterialTheme.typography.titleLarge,
-                    )
-                }
+                Text(
+                    text = stringResource(id = R.string.order_comfort),
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = "-${dream.comfortness}",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+
+                Text(
+                    text = stringResource(id = R.string.dreamt),
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = "-${
+                        TimeFormatUtil.getMillisFormatted(dream.dreamtAt)
+                    }",
+                    style = MaterialTheme.typography.bodyLarge
+                )
 
                 Spacer(modifier = Modifier.height(24.dp))
 

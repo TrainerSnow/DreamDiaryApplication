@@ -70,4 +70,5 @@
     <string name="time_needed">"Time needed: "</string>
     <string name="comfortness">Comfortness</string>
     <string name="comfortness_x">"Comfortness: "</string>
+    <string name="dreamt">Dreamt</string>
 </resources>
