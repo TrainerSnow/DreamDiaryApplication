@@ -17,7 +17,7 @@ data class Dream(
     val dreamtAt: Long,
 
 
-    @PrimaryKey val id: Int? = null
+    @PrimaryKey(autoGenerate = true) val id: Int? = null
 ){
 
     fun getAllModifiers(): List<String>{
