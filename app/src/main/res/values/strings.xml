@@ -71,8 +71,4 @@
     <string name="comfortness">Comfortness</string>
     <string name="comfortness_x">"Comfortness: "</string>
     <string name="dreamt">Dreamt</string>
-    <string name="daily_survey_notif_channel">daily_survey_notif_channel</string>
-    <string name="daily_survey_notif_channel_description">The notification channel for the Notification that reminds the user to take the daily survey.</string>
-    <string name="daily_survey_notif_title">Daily Survey</string>
-    <string name="daily_survey_notif_desc">Take you daily survey now, to gt better insights into you dream and sleep behaviour</string>
 </resources>
