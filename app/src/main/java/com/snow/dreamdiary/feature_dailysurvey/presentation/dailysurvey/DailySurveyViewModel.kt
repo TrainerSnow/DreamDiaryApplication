@@ -1,18 +1,22 @@
 package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey;
 
-import android.view.View
+import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
+import androidx.lifecycle.viewModelScope
+import com.snow.dreamdiary.R
+import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
+import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 public class DailySurveyViewModel @Inject constructor(
-
+    val surveyUseCases: SurveyUseCases
 ): ViewModel() {
 
     private val _state = mutableStateOf(DailySurveyState())
@@ -65,13 +69,40 @@ public class DailySurveyViewModel @Inject constructor(
                 )
             }
             DailySurveyEvent.Send -> {
+                try {
+                    val dreamsNum = _state.value.dreamsNum.toInt()
+                    val timeSlept = _state.value.timeSlept.toInt()
 
+                    if (timeSlept > 24) {
+                        viewModelScope.launch {
+                            _actionFlow.emit(UIEvent.Message(R.string.no_sleep_over_24))
+                        }
+                        return
+                    }
+
+                    _state.value = state.value.copy(
+                        surveyData = state.value.surveyData.copy(
+                            dreamsNum = dreamsNum,
+                            timeSlept = timeSlept,
+                            createdAt = TimeUtil.thisDayStartInMillis()
+                        )
+                    )
+
+                    viewModelScope.launch {
+                        surveyUseCases.addSurvey(_state.value.surveyData)
+                    }
+
+                } catch (_: Exception) {
+                    viewModelScope.launch {
+                        _actionFlow.emit(UIEvent.Message(R.string.input_numbers_range_10))
+                    }
+                }
             }
         }
     }
 
 
     sealed class UIEvent{
-
+        data class Message(@StringRes val message: Int) : UIEvent()
     }
 }

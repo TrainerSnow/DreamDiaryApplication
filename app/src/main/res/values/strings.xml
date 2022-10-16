@@ -78,4 +78,6 @@
     <string name="how_comfortness">How comfortable have you been during this day? (0 = Bad, 10 = Good)</string>
     <string name="how_activity">How physically active have you been during this day? (0 = Bad, 10 = Good)</string>
     <string name="daily_survey">Take daily survey</string>
+    <string name="no_sleep_over_24">You cannot sleep more than 24 hours in one day.</string>
+    <string name="send">Send</string>
 </resources>
