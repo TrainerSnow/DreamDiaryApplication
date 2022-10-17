@@ -6,6 +6,7 @@ import com.snow.dreamdiary.feature_dailysurvey.data.repository.DailySurveyReposi
 import com.snow.dreamdiary.feature_dailysurvey.data.source.DailySurveyDataDatabase
 import com.snow.dreamdiary.feature_dailysurvey.domain.repository.DailySurveyRepository
 import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.AddSurveyUseCase
+import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.GetSurveysUseCase
 import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
 import com.snow.dreamdiary.feature_dreams.data.repository.DreamRepositoryImpl
 import com.snow.dreamdiary.feature_dreams.data.source.DreamDatabase
@@ -76,7 +77,8 @@ object AppModule {
     @Singleton
     fun provideSurveyUseCases(repository: DailySurveyRepository): SurveyUseCases {
         return SurveyUseCases(
-            addSurvey = AddSurveyUseCase(repository)
+            addSurvey = AddSurveyUseCase(repository),
+            getSurveys = GetSurveysUseCase(repository)
         )
     }
 }
