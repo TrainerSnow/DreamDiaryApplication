@@ -1,16 +1,23 @@
 package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
+import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier.SearchModifierViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -18,6 +25,22 @@ fun DailySurveyScreen(
     viewModel: DailySurveyViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
+
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = true){
+        viewModel.actionFlow.collectLatest {
+            when (it) {
+                is DailySurveyViewModel.UIEvent.Message -> {
+                    val res = it.res
+                    withContext(Dispatchers.IO){
+                        val text = context.getString(res)
+                        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
 
     Column(
         modifier = Modifier

@@ -1,6 +1,7 @@
 package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey;
 
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -72,6 +73,6 @@ public class DailySurveyViewModel @Inject constructor(
 
 
     sealed class UIEvent{
-
+        data class Message(@StringRes val res: Int): UIEvent()
     }
 }
