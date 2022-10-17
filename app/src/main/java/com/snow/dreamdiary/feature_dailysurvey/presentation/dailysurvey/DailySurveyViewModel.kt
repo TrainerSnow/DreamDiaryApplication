@@ -1,19 +1,22 @@
 package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey;
 
-import android.view.View
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
+import androidx.lifecycle.viewModelScope
+import com.snow.dreamdiary.R
+import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 public class DailySurveyViewModel @Inject constructor(
-
+    val surveyUseCases: SurveyUseCases
 ): ViewModel() {
 
     private val _state = mutableStateOf(DailySurveyState())
@@ -66,7 +69,38 @@ public class DailySurveyViewModel @Inject constructor(
                 )
             }
             DailySurveyEvent.Send -> {
+                try {
+                    val timesSlept = _state.value.timeSlept.toInt()
+                    val dreamsNum = _state.value.timeSlept.toInt()
 
+                    if(timesSlept > 24){
+                        viewModelScope.launch {
+                            _actionFlow.emit(UIEvent.Message(R.string.sleep_over_24))
+                        }
+                        return
+                    }
+
+                    _state.value = state.value.copy(
+                        surveyData = state.value.surveyData.copy(
+                            timeSlept = timesSlept.toLong(),
+                            dreamsNum = if (
+                                state.value.surveyData.didDream
+                            )
+                                dreamsNum
+                            else
+                                -1
+                        )
+                    )
+
+                    viewModelScope.launch {
+                        surveyUseCases.addSurvey(_state.value.surveyData)
+                    }
+
+                } catch (e: Exception) {
+                    viewModelScope.launch {
+                        _actionFlow.emit(UIEvent.Message(R.string.input_numbers_range_10))
+                    }
+                }
             }
         }
     }
