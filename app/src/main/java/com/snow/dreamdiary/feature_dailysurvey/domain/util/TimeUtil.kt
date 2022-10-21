@@ -6,7 +6,7 @@ object TimeUtil {
 
     fun thisDayStartInMillis(): Long {
         val now = System.currentTimeMillis()
-        return millisSinceStartOfToday() - now
+        return (now - millisSinceStartOfToday()) + 1
     }
 
     private fun millisSinceStartOfToday(): Long {

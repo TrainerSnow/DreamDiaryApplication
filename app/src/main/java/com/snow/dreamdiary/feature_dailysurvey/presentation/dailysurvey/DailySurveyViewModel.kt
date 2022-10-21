@@ -11,8 +11,11 @@ import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+private const val TAG = "DailySurveyViewModel"
 
 @HiltViewModel
 public class DailySurveyViewModel @Inject constructor(
@@ -93,7 +96,11 @@ public class DailySurveyViewModel @Inject constructor(
                     )
 
                     viewModelScope.launch {
+                        Log.d(TAG, "onEvent: Inside coroutine to add survey ${_state.value.surveyData}")
                         surveyUseCases.addSurvey(_state.value.surveyData)
+                        Log.d(TAG, "onEvent: Finieshed adding the survey")
+                        val surveys = surveyUseCases.getSurveys().first()
+                        Log.d(TAG, "onEvent: Now existing surveys: $surveys")
                     }
 
                 } catch (e: Exception) {
