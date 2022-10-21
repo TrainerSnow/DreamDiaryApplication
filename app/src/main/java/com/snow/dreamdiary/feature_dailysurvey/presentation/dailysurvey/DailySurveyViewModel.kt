@@ -1,6 +1,5 @@
 package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey;
 
-import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -15,11 +14,10 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private const val TAG = "DailySurveyViewModel"
 
 @HiltViewModel
 public class DailySurveyViewModel @Inject constructor(
-    val surveyUseCases: SurveyUseCases
+    private val surveyUseCases: SurveyUseCases
 ): ViewModel() {
 
     private val _state = mutableStateOf(DailySurveyState())
@@ -96,12 +94,11 @@ public class DailySurveyViewModel @Inject constructor(
                     )
 
                     viewModelScope.launch {
-                        Log.d(TAG, "onEvent: Inside coroutine to add survey ${_state.value.surveyData}")
                         surveyUseCases.addSurvey(_state.value.surveyData)
-                        Log.d(TAG, "onEvent: Finieshed adding the survey")
                         val surveys = surveyUseCases.getSurveys().first()
-                        Log.d(TAG, "onEvent: Now existing surveys: $surveys")
+                        _actionFlow.emit(UIEvent.Back)
                     }
+
 
                 } catch (e: Exception) {
                     viewModelScope.launch {
@@ -115,5 +112,6 @@ public class DailySurveyViewModel @Inject constructor(
 
     sealed class UIEvent{
         data class Message(@StringRes val res: Int): UIEvent()
+        object Back : UIEvent()
     }
 }

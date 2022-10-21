@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
-import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier.SearchModifierViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.withContext
@@ -36,10 +35,13 @@ fun DailySurveyScreen(
             when (it) {
                 is DailySurveyViewModel.UIEvent.Message -> {
                     val res = it.res
-                    withContext(Dispatchers.IO){
+                    withContext(Dispatchers.IO) {
                         val text = context.getString(res)
                         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
                     }
+                }
+                DailySurveyViewModel.UIEvent.Back -> {
+                    navController.popBackStack()
                 }
             }
         }
