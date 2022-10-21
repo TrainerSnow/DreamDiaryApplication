@@ -61,16 +61,20 @@ fun DailySurveyScreen(
         }
     ) {
         // TODO: Wrap in If
-        if(viewModel.state.value.canSubmitSurvey){
-            AddSurvey(
-                viewModel = viewModel,
-                padding = it
-            )
+        if(viewModel.state.value.canSubmitSurvey == null){
+            CircularProgressIndicator()
         }else{
-            CannotAddSurvey(
-                viewModel = viewModel,
-                padding = it
-            )
+            if(viewModel.state.value.canSubmitSurvey!!){
+                AddSurvey(
+                    viewModel = viewModel,
+                    padding = it
+                )
+            }else{
+                CannotAddSurvey(
+                    viewModel = viewModel,
+                    padding = it
+                )
+            }
         }
     }
 }

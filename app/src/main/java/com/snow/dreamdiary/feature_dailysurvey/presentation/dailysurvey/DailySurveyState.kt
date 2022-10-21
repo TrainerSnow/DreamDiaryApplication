@@ -10,5 +10,5 @@ data class DailySurveyState(
     val dreamsNum: String = "0",
     val timeSlept: String = 8.toString(),
 
-    val canSubmitSurvey: Boolean = true
+    val canSubmitSurvey: Boolean? = null
 )

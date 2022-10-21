@@ -1,5 +1,6 @@
 package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey;
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+private const val TAG = "DailySurveyViewModel"
 
 @HiltViewModel
 public class DailySurveyViewModel @Inject constructor(
@@ -37,6 +39,10 @@ public class DailySurveyViewModel @Inject constructor(
                 }) {
                 _state.value = state.value.copy(
                     canSubmitSurvey = false
+                )
+            }else{
+                _state.value = state.value.copy(
+                    canSubmitSurvey = true
                 )
             }
 
