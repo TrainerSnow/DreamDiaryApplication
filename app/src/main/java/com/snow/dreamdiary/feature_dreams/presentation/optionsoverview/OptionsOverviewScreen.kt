@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.EditNote
+import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -60,6 +61,15 @@ fun OptionsOverviewScreen(
                     text = stringResource(id = R.string.daily_survey),
                     icon = Icons.Rounded.EditNote,
                     onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.DailySurveyScreen)) },
+                    num = 0
+                )
+            }
+
+            item {
+                OptionsItem(
+                    text = stringResource(id = R.string.simple_stats),
+                    icon = Icons.Rounded.List,
+                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.SimpleStatsScreen)) },
                     num = 0
                 )
             }

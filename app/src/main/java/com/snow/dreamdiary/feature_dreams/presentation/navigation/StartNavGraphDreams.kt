@@ -12,6 +12,7 @@ import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortnes
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bydreamt.SearchDreamtScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier.SearchModifierScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchmode.SearchModeScreen
+import com.snow.dreamdiary.feature_dreams.presentation.stats.simple.SimpleStatsScreen
 import com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams.ViewDreamsSearchedScreen
 
 const val KEY_MODE = "mode"
@@ -38,6 +39,11 @@ fun StartNavGraphDreams(
             route = DreamScreens.DailySurveyScreen.route
         ) {
             DailySurveyScreen(navController = navController)
+        }
+        composable(
+            route = DreamScreens.SimpleStatsScreen.route
+        ) {
+            SimpleStatsScreen(navController = navController)
         }
         composable(
             route = DreamScreens.SearchDreamtScreen().route,
