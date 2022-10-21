@@ -95,4 +95,8 @@ dependencies {
 
     // Kotlin Extensions and Coroutines support for Room
     implementation 'androidx.room:room-ktx:2.4.3'
+
+    // https://mvnrepository.com/artifact/joda-time/joda-time
+    implementation 'joda-time:joda-time:2.12.0'
+
 }

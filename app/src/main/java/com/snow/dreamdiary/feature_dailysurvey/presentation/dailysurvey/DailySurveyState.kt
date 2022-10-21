@@ -8,5 +8,7 @@ data class DailySurveyState(
         createdAt = TimeUtil.thisDayStartInMillis()
     ),
     val dreamsNum: String = "0",
-    val timeSlept: String = 8.toString()
+    val timeSlept: String = 8.toString(),
+
+    val canSubmitSurvey: Boolean = true
 )

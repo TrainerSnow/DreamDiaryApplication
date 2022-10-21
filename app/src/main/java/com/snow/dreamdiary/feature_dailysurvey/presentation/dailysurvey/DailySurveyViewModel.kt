@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
+import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -26,7 +27,23 @@ public class DailySurveyViewModel @Inject constructor(
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
 
-    fun onEvent(event: DailySurveyEvent){
+    init {
+        viewModelScope.launch {
+            val surveys = surveyUseCases.getSurveys().first()
+            val thisDayBegin = TimeUtil.thisDayStartInMillis()
+
+            if (!surveys.all {
+                    it.createdAt != thisDayBegin
+                }) {
+                _state.value = state.value.copy(
+                    canSubmitSurvey = false
+                )
+            }
+
+        }
+    }
+
+    fun onEvent(event: DailySurveyEvent) {
         when (event) {
             is DailySurveyEvent.ChangeActivity -> {
                 _state.value = state.value.copy(
