@@ -48,6 +48,27 @@ fun DailySurveyScreen(
         }
     }
 
+
+        if(viewModel.state.value.canSubmitSurvey == null){
+            CircularProgressIndicator()
+        }else{
+            if(viewModel.state.value.canSubmitSurvey!!){
+                AddSurvey(
+                    viewModel = viewModel
+                )
+            }else{
+                CannotAddSurvey()
+            }
+        }
+
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun AddSurvey(
+    viewModel: DailySurveyViewModel
+) {
+
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -59,145 +80,113 @@ fun DailySurveyScreen(
                 )
             }
         }
-    ) {
-        // TODO: Wrap in If
-        if(viewModel.state.value.canSubmitSurvey == null){
-            CircularProgressIndicator()
-        }else{
-            if(viewModel.state.value.canSubmitSurvey!!){
-                AddSurvey(
-                    viewModel = viewModel,
-                    padding = it
+    ){ padding ->
+        Column(
+            modifier = Modifier
+                .padding(
+                    start = padding.calculateStartPadding(LayoutDirection.Ltr) + 16.dp,
+                    top = padding.calculateTopPadding() + 16.dp,
+                    end = padding.calculateEndPadding(LayoutDirection.Ltr) + 16.dp,
+                    bottom = padding.calculateBottomPadding() + 16.dp
+                ),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+
+        ) {
+            Text(
+                text = stringResource(id = R.string.did_dream_today),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
+            )
+            Switch(
+                onCheckedChange = { viewModel.onEvent(DailySurveyEvent.ChangeDidDream(it)) },
+                checked = viewModel.state.value.surveyData.didDream
+            )
+
+            //Did dream?
+            Text(
+                text = stringResource(id = R.string.how_many_dreams),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
+            )
+            TextField(
+                value = viewModel.state.value.dreamsNum,
+                onValueChange = { text ->
+                    viewModel.onEvent(DailySurveyEvent.ChangeDreamsNum(text))
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number
                 )
-            }else{
-                CannotAddSurvey(
-                    viewModel = viewModel,
-                    padding = it
+            )
+
+
+            //Time slept
+            Text(
+                text = stringResource(id = R.string.how_much_slept),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
+            )
+            TextField(
+                value = viewModel.state.value.timeSlept,
+                onValueChange = { text ->
+                    viewModel.onEvent(DailySurveyEvent.ChangeTimeSlept(text))
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number
                 )
-            }
+            )
+
+
+            //Health
+            Text(
+                text = stringResource(id = R.string.how_health),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
+            )
+            Slider(
+                value = viewModel.state.value.surveyData.health.toFloat(),
+                onValueChange = {
+                    viewModel.onEvent(DailySurveyEvent.ChangeHealth(it.toInt()))
+                },
+                valueRange = 0F..10F,
+            )
+
+
+            //Comfortness
+            Text(
+                text = stringResource(id = R.string.how_comfortness),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
+            )
+            Slider(
+                value = viewModel.state.value.surveyData.comfortness.toFloat(),
+                onValueChange = {
+                    viewModel.onEvent(DailySurveyEvent.ChangeComfortness(it.toInt()))
+                },
+                valueRange = 0F..10F,
+            )
+
+            //Physical Activity
+            Text(
+                text = stringResource(id = R.string.how_activity),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
+            )
+            Slider(
+                value = viewModel.state.value.surveyData.physicalActivity.toFloat(),
+                onValueChange = {
+                    viewModel.onEvent(DailySurveyEvent.ChangeActivity(it.toInt()))
+                },
+                valueRange = 0F..10F,
+            )
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun AddSurvey(
-    viewModel: DailySurveyViewModel,
-    padding: PaddingValues
-) {
-    Column(
-        modifier = Modifier
-            .padding(
-                start = padding.calculateStartPadding(LayoutDirection.Ltr) + 16.dp,
-                top = padding.calculateTopPadding() + 16.dp,
-                end = padding.calculateEndPadding(LayoutDirection.Ltr) + 16.dp,
-                bottom = padding.calculateBottomPadding() + 16.dp
-            ),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-
-    ) {
-        Text(
-            text = stringResource(id = R.string.did_dream_today),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
-        )
-        Switch(
-            onCheckedChange = { viewModel.onEvent(DailySurveyEvent.ChangeDidDream(it)) },
-            checked = viewModel.state.value.surveyData.didDream
-        )
-
-        //Did dream?
-        Text(
-            text = stringResource(id = R.string.how_many_dreams),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
-        )
-        TextField(
-            value = viewModel.state.value.dreamsNum,
-            onValueChange = { text ->
-                viewModel.onEvent(DailySurveyEvent.ChangeDreamsNum(text))
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number
-            )
-        )
-
-
-        //Time slept
-        Text(
-            text = stringResource(id = R.string.how_much_slept),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
-        )
-        TextField(
-            value = viewModel.state.value.timeSlept,
-            onValueChange = { text ->
-                viewModel.onEvent(DailySurveyEvent.ChangeTimeSlept(text))
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number
-            )
-        )
-
-
-        //Health
-        Text(
-            text = stringResource(id = R.string.how_health),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
-        )
-        Slider(
-            value = viewModel.state.value.surveyData.health.toFloat(),
-            onValueChange = {
-                viewModel.onEvent(DailySurveyEvent.ChangeHealth(it.toInt()))
-            },
-            valueRange = 0F..10F,
-        )
-
-
-        //Comfortness
-        Text(
-            text = stringResource(id = R.string.how_comfortness),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
-        )
-        Slider(
-            value = viewModel.state.value.surveyData.comfortness.toFloat(),
-            onValueChange = {
-                viewModel.onEvent(DailySurveyEvent.ChangeComfortness(it.toInt()))
-            },
-            valueRange = 0F..10F,
-        )
-
-        //Physical Activity
-        Text(
-            text = stringResource(id = R.string.how_activity),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = MaterialTheme.typography.bodySmall.fontWeight,
-        )
-        Slider(
-            value = viewModel.state.value.surveyData.physicalActivity.toFloat(),
-            onValueChange = {
-                viewModel.onEvent(DailySurveyEvent.ChangeActivity(it.toInt()))
-            },
-            valueRange = 0F..10F,
-        )
-    }
-}
-
-@Composable
-private fun CannotAddSurvey(
-    viewModel: DailySurveyViewModel,
-    padding: PaddingValues
-) {
+private fun CannotAddSurvey() {
     Box(
         modifier = Modifier
-            .padding(
-                start = padding.calculateStartPadding(LayoutDirection.Ltr) + 16.dp,
-                top = padding.calculateTopPadding() + 16.dp,
-                end = padding.calculateEndPadding(LayoutDirection.Ltr) + 16.dp,
-                bottom = padding.calculateBottomPadding() + 16.dp
-            ),
+            .fillMaxSize(),
         contentAlignment = Alignment.Center
     ){
         Text(
