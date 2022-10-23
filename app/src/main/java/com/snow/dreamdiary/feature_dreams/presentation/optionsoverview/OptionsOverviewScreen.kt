@@ -51,8 +51,7 @@ fun OptionsOverviewScreen(
                 OptionsItem(
                     text = stringResource(id = R.string.search_dreams),
                     icon = Icons.Rounded.Search,
-                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.SearchModeScreen)) },
-                    num = 0
+                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.SearchModeScreen)) }
                 )
             }
 
@@ -60,8 +59,7 @@ fun OptionsOverviewScreen(
                 OptionsItem(
                     text = stringResource(id = R.string.daily_survey),
                     icon = Icons.Rounded.EditNote,
-                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.DailySurveyScreen)) },
-                    num = 0
+                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.DailySurveyScreen)) }
                 )
             }
 
@@ -69,8 +67,7 @@ fun OptionsOverviewScreen(
                 OptionsItem(
                     text = stringResource(id = R.string.simple_stats),
                     icon = Icons.Rounded.List,
-                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.SimpleStatsScreen)) },
-                    num = 0
+                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.SimpleStatsScreen)) }
                 )
             }
 
@@ -78,8 +75,7 @@ fun OptionsOverviewScreen(
                 OptionsItem(
                     text = "Item nr $i",
                     icon = Icons.Rounded.Search,
-                    onClick = { },
-                    num = i + 1
+                    onClick = { }
                 )
             }
         }
