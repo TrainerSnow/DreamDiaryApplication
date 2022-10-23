@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -55,7 +56,8 @@ fun OptionsItem(
             Text(
                 text = text,
                 style = MaterialTheme.typography.titleMedium,
-                fontFamily = FontFamily.Monospace
+                fontFamily = FontFamily.Monospace,
+                textAlign = TextAlign.Center
             )
         }
     }
