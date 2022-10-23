@@ -9,7 +9,7 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
     entities = [
         Dream::class
     ],
-    version = 1
+    version = 2
 )
 @TypeConverters(com.snow.dreamdiary.common.data.TypeConverters::class)
 abstract class DreamDatabase : RoomDatabase() {

@@ -29,7 +29,9 @@ object AppModule {
             app,
             DreamDatabase::class.java,
             DreamDatabase.DATABASE_NAME
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides
@@ -64,7 +66,9 @@ object AppModule {
             app,
             DailySurveyDataDatabase::class.java,
             DailySurveyDataDatabase.DATABASE_NAME
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides

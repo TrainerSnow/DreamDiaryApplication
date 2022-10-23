@@ -8,12 +8,12 @@ import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
     entities = [
         DailySurveyData::class
     ],
-    version = 1
+    version = 2
 )
 abstract class DailySurveyDataDatabase : RoomDatabase() {
     abstract val dailySurveyDataDao: DailySurveyDataDao
 
     companion object {
-        const val DATABASE_NAME = "dreams_db"
+        const val DATABASE_NAME = "surveys_db"
     }
 }
