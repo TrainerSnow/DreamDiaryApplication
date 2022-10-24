@@ -53,6 +53,7 @@ android {
         javaMaxHeapSize "6g"
 
     }
+    namespace 'com.snow.dreamdiary'
 }
 
 dependencies {
