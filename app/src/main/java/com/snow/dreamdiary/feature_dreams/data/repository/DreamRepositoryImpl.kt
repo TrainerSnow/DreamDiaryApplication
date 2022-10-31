@@ -103,6 +103,28 @@ class DreamRepositoryImpl(
         return locationsMap
     }
 
+    override fun getComfortnesses(): HashMap<String, Int> {
+        val flow = dreamDao.getComfortnesses()
+        var list: List<Int>
+
+        runBlocking {
+            list = flow.first()
+        }
+
+        val comfortnessMap = hashMapOf<String, Int>()
+
+        list.forEach {
+            if(comfortnessMap.containsKey(it.toString())){
+                val existingnum = comfortnessMap[it.toString()] ?: throw java.lang.IllegalStateException("IDK")
+                comfortnessMap[it.toString()] = existingnum + 1
+            }else{
+                comfortnessMap[it.toString()] = 1
+            }
+        }
+
+        return comfortnessMap
+    }
+
     override suspend fun getDreamById(id: Int?): Dream? {
         if (id == null)
             return null

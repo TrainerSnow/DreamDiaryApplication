@@ -81,4 +81,6 @@
     <string name="sleep_over_24">You can\'t sleep over 24 hours on one day.</string>
     <string name="already_did_survey_today">You already submitted a survey today.</string>
     <string name="simple_stats">Simple Statistics</string>
+    <string name="send">Send</string>
+    <string name="advanced_stats">Advanced Stats</string>
 </resources>

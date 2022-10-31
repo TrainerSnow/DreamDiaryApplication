@@ -12,6 +12,7 @@ import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortnes
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bydreamt.SearchDreamtScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier.SearchModifierScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchmode.SearchModeScreen
+import com.snow.dreamdiary.feature_dreams.presentation.stats.advanced.AdvancedStatsScreen
 import com.snow.dreamdiary.feature_dreams.presentation.stats.simple.SimpleStatsScreen
 import com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams.ViewDreamsSearchedScreen
 
@@ -34,6 +35,11 @@ fun StartNavGraphDreams(
             route = DreamScreens.OptionsOverviewScreen.route
         ) {
             OptionsOverviewScreen(navController = navController)
+        }
+        composable(
+            route = DreamScreens.AdvancedStatsScreen.route
+        ) {
+            AdvancedStatsScreen(navController = navController)
         }
         composable(
             route = DreamScreens.DailySurveyScreen.route

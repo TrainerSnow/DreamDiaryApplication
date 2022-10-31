@@ -71,7 +71,15 @@ fun OptionsOverviewScreen(
                 )
             }
 
-            items(count = 3, key = null) { i ->
+            item {
+                OptionsItem(
+                    text = stringResource(id = R.string.advanced_stats),
+                    icon = Icons.Rounded.List,
+                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.AdvancedStatsScreen)) }
+                )
+            }
+
+            items(count = 2, key = null) { i ->
                 OptionsItem(
                     text = "Item nr $i",
                     icon = Icons.Rounded.Search,

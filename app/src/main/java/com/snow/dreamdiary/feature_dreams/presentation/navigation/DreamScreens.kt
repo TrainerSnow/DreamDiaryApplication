@@ -22,6 +22,10 @@ sealed class DreamScreens(
         route = "route_simplestatsscreen"
     )
 
+    object AdvancedStatsScreen : DreamScreens(
+        route = "route_advancedstatsscreen"
+    )
+
     data class SearchDreamtScreen(override var route: String = "route_searchdreamtscreen/{$KEY_MODE}") :
         DreamScreens(route) {
         fun withMode(mode: DreamSearchModes.ByDreamt): SearchDreamtScreen {

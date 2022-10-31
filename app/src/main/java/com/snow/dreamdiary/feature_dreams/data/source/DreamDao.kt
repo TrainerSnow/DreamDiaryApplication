@@ -19,6 +19,9 @@ interface DreamDao {
     @Query("SELECT locations FROM dream")
     fun getLocations(): Flow<List<String>>
 
+    @Query("SELECT comfortness FROM dream")
+    fun getComfortnesses(): Flow<List<Int>>
+
     @Query("SELECT * FROM dream WHERE id = :id")
     suspend fun getDreamById(id: Int): Dream?
 

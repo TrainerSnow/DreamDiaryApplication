@@ -13,6 +13,8 @@ interface DreamRepository {
 
     fun getLocations(): HashMap<String, Int>
 
+    fun getComfortnesses(): HashMap<String, Int>
+
     suspend fun getDreamById(id: Int?): Dream?
 
     suspend fun insertDream(dream: Dream)
