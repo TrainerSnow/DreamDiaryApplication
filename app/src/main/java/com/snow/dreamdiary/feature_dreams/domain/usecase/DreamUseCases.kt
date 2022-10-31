@@ -12,5 +12,6 @@ data class DreamUseCases(
     val getLocations: GetLocationsUseCase,
     val getPersons: GetPersonsUseCase,
     val getDreamById: FindDreamByIdUseCase,
-    val getDreamsForSearchConfig: GetDreamsForSearchConfig
+    val getDreamsForSearchConfig: GetDreamsForSearchConfig,
+    val getModifiersInTime: GetModifiersInTime
 )

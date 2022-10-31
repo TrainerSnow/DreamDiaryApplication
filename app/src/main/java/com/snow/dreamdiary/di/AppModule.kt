@@ -55,7 +55,8 @@ object AppModule {
             getLocations = GetLocationsUseCase(repository),
             getPersons = GetPersonsUseCase(repository),
             getDreamById = FindDreamByIdUseCase(repository),
-            getDreamsForSearchConfig = GetDreamsForSearchConfig(repository)
+            getDreamsForSearchConfig = GetDreamsForSearchConfig(repository),
+            getModifiersInTime = GetModifiersInTime(repository)
         )
     }
 
