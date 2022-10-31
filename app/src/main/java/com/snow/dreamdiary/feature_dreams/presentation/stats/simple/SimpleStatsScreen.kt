@@ -91,13 +91,12 @@ fun SimpleStatsScreen(
                         text = stringResource(id = R.string.locations),
                         selected = viewModel.state.value.modifier == DreamModifier.Location
                     )
-                    LabeledRadioButton(
-                        onClick = { viewModel.onEvent(SimpleStatsEvent.ChangeToComfortness) },
-                        text = stringResource(id = R.string.locations),
-                        selected = viewModel.state.value.showComfortness
-                    )
                 }
-
+                LabeledRadioButton(
+                    onClick = { viewModel.onEvent(SimpleStatsEvent.ChangeToComfortness) },
+                    text = stringResource(id = R.string.comfortness),
+                    selected = viewModel.state.value.showComfortness
+                )
                 Row(
                     horizontalArrangement = Arrangement.SpaceAround
                 ){
