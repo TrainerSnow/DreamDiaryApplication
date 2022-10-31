@@ -1,7 +1,5 @@
 package com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bymodifier.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -23,7 +21,7 @@ fun DialogSelectLogicGate(
     Dialog(
         onDismissRequest = onDismissRequest
     ) {
-        Card{
+        Card {
             Column(
                 modifier = Modifier
                     .padding(16.dp),

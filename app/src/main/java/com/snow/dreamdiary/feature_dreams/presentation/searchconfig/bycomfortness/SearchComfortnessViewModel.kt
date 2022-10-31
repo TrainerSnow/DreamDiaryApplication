@@ -48,7 +48,7 @@ class SearchComfortnessViewModel @Inject constructor(
                         }
                     ) {
                         throw NumberFormatException()
-                    }else if(from >= to){
+                    } else if (from >= to) {
                         viewModelScope.launch {
                             _actionFlow.emit(UIEvent.Message(R.string.from_larger_to))
                         }
@@ -63,7 +63,11 @@ class SearchComfortnessViewModel @Inject constructor(
                     )
 
                     viewModelScope.launch {
-                        _actionFlow.emit(UIEvent.GoToScreen(DreamScreens.ViewSearchedDreamsScreen().withMode(_state.value.mode)))
+                        _actionFlow.emit(
+                            UIEvent.GoToScreen(
+                                DreamScreens.ViewSearchedDreamsScreen().withMode(_state.value.mode)
+                            )
+                        )
                     }
 
                 } catch (e: NumberFormatException) {
@@ -77,7 +81,7 @@ class SearchComfortnessViewModel @Inject constructor(
 
     sealed class UIEvent {
         data class Message(@StringRes val message: Int) : UIEvent()
-        data class GoToScreen(val screen: DreamScreens): UIEvent()
+        data class GoToScreen(val screen: DreamScreens) : UIEvent()
     }
 
 }

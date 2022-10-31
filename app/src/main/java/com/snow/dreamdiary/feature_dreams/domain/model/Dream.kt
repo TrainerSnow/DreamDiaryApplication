@@ -18,9 +18,9 @@ data class Dream(
 
 
     @PrimaryKey(autoGenerate = true) val id: Int? = null
-){
+) {
 
-    fun getAllModifiers(): List<String>{
+    fun getAllModifiers(): List<String> {
         val rList: MutableList<String> = mutableListOf()
         rList.addAll(this.persons)
         rList.addAll(this.feelings)

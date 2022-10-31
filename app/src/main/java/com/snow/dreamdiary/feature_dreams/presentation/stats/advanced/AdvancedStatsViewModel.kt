@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.stats.advanced;
+package com.snow.dreamdiary.feature_dreams.presentation.stats.advanced
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -12,9 +12,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-public class AdvancedStatsViewModel @Inject constructor(
+class AdvancedStatsViewModel @Inject constructor(
     private val dreamUseCases: DreamUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private val _state = mutableStateOf(AdvancedStatsState())
     val state: State<AdvancedStatsState> = _state
@@ -73,7 +73,7 @@ public class AdvancedStatsViewModel @Inject constructor(
                 )
             }
             AdvancedStatsEvent.Search -> {
-                if(state.value.showComfortness){
+                if (state.value.showComfortness) {
                     viewModelScope.launch {
                         val modifierMap = dreamUseCases.getComfortnesses(state.value.searchedValue)
                         val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(
@@ -86,7 +86,7 @@ public class AdvancedStatsViewModel @Inject constructor(
                             modifierData = sortedPairOfArrays.second
                         )
                     }
-                }else{
+                } else {
                     viewModelScope.launch {
                         val modifierMap = when (state.value.modifier) {
                             DreamModifier.Person -> {

@@ -1,6 +1,5 @@
-package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey;
+package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey
 
-import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -19,9 +18,9 @@ import javax.inject.Inject
 private const val TAG = "DailySurveyViewModel"
 
 @HiltViewModel
-public class DailySurveyViewModel @Inject constructor(
+class DailySurveyViewModel @Inject constructor(
     private val surveyUseCases: SurveyUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private val _state = mutableStateOf(DailySurveyState())
     val state: State<DailySurveyState> = _state
@@ -40,7 +39,7 @@ public class DailySurveyViewModel @Inject constructor(
                 _state.value = state.value.copy(
                     canSubmitSurvey = false
                 )
-            }else{
+            } else {
                 _state.value = state.value.copy(
                     canSubmitSurvey = true
                 )
@@ -97,7 +96,7 @@ public class DailySurveyViewModel @Inject constructor(
                     val timesSlept = _state.value.timeSlept.toInt()
                     val dreamsNum = _state.value.timeSlept.toInt()
 
-                    if(timesSlept > 24){
+                    if (timesSlept > 24) {
                         viewModelScope.launch {
                             _actionFlow.emit(UIEvent.Message(R.string.sleep_over_24))
                         }
@@ -133,8 +132,8 @@ public class DailySurveyViewModel @Inject constructor(
     }
 
 
-    sealed class UIEvent{
-        data class Message(@StringRes val res: Int): UIEvent()
+    sealed class UIEvent {
+        data class Message(@StringRes val res: Int) : UIEvent()
         object Back : UIEvent()
     }
 }

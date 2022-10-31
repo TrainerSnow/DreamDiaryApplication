@@ -31,7 +31,7 @@ fun DailySurveyScreen(
 
     val context = LocalContext.current
 
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest {
             when (it) {
                 is DailySurveyViewModel.UIEvent.Message -> {
@@ -49,17 +49,17 @@ fun DailySurveyScreen(
     }
 
 
-        if(viewModel.state.value.canSubmitSurvey == null){
-            CircularProgressIndicator()
-        }else{
-            if(viewModel.state.value.canSubmitSurvey!!){
-                AddSurvey(
-                    viewModel = viewModel
-                )
-            }else{
-                CannotAddSurvey()
-            }
+    if (viewModel.state.value.canSubmitSurvey == null) {
+        CircularProgressIndicator()
+    } else {
+        if (viewModel.state.value.canSubmitSurvey!!) {
+            AddSurvey(
+                viewModel = viewModel
+            )
+        } else {
+            CannotAddSurvey()
         }
+    }
 
 }
 
@@ -80,7 +80,7 @@ private fun AddSurvey(
                 )
             }
         }
-    ){ padding ->
+    ) { padding ->
         Column(
             modifier = Modifier
                 .padding(
@@ -188,7 +188,7 @@ private fun CannotAddSurvey() {
         modifier = Modifier
             .fillMaxSize(),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         Text(
             text = stringResource(id = R.string.already_did_survey_today),
             style = MaterialTheme.typography.bodyMedium

@@ -72,7 +72,7 @@ fun SimpleStatsScreen(
             modifier = Modifier
                 .padding(16.dp)
         ) {
-            Column() {
+            Column {
                 Row(
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
@@ -99,7 +99,7 @@ fun SimpleStatsScreen(
                 )
                 Row(
                     horizontalArrangement = Arrangement.SpaceAround
-                ){
+                ) {
                     OutlinedTextField(
                         modifier = Modifier
                             .weight(1F),

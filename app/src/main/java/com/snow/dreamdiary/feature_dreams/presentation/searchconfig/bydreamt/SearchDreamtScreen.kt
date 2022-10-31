@@ -32,7 +32,7 @@ fun SearchDreamtScreen(
 ) {
 
 
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest {
             when (it) {
                 is SearchDreamtViewModel.UIEvent.GoToScreen -> {

@@ -59,7 +59,7 @@ class SearchModifierViewModel @Inject constructor(
         }
     }
 
-    sealed class UIEvent{
+    sealed class UIEvent {
         data class GoToScreen(val screen: DreamScreens) : UIEvent()
     }
 }

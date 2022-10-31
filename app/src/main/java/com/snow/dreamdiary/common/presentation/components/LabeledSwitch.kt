@@ -1,6 +1,5 @@
 package com.snow.dreamdiary.common.presentation.components
 
-import android.widget.Space
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -21,10 +20,10 @@ fun LabeledSwitch(
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
-       Text(
-           text = text,
-           style = MaterialTheme.typography.titleMedium
-       )
+        Text(
+            text = text,
+            style = MaterialTheme.typography.titleMedium
+        )
         Spacer(modifier = Modifier.width(12.dp))
         Switch(
             checked = checked,

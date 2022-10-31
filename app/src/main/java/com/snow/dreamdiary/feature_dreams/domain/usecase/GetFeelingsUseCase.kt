@@ -15,12 +15,13 @@ class GetFeelingsUseCase(
         val feelingsMap: HashMap<String, Int> = HashMap()
 
         dreams.forEach {
-            if(it.getAllModifiers().contains(other)){
+            if (it.getAllModifiers().contains(other)) {
                 it.feelings.forEach { feeling ->
-                    if(feelingsMap.containsKey(feeling)){
-                        val existingNum = feelingsMap[feeling] ?: throw IllegalStateException("Should not be null")
+                    if (feelingsMap.containsKey(feeling)) {
+                        val existingNum = feelingsMap[feeling]
+                            ?: throw IllegalStateException("Should not be null")
                         feelingsMap[feeling] = existingNum
-                    }else{
+                    } else {
                         feelingsMap[feeling] = 1
                     }
                 }

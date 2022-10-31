@@ -6,7 +6,7 @@ object Arrayutil {
         arr1: List<String>,
         arr2: List<Int>,
         inverted: Boolean = false
-    ): kotlin.Pair<List<String>, List<Int>>{
+    ): kotlin.Pair<List<String>, List<Int>> {
         val pairs: MutableList<Pair> = mutableListOf()
         arr1.forEachIndexed { index, item ->
             pairs.add(
@@ -17,9 +17,9 @@ object Arrayutil {
             )
         }
 
-        if(inverted){
+        if (inverted) {
             pairs.sortByDescending { it.num }
-        }else{
+        } else {
             pairs.sortBy { it.num }
         }
 
@@ -36,10 +36,10 @@ object Arrayutil {
 
     private class Pair(
         var string: String, var num: Int
-        ) : Comparable<Pair?> {
+    ) : Comparable<Pair?> {
 
         override fun compareTo(other: Pair?): Int {
-            if(other == null)
+            if (other == null)
                 return 1
 
             return this.num - other.num

@@ -4,9 +4,8 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 import com.snow.dreamdiary.feature_dreams.domain.util.DreamSearchModes
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.last
 
-public class GetDreamsForSearchConfig(
+class GetDreamsForSearchConfig(
     private val repository: DreamRepository
 ) {
     suspend operator fun invoke(searchMode: DreamSearchModes): List<Dream> {
@@ -40,7 +39,7 @@ public class GetDreamsForSearchConfig(
         val filteredDreams: MutableList<Dream> = mutableListOf()
 
         dreams.forEach { dream ->
-            if ((searchMode.fromTime..searchMode.toTime).contains(dream.dreamtAt)){
+            if ((searchMode.fromTime..searchMode.toTime).contains(dream.dreamtAt)) {
                 filteredDreams.add(dream)
             }
         }
@@ -53,7 +52,7 @@ public class GetDreamsForSearchConfig(
         val filteredDreams: MutableList<Dream> = mutableListOf()
 
         dreams.forEach { dream ->
-            if ((searchMode.fromVal..searchMode.toVal).contains(dream.comfortness)){
+            if ((searchMode.fromVal..searchMode.toVal).contains(dream.comfortness)) {
                 filteredDreams.add(dream)
             }
         }

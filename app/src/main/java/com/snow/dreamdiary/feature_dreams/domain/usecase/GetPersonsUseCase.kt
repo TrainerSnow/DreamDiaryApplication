@@ -1,6 +1,5 @@
 package com.snow.dreamdiary.feature_dreams.domain.usecase
 
-import android.util.Log
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 import kotlinx.coroutines.flow.first
 

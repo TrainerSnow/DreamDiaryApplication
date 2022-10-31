@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchDreamtViewModel @Inject constructor(
     val savedStateHandle: SavedStateHandle
-) : ViewModel(){
+) : ViewModel() {
 
     private val _state = mutableStateOf(SearchDreamtState())
     val state: State<SearchDreamtState> = _state
@@ -23,7 +23,7 @@ class SearchDreamtViewModel @Inject constructor(
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
 
-    fun onEvent(event: SearchDreamtEvent){
+    fun onEvent(event: SearchDreamtEvent) {
         when (event) {
             is SearchDreamtEvent.ChangeDreamtFrom -> {
                 _state.value = state.value.copy(

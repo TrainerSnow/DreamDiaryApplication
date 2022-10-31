@@ -1,6 +1,5 @@
-package com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams;
+package com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams
 
-import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -12,7 +11,6 @@ import com.snow.dreamdiary.feature_dreams.domain.util.DreamSearchModes
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.KEY_MODE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import org.json.JSONObject
@@ -20,24 +18,28 @@ import javax.inject.Inject
 import kotlin.system.measureTimeMillis
 
 @HiltViewModel
-public class ViewDreamsSearchedViewModel @Inject constructor(
+class ViewDreamsSearchedViewModel @Inject constructor(
     val dreamUseCases: DreamUseCases,
     savedStateHandle: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
 
-    private val _state = mutableStateOf(ViewDreamsSearchedState(
-        searchMode = DreamSearchModes.fromJson(
-            JSONObject(
-                savedStateHandle.get<String>(KEY_MODE) ?: throw java.lang.IllegalStateException("No argument for key $KEY_MODE supplied!")
+    private val _state = mutableStateOf(
+        ViewDreamsSearchedState(
+            searchMode = DreamSearchModes.fromJson(
+                JSONObject(
+                    savedStateHandle.get<String>(KEY_MODE) ?: throw java.lang.IllegalStateException(
+                        "No argument for key $KEY_MODE supplied!"
+                    )
+                )
             )
         )
-    ))
+    )
     val state: State<ViewDreamsSearchedState> = _state
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
 
-    init{
+    init {
         viewModelScope.launch {
             val dreams: List<Dream>
             val timeNeeded = measureTimeMillis {
@@ -51,13 +53,11 @@ public class ViewDreamsSearchedViewModel @Inject constructor(
     }
 
 
-    fun onEvent(event: ViewDreamsSearchedEvent){
+    fun onEvent(event: ViewDreamsSearchedEvent) {
         when (event) {
             else -> {}
         }
     }
 
-    sealed class UIEvent{
-
-    }
+    sealed class UIEvent
 }

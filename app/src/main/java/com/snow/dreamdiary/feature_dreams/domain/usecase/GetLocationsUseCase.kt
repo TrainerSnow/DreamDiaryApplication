@@ -15,12 +15,13 @@ class GetLocationsUseCase(
         val locationsMap: HashMap<String, Int> = HashMap()
 
         dreams.forEach {
-            if(it.getAllModifiers().contains(other)){
+            if (it.getAllModifiers().contains(other)) {
                 it.locations.forEach { location ->
-                    if(locationsMap.containsKey(location)){
-                        val existingNum = locationsMap[location] ?: throw IllegalStateException("Should not be null")
+                    if (locationsMap.containsKey(location)) {
+                        val existingNum = locationsMap[location]
+                            ?: throw IllegalStateException("Should not be null")
                         locationsMap[location] = existingNum
-                    }else{
+                    } else {
                         locationsMap[location] = 1
                     }
                 }

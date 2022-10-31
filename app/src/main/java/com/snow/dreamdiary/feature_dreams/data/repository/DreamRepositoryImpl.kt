@@ -114,10 +114,11 @@ class DreamRepositoryImpl(
         val comfortnessMap = hashMapOf<String, Int>()
 
         list.forEach {
-            if(comfortnessMap.containsKey(it.toString())){
-                val existingnum = comfortnessMap[it.toString()] ?: throw java.lang.IllegalStateException("IDK")
+            if (comfortnessMap.containsKey(it.toString())) {
+                val existingnum =
+                    comfortnessMap[it.toString()] ?: throw java.lang.IllegalStateException("IDK")
                 comfortnessMap[it.toString()] = existingnum + 1
-            }else{
+            } else {
                 comfortnessMap[it.toString()] = 1
             }
         }

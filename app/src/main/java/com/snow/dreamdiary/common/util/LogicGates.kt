@@ -1,6 +1,7 @@
 package com.snow.dreamdiary.common.util
 
 import com.snow.dreamdiary.R
+
 sealed interface LogicGate {
     fun <T> eval(
         values: List<T>,

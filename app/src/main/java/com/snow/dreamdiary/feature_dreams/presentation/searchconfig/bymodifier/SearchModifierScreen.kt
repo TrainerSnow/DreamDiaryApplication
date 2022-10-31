@@ -24,7 +24,7 @@ fun SearchModifierScreen(
     navController: NavHostController
 ) {
 
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest {
             when (it) {
                 is SearchModifierViewModel.UIEvent.GoToScreen -> {

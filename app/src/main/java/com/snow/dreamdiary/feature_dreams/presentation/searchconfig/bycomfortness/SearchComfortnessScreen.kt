@@ -32,7 +32,7 @@ fun SearchComfortnessScreen(
 
     val context = LocalContext.current
 
-    LaunchedEffect(key1 = true){
+    LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest {
             when (it) {
                 is SearchComfortnessViewModel.UIEvent.Message -> {

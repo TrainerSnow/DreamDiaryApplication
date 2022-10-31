@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dreams.presentation.stats.simple;
+package com.snow.dreamdiary.feature_dreams.presentation.stats.simple
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -12,9 +12,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-public class SimpleStatsViewModel @Inject constructor(
+class SimpleStatsViewModel @Inject constructor(
     private val dreamUseCases: DreamUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private val _state = mutableStateOf(SimpleStatsState())
     val state: State<SimpleStatsState> = _state
@@ -59,7 +59,11 @@ public class SimpleStatsViewModel @Inject constructor(
                         state.value.modifier,
                         state.value.showComfortness
                     )
-                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(
+                        modifierPair.first,
+                        modifierPair.second,
+                        true
+                    )
                     _state.value = state.value.copy(
                         modifierLabels = sortedPairOfArrays.first,
                         modifierData = sortedPairOfArrays.second
@@ -83,7 +87,11 @@ public class SimpleStatsViewModel @Inject constructor(
                         state.value.modifier,
                         state.value.showComfortness
                     )
-                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(
+                        modifierPair.first,
+                        modifierPair.second,
+                        true
+                    )
                     _state.value = state.value.copy(
                         modifierLabels = sortedPairOfArrays.first,
                         modifierData = sortedPairOfArrays.second
@@ -125,7 +133,11 @@ public class SimpleStatsViewModel @Inject constructor(
                         state.value.modifier,
                         state.value.showComfortness
                     )
-                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(
+                        modifierPair.first,
+                        modifierPair.second,
+                        true
+                    )
                     _state.value = state.value.copy(
                         modifierLabels = sortedPairOfArrays.first,
                         modifierData = sortedPairOfArrays.second
