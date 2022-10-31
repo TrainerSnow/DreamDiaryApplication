@@ -5,7 +5,8 @@ import com.snow.dreamdiary.feature_dreams.domain.util.DreamModifier
 
 data class SimpleStatsState(
 
-    var modifier: DreamModifier = DreamModifier.Person,
+    var modifier: DreamModifier? = DreamModifier.Person,
+    var showComfortness: Boolean = false,
 
     var fromDateValue: Long = System.currentTimeMillis(),
     var fromDateVis: String = TimeFormatUtil.getMillisFormatted(fromDateValue),

@@ -21,12 +21,23 @@ public class SimpleStatsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val modifierPair = dreamUseCases.getModifiersInTime(
-                state.value.fromDateValue,
-                state.value.toDateValue,
-                state.value.modifier
-            )
-            val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
+            val modifierPair = if (state.value.showComfortness) {
+                dreamUseCases.getModifiersInTime(
+                    state.value.fromDateValue,
+                    state.value.toDateValue,
+                    state.value.modifier,
+                    state.value.showComfortness
+                )
+            } else {
+                dreamUseCases.getModifiersInTime(
+                    state.value.fromDateValue,
+                    state.value.toDateValue,
+                    state.value.modifier!!,
+                    state.value.showComfortness
+                )
+            }
+            val sortedPairOfArrays =
+                Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
             _state.value = state.value.copy(
                 modifierLabels = sortedPairOfArrays.first,
                 modifierData = sortedPairOfArrays.second
@@ -38,13 +49,15 @@ public class SimpleStatsViewModel @Inject constructor(
         when (event) {
             is SimpleStatsEvent.ChangeModifier -> {
                 _state.value = state.value.copy(
-                    modifier = event.modifier
+                    modifier = event.modifier,
+                    showComfortness = false
                 )
                 viewModelScope.launch {
                     val modifierPair = dreamUseCases.getModifiersInTime(
                         state.value.fromDateValue,
                         state.value.toDateValue,
-                        state.value.modifier
+                        state.value.modifier,
+                        state.value.showComfortness
                     )
                     val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
                     _state.value = state.value.copy(
@@ -67,7 +80,8 @@ public class SimpleStatsViewModel @Inject constructor(
                     val modifierPair = dreamUseCases.getModifiersInTime(
                         state.value.fromDateValue,
                         state.value.toDateValue,
-                        state.value.modifier
+                        state.value.modifier,
+                        state.value.showComfortness
                     )
                     val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
                     _state.value = state.value.copy(
@@ -85,9 +99,33 @@ public class SimpleStatsViewModel @Inject constructor(
                     val modifierPair = dreamUseCases.getModifiersInTime(
                         state.value.fromDateValue,
                         state.value.toDateValue,
-                        state.value.modifier
+                        state.value.modifier,
+                        state.value.showComfortness
                     )
-                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second,  true)
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(
+                        modifierPair.first,
+                        modifierPair.second,
+                        true
+                    )
+                    _state.value = state.value.copy(
+                        modifierLabels = sortedPairOfArrays.first,
+                        modifierData = sortedPairOfArrays.second
+                    )
+                }
+            }
+            SimpleStatsEvent.ChangeToComfortness -> {
+                _state.value = state.value.copy(
+                    showComfortness = true,
+                    modifier = null
+                )
+                viewModelScope.launch {
+                    val modifierPair = dreamUseCases.getModifiersInTime(
+                        state.value.fromDateValue,
+                        state.value.toDateValue,
+                        state.value.modifier,
+                        state.value.showComfortness
+                    )
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
                     _state.value = state.value.copy(
                         modifierLabels = sortedPairOfArrays.first,
                         modifierData = sortedPairOfArrays.second

@@ -7,4 +7,5 @@ sealed class SimpleStatsEvent{
     data class ChangeTimeFrom(val newTime: Long): SimpleStatsEvent()
     data class ChangeTimeTo(val newTime: Long): SimpleStatsEvent()
     object ToggleDialog: SimpleStatsEvent()
+    object ChangeToComfortness: SimpleStatsEvent()
 }

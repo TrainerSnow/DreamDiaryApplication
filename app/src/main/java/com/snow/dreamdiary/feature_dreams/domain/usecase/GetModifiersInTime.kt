@@ -12,8 +12,14 @@ public class GetModifiersInTime(
     suspend operator fun invoke(
         fromTime: Long,
         toTime: Long,
-        modifierType: DreamModifier
+        modifierType: DreamModifier?,
+        useComfortness: Boolean
     ): Pair<List<String>, List<Int>> {
+
+        if(modifierType == null && !useComfortness){
+            throw IllegalArgumentException("modifierType == null && !useComfortness results to true, should not occur")
+        }
+
         var dreams: List<Dream> = repository.getDreams().first()
         dreams = dreams.filter {
             it.dreamtAt in (fromTime + 1) until toTime
@@ -22,41 +28,57 @@ public class GetModifiersInTime(
         val nameList = mutableListOf<String>()
         val dataList = mutableListOf<Int>()
 
-        when (modifierType) {
-            DreamModifier.Person -> {
-                dreams.forEach{
-                    it.persons.forEach { modifier ->
-                        if(nameList.contains(modifier)){
-                            dataList[nameList.indexOf(modifier)] += 1
-                        }else{
-                            nameList.add(modifier)
-                            dataList.add(1)
+        if(useComfortness){
+
+            dreams.forEach{
+                if(nameList.contains(it.comfortness.toString())){
+                    dataList[nameList.indexOf(it.comfortness.toString())] += 1
+                }else{
+                    nameList.add(it.comfortness.toString())
+                    dataList.add(1)
+                }
+            }
+
+        }else{
+            when (modifierType) {
+                DreamModifier.Person -> {
+                    dreams.forEach{
+                        it.persons.forEach { modifier ->
+                            if(nameList.contains(modifier)){
+                                dataList[nameList.indexOf(modifier)] += 1
+                            }else{
+                                nameList.add(modifier)
+                                dataList.add(1)
+                            }
                         }
                     }
                 }
-            }
-            DreamModifier.Feeling -> {
-                dreams.forEach{
-                    it.feelings.forEach { modifier ->
-                        if(nameList.contains(modifier)){
-                            dataList[nameList.indexOf(modifier)] += 1
-                        }else{
-                            nameList.add(modifier)
-                            dataList.add(1)
+                DreamModifier.Feeling -> {
+                    dreams.forEach{
+                        it.feelings.forEach { modifier ->
+                            if(nameList.contains(modifier)){
+                                dataList[nameList.indexOf(modifier)] += 1
+                            }else{
+                                nameList.add(modifier)
+                                dataList.add(1)
+                            }
                         }
                     }
                 }
-            }
-            DreamModifier.Location -> {
-                dreams.forEach{
-                    it.locations.forEach { modifier ->
-                        if(nameList.contains(modifier)){
-                            dataList[nameList.indexOf(modifier)] += 1
-                        }else{
-                            nameList.add(modifier)
-                            dataList.add(1)
+                DreamModifier.Location -> {
+                    dreams.forEach{
+                        it.locations.forEach { modifier ->
+                            if(nameList.contains(modifier)){
+                                dataList[nameList.indexOf(modifier)] += 1
+                            }else{
+                                nameList.add(modifier)
+                                dataList.add(1)
+                            }
                         }
                     }
+                }
+                else -> {
+                    throw IllegalStateException("IDK")
                 }
             }
         }
