@@ -2,14 +2,16 @@ package com.snow.dreamdiary.feature_dreams.presentation.stats.simple
 
 import android.app.DatePickerDialog
 import android.widget.DatePicker
-import android.widget.Space
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -131,13 +133,19 @@ fun SimpleStatsScreen(
                         }
                     )
                 }
-
-                HorizontalBarChart(
-                    labels = viewModel.state.value.modifierLabels,
-                    data = viewModel.state.value.modifierData
-                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Box(
+                    modifier = Modifier
+                        .background(MaterialTheme.colorScheme.primaryContainer)
+                        .padding(12.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                ) {
+                    HorizontalBarChart(
+                        labels = viewModel.state.value.modifierLabels,
+                        data = viewModel.state.value.modifierData
+                    )
+                }
             }
         }
-
     }
 }
