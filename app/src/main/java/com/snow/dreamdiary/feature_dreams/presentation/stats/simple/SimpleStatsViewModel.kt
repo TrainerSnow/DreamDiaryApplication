@@ -4,6 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.snow.dreamdiary.common.util.Arrayutil
 import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,9 +26,10 @@ public class SimpleStatsViewModel @Inject constructor(
                 state.value.toDateValue,
                 state.value.modifier
             )
+            val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
             _state.value = state.value.copy(
-                modifierLabels = modifierPair.first,
-                modifierData = modifierPair.second
+                modifierLabels = sortedPairOfArrays.first,
+                modifierData = sortedPairOfArrays.second
             )
         }
     }
@@ -44,9 +46,10 @@ public class SimpleStatsViewModel @Inject constructor(
                         state.value.toDateValue,
                         state.value.modifier
                     )
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
                     _state.value = state.value.copy(
-                        modifierLabels = modifierPair.first,
-                        modifierData = modifierPair.second
+                        modifierLabels = sortedPairOfArrays.first,
+                        modifierData = sortedPairOfArrays.second
                     )
                 }
             }
@@ -66,9 +69,10 @@ public class SimpleStatsViewModel @Inject constructor(
                         state.value.toDateValue,
                         state.value.modifier
                     )
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second, true)
                     _state.value = state.value.copy(
-                        modifierLabels = modifierPair.first,
-                        modifierData = modifierPair.second
+                        modifierLabels = sortedPairOfArrays.first,
+                        modifierData = sortedPairOfArrays.second
                     )
                 }
             }
@@ -83,9 +87,10 @@ public class SimpleStatsViewModel @Inject constructor(
                         state.value.toDateValue,
                         state.value.modifier
                     )
+                    val sortedPairOfArrays = Arrayutil.sortArraysDependingOnFirst(modifierPair.first, modifierPair.second,  true)
                     _state.value = state.value.copy(
-                        modifierLabels = modifierPair.first,
-                        modifierData = modifierPair.second
+                        modifierLabels = sortedPairOfArrays.first,
+                        modifierData = sortedPairOfArrays.second
                     )
                 }
             }
