@@ -6,10 +6,6 @@ import java.util.*
 
 object TimeUtil {
 
-    fun millisFromLocalDate(date: LocalDate): Long {
-        return date.getLong(ChronoField.EPOCH_DAY) * 24 * 60 * 60 * 1000
-    }
-
     fun millisFromDateDescription(year: Int, month: Int, dayOfMonth: Int): Long {
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.YEAR, year)
