@@ -2,6 +2,7 @@ package com.snow.dreamdiary.common.util
 
 import org.joda.time.DateTime
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 object TimeUtil {
 
@@ -36,6 +37,14 @@ object TimeUtil {
         val now = DateTime()
         val today = now.toLocalDate()
         return today.toDateTimeAtStartOfDay().millis
+    }
+
+    fun dayRangeFromMillis(millisInDay: Long): LongRange{
+        val dayNum = TimeUnit.MILLISECONDS.toDays(millisInDay)
+        val millisSinceStartOfDay = dayNum * 24 * 60 * 60 * 1000
+        val millisAtEndofDay = millisSinceStartOfDay + (24 * 60 * 60 * 1000) - 1
+
+        return millisSinceStartOfDay..millisAtEndofDay
     }
 
 }
