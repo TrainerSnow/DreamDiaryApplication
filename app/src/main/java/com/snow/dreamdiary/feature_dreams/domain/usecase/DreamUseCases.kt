@@ -12,11 +12,11 @@ data class DreamUseCases(
     val getLocations: GetLocationsUseCase,
     val getPersons: GetPersonsUseCase,
     val getDreamById: FindDreamByIdUseCase,
-    val getDreamsForSearchConfig: GetDreamsForSearchConfig,
-    val getModifiersInTime: GetModifiersInTime,
+    val getDreamsForSearchConfig: GetDreamsForSearchConfigUseCase,
+    val getModifiersInTime: GetModifiersInTimeUseCase,
     val getComfortnesses: GetComfortnessesUseCase,
-    val getModifierTimeStamps: GetModifierTimeStamps,
-    val getDreamTimeStamps: GetDreamTimeStamps,
-    val getComfortnessTimeStamps: GetComfortnessTimeStamps,
-    val getEarliestDreamTimeStamp: GetEarliestDreamTimeStamp
+    val getModifierTimeStamps: GetModifierTimeStampsUseCase,
+    val getDreamTimeStamps: GetDreamTimeStampsUseCase,
+    val getComfortnessTimeStamps: GetComfortnessTimeStampsUseCase,
+    val getEarliestDreamTimeStamp: GetEarliestDreamTimeStampUseCase
 )

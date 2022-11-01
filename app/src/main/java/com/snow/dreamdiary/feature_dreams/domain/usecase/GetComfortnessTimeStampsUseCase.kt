@@ -3,7 +3,7 @@ package com.snow.dreamdiary.feature_dreams.domain.usecase;
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 import kotlinx.coroutines.flow.first
 
-public class GetComfortnessTimeStamps(
+public class GetComfortnessTimeStampsUseCase(
     private val repository: DreamRepository
 ) {
     suspend operator fun invoke(comfortness: Int): List<Long>{

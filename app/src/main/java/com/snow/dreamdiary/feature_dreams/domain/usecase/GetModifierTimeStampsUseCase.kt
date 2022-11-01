@@ -3,7 +3,7 @@ package com.snow.dreamdiary.feature_dreams.domain.usecase;
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 import kotlinx.coroutines.flow.first
 
-public class GetModifierTimeStamps(
+public class GetModifierTimeStampsUseCase(
     private val repository: DreamRepository
 ) {
 

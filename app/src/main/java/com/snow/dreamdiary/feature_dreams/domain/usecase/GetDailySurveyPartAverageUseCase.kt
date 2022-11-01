@@ -2,7 +2,7 @@ package com.snow.dreamdiary.feature_dreams.domain.usecase;
 
 import com.snow.dreamdiary.feature_dreams.domain.model.DailySurveyData
 
-public class GetDailySurveyPartAverage(
+public class GetDailySurveyPartAverageUseCase(
     private val getSurveysUseCase: GetSurveysUseCase
 ) {
     suspend operator fun <T>invoke(selector: (DailySurveyData) -> Int): Float{
