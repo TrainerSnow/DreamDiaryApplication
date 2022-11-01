@@ -88,7 +88,8 @@ object AppModule {
     fun provideSurveyUseCases(repository: DailySurveyRepository): SurveyUseCases {
         return SurveyUseCases(
             addSurvey = AddSurveyUseCase(repository),
-            getSurveys = GetSurveysUseCase(repository)
+            getSurveys = GetSurveysUseCase(repository),
+            getDailySurveyPartAverage = GetDailySurveyPartAverage(GetSurveysUseCase(repository))
         )
     }
 }

@@ -2,5 +2,6 @@ package com.snow.dreamdiary.feature_dreams.domain.usecase
 
 class SurveyUseCases(
     val addSurvey: AddSurveyUseCase,
-    val getSurveys: GetSurveysUseCase
+    val getSurveys: GetSurveysUseCase,
+    getDailySurveyPartAverage: GetDailySurveyPartAverage
 )
