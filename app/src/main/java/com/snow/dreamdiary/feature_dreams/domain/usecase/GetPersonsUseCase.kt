@@ -30,7 +30,7 @@ class GetPersonsUseCase(
                 }
             }
         }
-
+        personsMap.remove(other)
         return personsMap
     }
 }

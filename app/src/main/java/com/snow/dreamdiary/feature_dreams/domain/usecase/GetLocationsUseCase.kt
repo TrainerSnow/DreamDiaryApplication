@@ -27,7 +27,7 @@ class GetLocationsUseCase(
                 }
             }
         }
-
+        locationsMap.remove(other)
         return locationsMap
     }
 }

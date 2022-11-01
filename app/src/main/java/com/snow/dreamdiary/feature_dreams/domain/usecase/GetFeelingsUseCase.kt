@@ -27,7 +27,7 @@ class GetFeelingsUseCase(
                 }
             }
         }
-
+        feelingsMap.remove(other)
         return feelingsMap
     }
 }
