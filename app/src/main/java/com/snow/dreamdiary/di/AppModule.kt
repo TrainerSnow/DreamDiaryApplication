@@ -3,13 +3,10 @@ package com.snow.dreamdiary.di
 import android.app.Application
 import androidx.room.Room
 import com.snow.dreamdiary.feature_dreams.data.repository.DailySurveyRepositoryImpl
-import com.snow.dreamdiary.feature_dreams.data.source.DailySurveyDataDatabase
-import com.snow.dreamdiary.feature_dreams.domain.repository.DailySurveyRepository
-import com.snow.dreamdiary.feature_dreams.domain.usecase.AddSurveyUseCase
-import com.snow.dreamdiary.feature_dreams.domain.usecase.GetSurveysUseCase
-import com.snow.dreamdiary.feature_dreams.domain.usecase.SurveyUseCases
 import com.snow.dreamdiary.feature_dreams.data.repository.DreamRepositoryImpl
+import com.snow.dreamdiary.feature_dreams.data.source.DailySurveyDataDatabase
 import com.snow.dreamdiary.feature_dreams.data.source.DreamDatabase
+import com.snow.dreamdiary.feature_dreams.domain.repository.DailySurveyRepository
 import com.snow.dreamdiary.feature_dreams.domain.repository.DreamRepository
 import com.snow.dreamdiary.feature_dreams.domain.usecase.*
 import dagger.Module
@@ -89,7 +86,17 @@ object AppModule {
         return SurveyUseCases(
             addSurvey = AddSurveyUseCase(repository),
             getSurveys = GetSurveysUseCase(repository),
-            getDailySurveyPartAverage = GetDailySurveyPartAverageUseCase(GetSurveysUseCase(repository))
+            getDailySurveyPartAverage = GetDailySurveyPartAverageUseCase(
+                GetSurveysUseCase(repository)
+            ),
+            getSurveyPartsOverAverageNum = GetSurveyPartsOverAverageNum(
+                GetSurveysUseCase(repository),
+                GetDailySurveyPartAverageUseCase(
+                    GetSurveysUseCase(
+                        repository
+                    )
+                )
+            )
         )
     }
 }

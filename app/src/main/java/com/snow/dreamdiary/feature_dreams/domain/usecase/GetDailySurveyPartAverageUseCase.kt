@@ -5,7 +5,7 @@ import com.snow.dreamdiary.feature_dreams.domain.model.DailySurveyData
 public class GetDailySurveyPartAverageUseCase(
     private val getSurveysUseCase: GetSurveysUseCase
 ) {
-    suspend operator fun <T>invoke(selector: (DailySurveyData) -> Int): Float{
+    suspend operator fun invoke(selector: (DailySurveyData) -> Int): Float{
         val surveys = getSurveysUseCase()
         val values = mutableListOf<Int>()
 
