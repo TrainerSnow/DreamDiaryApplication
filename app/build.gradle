@@ -14,7 +14,7 @@ android {
         applicationId "com.snow.dreamdiary"
         minSdk 21
         multiDexEnabled = true;
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
