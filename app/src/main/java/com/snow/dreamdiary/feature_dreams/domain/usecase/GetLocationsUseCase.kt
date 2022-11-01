@@ -20,7 +20,7 @@ class GetLocationsUseCase(
                     if (locationsMap.containsKey(location)) {
                         val existingNum = locationsMap[location]
                             ?: throw IllegalStateException("Should not be null")
-                        locationsMap[location] = existingNum
+                        locationsMap[location] = existingNum + 1
                     } else {
                         locationsMap[location] = 1
                     }

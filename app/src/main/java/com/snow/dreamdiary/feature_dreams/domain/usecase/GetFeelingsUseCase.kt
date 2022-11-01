@@ -20,7 +20,7 @@ class GetFeelingsUseCase(
                     if (feelingsMap.containsKey(feeling)) {
                         val existingNum = feelingsMap[feeling]
                             ?: throw IllegalStateException("Should not be null")
-                        feelingsMap[feeling] = existingNum
+                        feelingsMap[feeling] = existingNum + 1
                     } else {
                         feelingsMap[feeling] = 1
                     }
