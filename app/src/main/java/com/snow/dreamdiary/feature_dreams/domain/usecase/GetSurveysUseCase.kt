@@ -11,4 +11,17 @@ class GetSurveysUseCase(
     suspend operator fun invoke(): List<DailySurveyData> {
         return repository.getSurveyDatas().first()
     }
+
+    suspend operator fun invoke(dateRange: LongRange): List<DailySurveyData>{
+        val surveys = this()
+        val rList: MutableList<DailySurveyData> = mutableListOf()
+
+        surveys.forEach {
+            if(it.createdAt in dateRange){
+                rList.add(it)
+            }
+        }
+
+        return rList
+    }
 }
