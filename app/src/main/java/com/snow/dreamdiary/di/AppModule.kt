@@ -96,6 +96,14 @@ object AppModule {
                         repository
                     )
                 )
+            ),
+            getSurveyPartsBelowAverageNum = GetSurveyPartsBelowAverageNum(
+                GetSurveysUseCase(repository),
+                GetDailySurveyPartAverageUseCase(
+                    GetSurveysUseCase(
+                        repository
+                    )
+                )
             )
         )
     }
