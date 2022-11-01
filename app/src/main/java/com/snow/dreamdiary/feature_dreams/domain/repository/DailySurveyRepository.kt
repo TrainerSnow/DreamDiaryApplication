@@ -1,6 +1,6 @@
-package com.snow.dreamdiary.feature_dailysurvey.domain.repository
+package com.snow.dreamdiary.feature_dreams.domain.repository
 
-import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
+import com.snow.dreamdiary.feature_dreams.domain.model.DailySurveyData
 import kotlinx.coroutines.flow.Flow
 
 interface DailySurveyRepository {

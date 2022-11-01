@@ -6,7 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey.DailySurveyScreen
+import com.snow.dreamdiary.feature_dreams.presentation.dailysurvey.DailySurveyScreen
 import com.snow.dreamdiary.feature_dreams.presentation.history.HistoryScreen
 import com.snow.dreamdiary.feature_dreams.presentation.optionsoverview.OptionsOverviewScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortness.SearchComfortnessScreen

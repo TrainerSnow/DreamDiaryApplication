@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey
+package com.snow.dreamdiary.feature_dreams.presentation.dailysurvey
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*

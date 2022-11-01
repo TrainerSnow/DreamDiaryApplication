@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey
+package com.snow.dreamdiary.feature_dreams.presentation.dailysurvey
 
 sealed class DailySurveyEvent {
     data class ChangeDidDream(val didDream: Boolean) : DailySurveyEvent()

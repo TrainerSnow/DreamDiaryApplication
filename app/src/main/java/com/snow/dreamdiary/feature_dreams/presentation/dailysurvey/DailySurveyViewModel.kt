@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey
+package com.snow.dreamdiary.feature_dreams.presentation.dailysurvey
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.State
@@ -6,8 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.R
-import com.snow.dreamdiary.feature_dailysurvey.domain.usecase.SurveyUseCases
-import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
+import com.snow.dreamdiary.feature_dreams.domain.usecase.SurveyUseCases
+import com.snow.dreamdiary.feature_dreams.domain.util.TimeUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

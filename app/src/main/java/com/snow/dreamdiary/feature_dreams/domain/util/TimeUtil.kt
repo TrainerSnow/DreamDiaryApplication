@@ -1,4 +1,4 @@
-package com.snow.dreamdiary.feature_dailysurvey.domain.util
+package com.snow.dreamdiary.feature_dreams.domain.util
 
 import org.joda.time.DateTime
 

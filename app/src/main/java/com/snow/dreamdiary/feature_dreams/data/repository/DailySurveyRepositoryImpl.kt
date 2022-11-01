@@ -1,9 +1,9 @@
-package com.snow.dreamdiary.feature_dailysurvey.data.repository
+package com.snow.dreamdiary.feature_dreams.data.repository
 
-import com.snow.dreamdiary.feature_dailysurvey.data.source.DailySurveyDataDao
-import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
-import com.snow.dreamdiary.feature_dailysurvey.domain.repository.DailySurveyRepository
-import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
+import com.snow.dreamdiary.feature_dreams.data.source.DailySurveyDataDao
+import com.snow.dreamdiary.feature_dreams.domain.model.DailySurveyData
+import com.snow.dreamdiary.feature_dreams.domain.repository.DailySurveyRepository
+import com.snow.dreamdiary.feature_dreams.domain.util.TimeUtil
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 

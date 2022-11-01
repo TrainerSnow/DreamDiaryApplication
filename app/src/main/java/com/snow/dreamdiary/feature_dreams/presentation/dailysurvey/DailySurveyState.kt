@@ -1,7 +1,7 @@
-package com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey
+package com.snow.dreamdiary.feature_dreams.presentation.dailysurvey
 
-import com.snow.dreamdiary.feature_dailysurvey.domain.model.DailySurveyData
-import com.snow.dreamdiary.feature_dailysurvey.domain.util.TimeUtil
+import com.snow.dreamdiary.feature_dreams.domain.model.DailySurveyData
+import com.snow.dreamdiary.feature_dreams.domain.util.TimeUtil
 
 data class DailySurveyState(
     val surveyData: DailySurveyData = DailySurveyData(
