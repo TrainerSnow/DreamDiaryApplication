@@ -30,7 +30,7 @@ class DailySurveyViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val surveys = surveyUseCases.getSurveys().first()
+            val surveys = surveyUseCases.getSurveys()
             val thisDayBegin = TimeUtil.thisDayStartInMillis()
 
             if (!surveys.all {
@@ -117,7 +117,6 @@ class DailySurveyViewModel @Inject constructor(
 
                     viewModelScope.launch {
                         surveyUseCases.addSurvey(_state.value.surveyData)
-                        val surveys = surveyUseCases.getSurveys().first()
                         _actionFlow.emit(UIEvent.Back)
                     }
 
