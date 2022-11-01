@@ -22,6 +22,10 @@ sealed class DreamScreens(
         route = "route_simplestatsscreen"
     )
 
+    object HistoryScreen : DreamScreens(
+        route = "route_history"
+    )
+
     object AdvancedStatsScreen : DreamScreens(
         route = "route_advancedstatsscreen"
     )

@@ -14,5 +14,9 @@ data class DreamUseCases(
     val getDreamById: FindDreamByIdUseCase,
     val getDreamsForSearchConfig: GetDreamsForSearchConfig,
     val getModifiersInTime: GetModifiersInTime,
-    val getComfortnesses: GetComfortnessesUseCase
+    val getComfortnesses: GetComfortnessesUseCase,
+    val getModifierTimeStamps: GetModifierTimeStamps,
+    val getDreamTimeStamps: GetDreamTimeStamps,
+    val getComfortnessTimeStamps: GetComfortnessTimeStamps,
+    val getEarliestDreamTimeStamp: GetEarliestDreamTimeStamp
 )

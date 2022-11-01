@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.snow.dreamdiary.feature_dailysurvey.presentation.dailysurvey.DailySurveyScreen
+import com.snow.dreamdiary.feature_dreams.presentation.history.HistoryScreen
 import com.snow.dreamdiary.feature_dreams.presentation.optionsoverview.OptionsOverviewScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bycomfortness.SearchComfortnessScreen
 import com.snow.dreamdiary.feature_dreams.presentation.searchconfig.bydreamt.SearchDreamtScreen
@@ -35,6 +36,11 @@ fun StartNavGraphDreams(
             route = DreamScreens.OptionsOverviewScreen.route
         ) {
             OptionsOverviewScreen(navController = navController)
+        }
+        composable(
+            route = DreamScreens.HistoryScreen.route
+        ) {
+            HistoryScreen(navController = navController)
         }
         composable(
             route = DreamScreens.AdvancedStatsScreen.route

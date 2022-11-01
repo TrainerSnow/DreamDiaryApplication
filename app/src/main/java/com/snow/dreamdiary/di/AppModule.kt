@@ -57,7 +57,11 @@ object AppModule {
             getDreamById = FindDreamByIdUseCase(repository),
             getDreamsForSearchConfig = GetDreamsForSearchConfig(repository),
             getModifiersInTime = GetModifiersInTime(repository),
-            getComfortnesses = GetComfortnessesUseCase(repository)
+            getComfortnesses = GetComfortnessesUseCase(repository),
+            getModifierTimeStamps = GetModifierTimeStamps(repository),
+            getDreamTimeStamps = GetDreamTimeStamps(repository),
+            getComfortnessTimeStamps = GetComfortnessTimeStamps(repository),
+            getEarliestDreamTimeStamp = GetEarliestDreamTimeStamp(repository)
         )
     }
 

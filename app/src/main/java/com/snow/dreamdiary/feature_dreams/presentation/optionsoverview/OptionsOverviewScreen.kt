@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -79,7 +80,15 @@ fun OptionsOverviewScreen(
                 )
             }
 
-            items(count = 2, key = null) { i ->
+            item {
+                OptionsItem(
+                    text = stringResource(id = R.string.history),
+                    icon = Icons.Rounded.Timer,
+                    onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.HistoryScreen)) }
+                )
+            }
+
+            items(count = 1, key = null) { i ->
                 OptionsItem(
                     text = "Item nr $i",
                     icon = Icons.Rounded.Search,

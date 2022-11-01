@@ -83,4 +83,11 @@
     <string name="simple_stats">Simple Statistics</string>
     <string name="send">Send</string>
     <string name="advanced_stats">Advanced Stats</string>
+    <string name="dream">Dream</string>
+    <string name="user_defined">User Defined</string>
+    <string name="actual">Actual</string>
+    <string name="change">Changed</string>
+    <string name="history">History</string>
+    <string name="amount">Amount</string>
+    <string name="time">Time</string>
 </resources>
