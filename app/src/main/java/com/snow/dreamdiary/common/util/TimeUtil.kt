@@ -1,7 +1,6 @@
 package com.snow.dreamdiary.common.util
 
-import java.time.LocalDate
-import java.time.temporal.ChronoField
+import org.joda.time.DateTime
 import java.util.*
 
 object TimeUtil {
@@ -31,6 +30,12 @@ object TimeUtil {
         val calendar = Calendar.getInstance()
 
         return calendar.get(Calendar.DAY_OF_MONTH)
+    }
+
+    fun thisDayStartInMillis(): Long {
+        val now = DateTime()
+        val today = now.toLocalDate()
+        return today.toDateTimeAtStartOfDay().millis
     }
 
 }
