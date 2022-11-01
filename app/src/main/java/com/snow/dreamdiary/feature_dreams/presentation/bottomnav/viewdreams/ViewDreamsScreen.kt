@@ -63,12 +63,6 @@ fun ViewDreamsScreen(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    navigationIcon = {
-                        Icon(
-                            imageVector = Icons.Sharp.ArrowBack,
-                            contentDescription = stringResource(id = R.string.cd_back)
-                        )
-                    },
                     title = {
                         Text(
                             text = if (currentDream == null)
