@@ -89,7 +89,7 @@ object AppModule {
             getDailySurveyPartAverage = GetDailySurveyPartAverageUseCase(
                 GetSurveysUseCase(repository)
             ),
-            getSurveyPartsOverAverageNum = GetSurveyPartsOverAverageNum(
+            getSurveyPartsOverAverage = GetSurveyPartsOverAverage(
                 GetSurveysUseCase(repository),
                 GetDailySurveyPartAverageUseCase(
                     GetSurveysUseCase(
@@ -97,7 +97,7 @@ object AppModule {
                     )
                 )
             ),
-            getSurveyPartsBelowAverageNum = GetSurveyPartsBelowAverageNum(
+            getSurveyPartsBelowAverage = GetSurveyPartsBelowAverage(
                 GetSurveysUseCase(repository),
                 GetDailySurveyPartAverageUseCase(
                     GetSurveysUseCase(

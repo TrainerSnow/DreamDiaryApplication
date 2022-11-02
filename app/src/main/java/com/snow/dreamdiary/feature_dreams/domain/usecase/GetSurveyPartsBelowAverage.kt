@@ -2,46 +2,46 @@ package com.snow.dreamdiary.feature_dreams.domain.usecase;
 
 import com.snow.dreamdiary.feature_dreams.domain.model.DailySurveyData
 
-public class GetSurveyPartsBelowAverageNum(
+public class GetSurveyPartsBelowAverage(
     private val getSurveysUseCase: GetSurveysUseCase,
     private val getDailySurveyPartAverageUseCase: GetDailySurveyPartAverageUseCase
 ) {
     suspend operator fun invoke(
         selector : (DailySurveyData) -> Int,
         belowDefinition: Float = 0.75F
-    ): Int {
+    ): List<Long> {
         val avg = getDailySurveyPartAverageUseCase(selector)
         val surveys = getSurveysUseCase()
 
-        var num = 0
+        val rList: MutableList<Long> = mutableListOf()
 
         surveys.forEach {
             val value = selector(it)
             if ((avg * belowDefinition)> value) {
-                num += 1
+                rList.add(it.createdAt)
             }
         }
 
-        return num
+        return rList
     }
 
     suspend operator fun invoke(
         selector: (DailySurveyData) -> Int,
         belowDefinition: Float = 0.75F,
         dateRange: LongRange
-    ): Int {
+    ): List<Long> {
         val avg = getDailySurveyPartAverageUseCase(dateRange, selector)
         val surveys = getSurveysUseCase(dateRange)
 
-        var num = 0
+        val rList: MutableList<Long> = mutableListOf()
 
         surveys.forEach {
             val value = selector(it)
             if ((avg * belowDefinition) > value) {
-                num += 1
+                rList.add(it.createdAt)
             }
         }
 
-        return num
+        return rList
     }
 }
