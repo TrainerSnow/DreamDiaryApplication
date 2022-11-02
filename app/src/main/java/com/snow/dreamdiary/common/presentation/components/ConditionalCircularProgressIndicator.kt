@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 @Composable
 fun ConditionalCircularProgressIndicator(
     flag: Boolean,
-    content: () -> Unit
+    content: @Composable () -> Unit
 ) {
     if(flag)
         content()
