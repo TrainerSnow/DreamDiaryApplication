@@ -4,10 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.EditNote
-import androidx.compose.material.icons.rounded.List
-import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material.icons.rounded.Timer
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -109,11 +106,11 @@ fun OptionsOverviewScreen(
                     )
                 }
 
-                items(count = 1, key = null) { i ->
+                item {
                     OptionsItem(
-                        text = "Item nr $i",
-                        icon = Icons.Rounded.Search,
-                        onClick = { }
+                        text = stringResource(id = R.string.debug),
+                        icon = Icons.Rounded.Numbers,
+                        onClick = { viewModel.onEvent(OptionsOverviewEvent.GoToScreen(DreamScreens.DebugScreen)) }
                     )
                 }
             }
