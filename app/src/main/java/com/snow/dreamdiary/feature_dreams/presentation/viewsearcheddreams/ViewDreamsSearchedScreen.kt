@@ -1,14 +1,16 @@
 package com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.DreamItem
+import com.snow.dreamdiary.common.presentation.components.DreamPreviewCard
 import com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams.components.SearchMetaDataSection
 
 @Composable
@@ -29,30 +31,22 @@ fun ViewDreamsSearchedScreen(
                 top = 16.dp
             )
     ) {
-        Column(
+        LazyColumn(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            SearchMetaDataSection(
-                dreamsFound = dreams.size,
-                timeNeeded = timeNeeded
-            )
+            item {
+                SearchMetaDataSection(
+                    dreamsFound = dreams.size,
+                    timeNeeded = timeNeeded
+                )
+            }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                dreams.forEach {
-                    DreamItem(
-                        dream = it,
-                        onEditClick = {},
-                        onDeleteClick = {},
-                        takeMaxSize = false,
-                        showButtons = false
-                    )
-                }
+            items(count = viewModel.state.value.dreams.size) { i ->
+                DreamPreviewCard(
+                    dream = viewModel.state.value.dreams[i],
+                )
             }
         }
     }
