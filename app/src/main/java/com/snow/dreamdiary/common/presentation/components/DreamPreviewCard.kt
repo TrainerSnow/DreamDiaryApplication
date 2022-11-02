@@ -28,6 +28,7 @@ import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 @Composable
 fun DreamPreviewCard(
     dream: Dream,
+    onClick: () -> Unit = {  },
     backgroundColor: Color = MaterialTheme.colorScheme.secondaryContainer,
     strokeColor: Color = MaterialTheme.colorScheme.onSecondaryContainer,
     textColor: Color = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -56,7 +57,8 @@ fun DreamPreviewCard(
             .clip(shape = RoundedCornerShape(24.dp))
             .background(backgroundColor)
             .padding(vertical = 24.dp, horizontal = 16.dp)
-            .animateContentSize(),
+            .animateContentSize()
+            .clickable { onClick() },
         contentAlignment = Alignment.TopStart
     ) {
         Column() {
