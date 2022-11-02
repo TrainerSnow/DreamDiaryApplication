@@ -66,6 +66,13 @@ public class ViewDreamViewModel @Inject constructor(
                     personsExpanded = !state.value.personsExpanded
                 )
             }
+            ViewDreamEvent.Delete -> {
+                if(state.value.dream != null){
+                    viewModelScope.launch {
+                        dreamUseCases.deleteDreams(state.value.dream!!)
+                    }
+                }
+            }
         }
     }
 

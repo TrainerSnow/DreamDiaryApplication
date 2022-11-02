@@ -7,4 +7,6 @@ sealed class ViewDreamEvent{
     object ToggleFeeling: ViewDreamEvent()
     object ToggleLocation: ViewDreamEvent()
     object ToggleComf: ViewDreamEvent()
+
+    object Delete: ViewDreamEvent()
 }
