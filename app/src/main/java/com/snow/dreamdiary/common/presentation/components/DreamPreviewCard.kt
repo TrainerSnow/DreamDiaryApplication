@@ -41,7 +41,7 @@ fun DreamPreviewCard(
     val dayNow = TimeUtil.millisToDayNum(TimeUtil.thisDayStartInMillis())
     val dif = dayNow - dayCreated
     val effectiveDescription = if (expanded) dream.description else
-        if (dream.description.length < maxLetterCount) dream.description
+        if (dream.description.length <= maxLetterCount) dream.description
         else dream.description.slice(IntRange(0, maxLetterCount)).plus("...")
 
     Box(
