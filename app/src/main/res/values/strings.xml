@@ -90,4 +90,9 @@
     <string name="history">History</string>
     <string name="amount">Amount</string>
     <string name="time">Time</string>
+    <string name="days_ago">" Days ago"</string>
+    <string name="dream_from">"Dream from "</string>
+    <string name="show_more">Show more</string>
+    <string name="show_less">Show less</string>
+    <string name="debug">Debug</string>
 </resources>

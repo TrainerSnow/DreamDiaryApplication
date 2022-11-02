@@ -47,4 +47,8 @@ object TimeUtil {
         return millisSinceStartOfDay..millisAtEndofDay
     }
 
+    fun millisToDayNum(millis: Long): Long{
+        return TimeUnit.MILLISECONDS.toDays(millis)
+    }
+
 }
