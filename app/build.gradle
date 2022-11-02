@@ -5,19 +5,10 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
-    id 'com.google.relay'
 }
 
 android {
     compileSdk 33
-
-    sourceSets {
-        main {
-            assets {
-                srcDir('src/main/ui-packages')
-            }
-        }
-    }
 
     defaultConfig {
         applicationId "com.snow.dreamdiary"
