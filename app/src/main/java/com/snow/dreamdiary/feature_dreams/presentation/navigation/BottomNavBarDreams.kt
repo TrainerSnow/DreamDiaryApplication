@@ -1,10 +1,7 @@
 package com.snow.dreamdiary.feature_dreams.presentation.navigation
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -57,7 +54,7 @@ fun RowScope.BottomNavEntry(
             }
         },
         label = {
-            Text(text = stringResource(id = screen.title))
+            Text(text = stringResource(id = screen.title), color = MaterialTheme.colorScheme.onSecondaryContainer)
         },
         icon = {
             Icon(
