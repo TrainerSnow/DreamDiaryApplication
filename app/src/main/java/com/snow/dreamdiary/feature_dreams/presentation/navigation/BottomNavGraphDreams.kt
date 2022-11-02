@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.addeditdream.AddEditDreamScreen
 import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.startscreen.DreamStartScreen
 import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.ViewDreamsScreen
+import com.snow.dreamdiary.feature_dreams.presentation.viewdream.ViewDreamScreen
 
 const val KEY_DREAM_ID = "dream_id"
 
@@ -36,6 +37,18 @@ fun BottomNavGraphDreams(
                 })
         ) {
             AddEditDreamScreen(navController = navController)
+        }
+        composable(
+            route = BottomNavScreens.ViewDreamScreen.route,
+            arguments = listOf(
+                navArgument(
+                    name = KEY_DREAM_ID
+                ) {
+                    type = NavType.IntType
+                    defaultValue = -1
+                })
+        ) {
+            ViewDreamScreen(navController = navController)
         }
         composable(
             route = BottomNavScreens.OverviewDreamsScreen.route

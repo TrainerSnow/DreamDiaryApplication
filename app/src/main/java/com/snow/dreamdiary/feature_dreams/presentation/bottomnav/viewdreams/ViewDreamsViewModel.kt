@@ -41,6 +41,11 @@ class ViewDreamsViewModel @Inject constructor(
                     isOrderMenuExpanded = !state.value.isOrderMenuExpanded
                 )
             }
+            is ViewDreamsEvent.GoToScreen -> {
+                viewModelScope.launch {
+                    _actionFlow.emit(UIEvent.GoToScreen(event.route))
+                }
+            }
         }
     }
 
@@ -60,7 +65,7 @@ class ViewDreamsViewModel @Inject constructor(
     }
 
     sealed class UIEvent {
-
+        data class GoToScreen(val route: String): UIEvent()
     }
 
 }

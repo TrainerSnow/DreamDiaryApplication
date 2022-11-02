@@ -66,6 +66,14 @@ sealed class DreamScreens(
         }
     }
 
+    data class ViewDreamScreen(override var route: String = "route_viewdreamscreen/{$KEY_DREAM_ID}") :
+        DreamScreens(route) {
+        fun withDreamId(id: Int): ViewDreamScreen {
+            this.route = this.route.replace("{$KEY_MODE}", id.toString())
+            return this
+        }
+    }
+
     @Deprecated("Don't use, won't work")
     object SearchConfigScreen : DreamScreens(
         route = "route_searchconfigscreen/{mode}"

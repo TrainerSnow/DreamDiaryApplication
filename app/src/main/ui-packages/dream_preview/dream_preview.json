@@ -1,0 +1,247 @@
+{
+  "name": "dream_preview",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "MAgNOhNhmz9VdUzjLC7SrH",
+    "node": "7:36",
+    "version": "2555036323"
+  },
+  "default": "___DreamPreview",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "TextContainer"
+      },
+      {
+        "type": "text",
+        "id": "DaysAgoText"
+      },
+      {
+        "type": "text",
+        "id": "DateText"
+      },
+      {
+        "type": "group",
+        "id": "DreamDescriptionContainer"
+      },
+      {
+        "type": "text",
+        "id": "DreamDescription"
+      }
+    ],
+    "modes": {
+      "___DreamPreview": {
+        "rules": [
+          {
+            "id": "top_level",
+            "padding": {
+              "left": "16.0",
+              "top": "8.0",
+              "right": "16.0",
+              "bottom": "8.0"
+            },
+            "border-radius": "15.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "stroke-width": "1.0",
+            "stroke-color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "TextContainer"
+            ],
+            "item-spacing": "2.0",
+            "background-color": "$___DreamPreviewBackground",
+            "clip-content": "false"
+          },
+          {
+            "id": "TextContainer",
+            "padding": {
+              "left": "11.0",
+              "top": "16.0",
+              "right": "11.0",
+              "bottom": "16.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "DaysAgoText",
+              "DateText",
+              "DreamDescriptionContainer"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "DaysAgoText",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "font-weight": "200.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "$DaysAgoText",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-size": "4.0",
+            "line-height": "1.2102272510528564",
+            "typeface": "Inter"
+          },
+          {
+            "id": "DateText",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "$DateText",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-size": "12.0",
+            "line-height": "1.2102272510528564",
+            "typeface": "Inter"
+          },
+          {
+            "id": "DreamDescriptionContainer",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "DreamDescription"
+            ],
+            "item-spacing": "10.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "DreamDescription",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "font-weight": "300.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "$DreamDescription",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-size": "5.0",
+            "line-height": "1.2102272033691406",
+            "typeface": "Inter"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "___DreamPreviewBackground": {
+      "data-type": "color",
+      "required": false,
+      "description": ""
+    },
+    "DaysAgoText": {
+      "data-type": "text",
+      "required": false,
+      "description": ""
+    },
+    "DateText": {
+      "data-type": "text",
+      "required": false,
+      "description": ""
+    },
+    "DreamDescription": {
+      "data-type": "text",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "___DreamPreview",
+      "size": {
+        "width": 250.0,
+        "height": 134.0
+      },
+      "parameters": {
+        "___DreamPreviewBackground": {
+          "alpha": "1.0",
+          "hue": "0.0",
+          "saturation": "0.0",
+          "value": "1.0"
+        },
+        "DaysAgoText": "xx Days ago",
+        "DateText": "Dream from xx.yy.zzzz",
+        "DreamDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

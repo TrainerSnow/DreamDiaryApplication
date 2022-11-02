@@ -18,7 +18,13 @@ import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.presentation.components.DreamPreviewCard
 import com.snow.dreamdiary.feature_dreams.presentation.bottomnav.viewdreams.components.CompleteOrderSection
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.BottomNavScreens
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import com.snow.dreamdiary.ui.theme.DreamDiaryApplicationTheme
+import kotlinx.coroutines.flow.collectLatest
+
+
+private const val TAG = "ViewDreamsScreen"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,7 +35,15 @@ fun ViewDreamsScreen(
 
 
     LaunchedEffect(key1 = 1) {
-
+        viewModel.actionFlow.collectLatest {
+            when (it) {
+                is ViewDreamsViewModel.UIEvent.GoToScreen -> {
+                    Log.e(TAG, "ViewDreamsScreen: $navController", )
+                    Log.e(TAG, "ViewDreamsScreen: ${navController.graph.nodes}", )
+                    navController.navigate(it.route)
+                }
+            }
+        }
     }
 
     DreamDiaryApplicationTheme {
@@ -72,8 +86,10 @@ fun ViewDreamsScreen(
                     items(
                         count = viewModel.state.value.dreams.size - 1
                     ) { i ->
+                        val id = viewModel.state.value.dreams[i].id ?: throw IllegalStateException("The Id of the dream is null.")
                         DreamPreviewCard(
-                            dream = viewModel.state.value.dreams[i]
+                            dream = viewModel.state.value.dreams[i],
+                            onClick = { viewModel.onEvent(ViewDreamsEvent.GoToScreen(BottomNavScreens.ViewDreamScreen.withDreamId(id))) }
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                     }

@@ -6,6 +6,8 @@ sealed class ViewDreamsEvent {
 
     data class RenewOrder(val dreamOrder: DreamOrder) : ViewDreamsEvent()
 
+    data class GoToScreen(val route: String): ViewDreamsEvent()
+
     object ToggleOrderMenu : ViewDreamsEvent()
 
 }

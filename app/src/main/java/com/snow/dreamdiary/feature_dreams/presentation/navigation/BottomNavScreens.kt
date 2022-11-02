@@ -3,6 +3,7 @@ package com.snow.dreamdiary.feature_dreams.presentation.navigation
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Error
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Movie
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -35,5 +36,17 @@ sealed class BottomNavScreens(
         title = R.string.view_dreams,
         icon = Icons.Rounded.Movie
     )
+
+    //Not available in bottom nav but needs to be accessible from here
+    object ViewDreamScreen:
+        BottomNavScreens(
+            route = "route_viewdreamscreen?$KEY_DREAM_ID={$KEY_DREAM_ID}",
+            title  = androidx.viewpager.R.string.status_bar_notification_info_overflow,
+            icon = Icons.Rounded.Error
+        ) {
+        fun withDreamId(id: Int): String {
+            return "route_viewdreamscreen?$KEY_DREAM_ID=$id"
+        }
+    }
 }
 
