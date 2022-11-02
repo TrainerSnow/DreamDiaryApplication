@@ -55,10 +55,10 @@ fun DreamPreviewCard(
                 shape = RoundedCornerShape(24.dp)
             )
             .clip(shape = RoundedCornerShape(24.dp))
+            .clickable { onClick() }
             .background(backgroundColor)
             .padding(vertical = 24.dp, horizontal = 16.dp)
-            .animateContentSize()
-            .clickable { onClick() },
+            .animateContentSize(),
         contentAlignment = Alignment.TopStart
     ) {
         Column() {
