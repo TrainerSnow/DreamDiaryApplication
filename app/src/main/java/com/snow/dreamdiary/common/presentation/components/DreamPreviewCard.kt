@@ -1,5 +1,6 @@
 package com.snow.dreamdiary.common.presentation.components;
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -54,7 +55,8 @@ fun DreamPreviewCard(
             )
             .clip(shape = RoundedCornerShape(24.dp))
             .background(backgroundColor)
-            .padding(vertical = 24.dp, horizontal = 16.dp),
+            .padding(vertical = 24.dp, horizontal = 16.dp)
+            .animateContentSize(),
         contentAlignment = Alignment.TopStart
     ) {
         Column() {
