@@ -18,7 +18,8 @@ import com.snow.dreamdiary.R
 fun ModifierDescriptionItem(
     title: String,
     values: Collection<String>,
-    expanded: Boolean
+    expanded: Boolean,
+    dashes: Boolean = true
 ) {
     Column() {
         Row(
