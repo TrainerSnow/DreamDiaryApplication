@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.common.presentation.components.DreamPreviewCard
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import com.snow.dreamdiary.feature_dreams.presentation.viewsearcheddreams.components.SearchMetaDataSection
 
 @Composable
@@ -44,8 +45,10 @@ fun ViewDreamsSearchedScreen(
             }
 
             items(count = viewModel.state.value.dreams.size) { i ->
+                val id = viewModel.state.value.dreams[i].id ?: throw IllegalStateException("Id is null")
                 DreamPreviewCard(
                     dream = viewModel.state.value.dreams[i],
+                    onClick = { navController.navigate(DreamScreens.ViewDreamScreen().withDreamId(id).route) }
                 )
             }
         }

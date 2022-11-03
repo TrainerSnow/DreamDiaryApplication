@@ -66,10 +66,10 @@ sealed class DreamScreens(
         }
     }
 
-    data class ViewDreamScreen(override var route: String = "route_viewdreamscreen/{$KEY_DREAM_ID}") :
+    data class ViewDreamScreen(override var route: String = "route_viewdreamscreen?$KEY_DREAM_ID={$KEY_DREAM_ID}") :
         DreamScreens(route) {
         fun withDreamId(id: Int): ViewDreamScreen {
-            this.route = this.route.replace("{$KEY_MODE}", id.toString())
+            this.route = "route_viewdreamscreen?$KEY_DREAM_ID=$id"
             return this
         }
     }
