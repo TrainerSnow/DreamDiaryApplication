@@ -9,4 +9,5 @@ sealed class ViewDreamEvent{
     object ToggleComf: ViewDreamEvent()
 
     object Delete: ViewDreamEvent()
+    object Edit: ViewDreamEvent()
 }

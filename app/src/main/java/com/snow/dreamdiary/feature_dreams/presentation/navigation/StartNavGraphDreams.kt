@@ -23,7 +23,8 @@ const val KEY_MODE = "mode"
 
 @Composable
 fun StartNavGraphDreams(
-    navController: NavHostController
+    navController: NavHostController,
+    bottomNavController: NavHostController
 ) {
     NavHost(
         navController = navController,
@@ -117,7 +118,7 @@ fun StartNavGraphDreams(
                     type = NavType.IntType
                 })
         ) {
-            ViewDreamScreen(navController = navController)
+            ViewDreamScreen(bottomNavController = bottomNavController)
         }
 
     }

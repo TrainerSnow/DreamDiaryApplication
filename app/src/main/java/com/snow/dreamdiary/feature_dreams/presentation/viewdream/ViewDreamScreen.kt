@@ -10,6 +10,7 @@ import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,12 +23,24 @@ import com.snow.dreamdiary.R
 import com.snow.dreamdiary.common.presentation.components.ConditionalCircularProgressIndicator
 import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.feature_dreams.presentation.viewdream.components.ModifierDescriptionItem
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun ViewDreamScreen(
-    navController: NavHostController,
+    bottomNavController: NavHostController,
     viewModel: ViewDreamViewModel = hiltViewModel()
 ) {
+
+    LaunchedEffect(key1 = 1){
+        viewModel.actionFlow.collectLatest {
+            when (it) {
+                is ViewDreamViewModel.UIEvent.GoToScreen -> {
+                    bottomNavController.navigate(it.route)
+                }
+            }
+        }
+    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -61,7 +74,7 @@ fun ViewDreamScreen(
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(text = stringResource(id = R.string.delete))
                 }
-                Button(onClick = { /*TODO*/ }) {
+                Button(onClick = { viewModel.onEvent(ViewDreamEvent.Edit) }) {
                     Icon(
                         imageVector = Icons.Rounded.Edit,
                         contentDescription = stringResource(id = R.string.edit)

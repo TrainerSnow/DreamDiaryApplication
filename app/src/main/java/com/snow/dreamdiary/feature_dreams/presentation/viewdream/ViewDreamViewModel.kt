@@ -6,8 +6,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
+import com.snow.dreamdiary.feature_dreams.presentation.navigation.BottomNavScreens
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.KEY_DREAM_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,6 +25,9 @@ public class ViewDreamViewModel @Inject constructor(
 
     private val _dreamId = mutableStateOf<Int?>(savedStateHandle[KEY_DREAM_ID])
     val dreamId: State<Int?> = _dreamId
+
+    private val _actionFlow = MutableSharedFlow<UIEvent>()
+    val actionFlow = _actionFlow.asSharedFlow()
 
     init {
         if(dreamId.value != null){
@@ -73,7 +79,20 @@ public class ViewDreamViewModel @Inject constructor(
                     }
                 }
             }
+            ViewDreamEvent.Edit -> {
+                if(state.value.dream != null){
+                    viewModelScope.launch {
+                        _actionFlow.emit(UIEvent.GoToScreen(
+                            BottomNavScreens.AddEditDreamScreen.passDreamId(state.value.dream!!.id!!)
+                        ))
+                    }
+                }
+            }
         }
+    }
+
+    sealed class UIEvent{
+        data class GoToScreen(val route: String): UIEvent()
     }
 
 }

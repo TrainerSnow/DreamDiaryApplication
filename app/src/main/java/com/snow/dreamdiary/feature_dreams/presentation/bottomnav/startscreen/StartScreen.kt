@@ -11,5 +11,8 @@ fun DreamStartScreen(
 ) {
     val navController = rememberNavController()
 
-    StartNavGraphDreams(navController = navController)
+    StartNavGraphDreams(
+        navController = navController,
+        bottomNavController = navControllerBottomNav
+    )
 }
