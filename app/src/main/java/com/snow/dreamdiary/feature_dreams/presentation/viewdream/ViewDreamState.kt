@@ -10,5 +10,5 @@ data class ViewDreamState(
     val personsExpanded: Boolean = true,
     val feelingsExpanded: Boolean = true,
     val locationsExpanded: Boolean = true,
-    val comfortnessExpanded: Boolean = true
-)
+    val comfortnessExpanded: Boolean = true,
+    )

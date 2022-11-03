@@ -10,4 +10,5 @@ sealed class ViewDreamEvent{
 
     object Delete: ViewDreamEvent()
     object Edit: ViewDreamEvent()
+    object Restore : ViewDreamEvent()
 }

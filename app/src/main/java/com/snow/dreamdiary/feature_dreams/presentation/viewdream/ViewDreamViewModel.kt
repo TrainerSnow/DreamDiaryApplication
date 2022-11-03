@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.snow.dreamdiary.feature_dreams.domain.model.Dream
 import com.snow.dreamdiary.feature_dreams.domain.usecase.DreamUseCases
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.BottomNavScreens
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.KEY_DREAM_ID
@@ -28,6 +29,8 @@ public class ViewDreamViewModel @Inject constructor(
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
+
+    var recentlyDeletedDream: Dream? = null
 
     init {
         if(dreamId.value != null){
@@ -73,6 +76,7 @@ public class ViewDreamViewModel @Inject constructor(
                 )
             }
             ViewDreamEvent.Delete -> {
+                recentlyDeletedDream = state.value.dream
                 if(state.value.dream != null){
                     viewModelScope.launch {
                         dreamUseCases.deleteDreams(state.value.dream!!)
@@ -85,6 +89,14 @@ public class ViewDreamViewModel @Inject constructor(
                         _actionFlow.emit(UIEvent.GoToScreen(
                             BottomNavScreens.AddEditDreamScreen.passDreamId(state.value.dream!!.id!!)
                         ))
+                    }
+                }
+            }
+            ViewDreamEvent.Restore -> {
+                if(recentlyDeletedDream != null){
+                    viewModelScope.launch {
+                        dreamUseCases.addDream(recentlyDeletedDream!!)
+                        recentlyDeletedDream = null
                     }
                 }
             }

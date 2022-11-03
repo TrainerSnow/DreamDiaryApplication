@@ -96,4 +96,6 @@
     <string name="show_less">Show less</string>
     <string name="debug">Debug</string>
     <string name="expand">Expand</string>
+    <string name="undo">Undo</string>
+    <string name="deleted_dream">Deleted Dream</string>
 </resources>
