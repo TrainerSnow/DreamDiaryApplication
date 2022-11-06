@@ -7,7 +7,8 @@ import kotlinx.coroutines.flow.first
 
 public class GetDreamAffectablesAverageUseCase(
     private val getDreamsUseCase: GetDreamsUseCase,
-    private val getEarliestDreamTimeStampUseCase: GetEarliestDreamTimeStampUseCase
+    private val getEarliestDreamTimeStampUseCase: GetEarliestDreamTimeStampUseCase,
+    private val getDreamsOnDayTimestampsUseCase: GetDreamsOnDayTimestampsUseCase
 ) {
     suspend operator fun invoke(affectables: DreamAffectables): Double{
         val dreams = getDreamsUseCase().first()
@@ -23,9 +24,8 @@ public class GetDreamAffectablesAverageUseCase(
         }
     }
 
-    suspend operator fun invoke(affectables: DreamAffectables, dateRange: LongRange): Double{
-        val dreams = getDreamsUseCase().first().filter { it.dreamtAt in dateRange }
-
+    suspend operator fun invoke(affectables: DreamAffectables, dateRanges: List<Long>): Double{
+        val dreams = getDreamsOnDayTimestampsUseCase(dateRanges)
         return when (affectables) {
             DreamAffectables.Comfortness -> {
                 dreams.average { it.comfortness }
