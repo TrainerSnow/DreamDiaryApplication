@@ -58,7 +58,8 @@ object AppModule {
             getModifierTimeStamps = GetModifierTimeStampsUseCase(repository),
             getDreamTimeStamps = GetDreamTimeStampsUseCase(repository),
             getComfortnessTimeStamps = GetComfortnessTimeStampsUseCase(repository),
-            getEarliestDreamTimeStamp = GetEarliestDreamTimeStampUseCase(repository)
+            getEarliestDreamTimeStamp = GetEarliestDreamTimeStampUseCase(repository),
+            getDreamsAffectablesAverage = GetDreamAffectablesAverageUseCase(GetDreamsUseCase(repository), GetEarliestDreamTimeStampUseCase(repository))
         )
     }
 
