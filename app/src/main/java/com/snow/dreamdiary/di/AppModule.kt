@@ -104,7 +104,8 @@ object AppModule {
                         repository
                     )
                 )
-            )
+            ),
+            getEffectiveSurveyData = GetEffectiveSurveyDataUseCase(GetSurveysUseCase(repository))
         )
     }
 }

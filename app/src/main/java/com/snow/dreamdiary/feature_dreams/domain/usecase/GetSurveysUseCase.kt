@@ -9,7 +9,7 @@ class GetSurveysUseCase(
     private val repository: DailySurveyRepository
 ) {
     suspend operator fun invoke(): List<DailySurveyData> {
-        return repository.getSurveyDatas().first()
+        return repository.getSurveyDatas().first().sortedByDescending { it.createdAt }
     }
 
     suspend operator fun invoke(dateRange: LongRange): List<DailySurveyData>{
