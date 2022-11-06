@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class DailySurveyData(
-    val didDream: Boolean = false,
-    val dreamsNum: Int = 0,
-    val timeSlept: Long = 8,
-    @IntRange(from = 0, to = 10) val health: Int = 5,
-    @IntRange(from = 0, to = 10) val physicalActivity: Int = 5,
-    @IntRange(from = 0, to = 10) val comfortness: Int = 5,
+    var didDream: Boolean = false,
+    var dreamsNum: Int = 0,
+    var timeSlept: Long = 8,
+    @IntRange(from = 0, to = 10) var health: Int = 5,
+    @IntRange(from = 0, to = 10) var physicalActivity: Int = 5,
+    @IntRange(from = 0, to = 10) var comfortness: Int = 5,
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
-    val createdAt: Long
+    var createdAt: Long
 )
