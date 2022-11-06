@@ -22,4 +22,18 @@ public class GetDreamAffectablesAverageUseCase(
             }
         }
     }
+
+    suspend operator fun invoke(affectables: DreamAffectables, dateRange: LongRange): Double{
+        val dreams = getDreamsUseCase().first().filter { it.dreamtAt in dateRange }
+
+        return when (affectables) {
+            DreamAffectables.Comfortness -> {
+                dreams.average { it.comfortness }
+            }
+            DreamAffectables.Occurence -> {
+                val daysSinceFirstDream = TimeUtil.millisToDayNum(getEarliestDreamTimeStampUseCase())
+                dreams.size.toDouble()/daysSinceFirstDream
+            }
+        }
+    }
 }
