@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class DailySurveyData(
     var didDream: Boolean = false,
     var dreamsNum: Int = 0,
-    var timeSlept: Long = 8,
+    var timeSlept: Int = 8,
     @IntRange(from = 0, to = 10) var health: Int = 5,
     @IntRange(from = 0, to = 10) var physicalActivity: Int = 5,
     @IntRange(from = 0, to = 10) var comfortness: Int = 5,
