@@ -100,4 +100,12 @@
     <string name="deleted_dream">Deleted Dream</string>
     <string name="dream_occurence">Dream occurence</string>
     <string name="dream_comfortness">Dream Comfortness</string>
+    <string name="observing_affectable_x">Observing dream characteristic</string>
+    <string name="tap_to_swap">(Tap to swap)</string>
+    <string name="x_affected_by">was affected by these influences:</string>
+    <string name="dreams_num">Number of Dreams</string>
+    <string name="time_slept">Time slept</string>
+    <string name="physical_activity">Physical activity</string>
+    <string name="health">Health</string>
+    <string name="daily_comfortness">Daily Comfortness</string>
 </resources>

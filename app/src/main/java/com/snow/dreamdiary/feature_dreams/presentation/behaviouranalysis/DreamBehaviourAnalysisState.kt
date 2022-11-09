@@ -1,3 +1,8 @@
 package com.snow.dreamdiary.feature_dreams.presentation.behaviouranalysis
 
-data class DreamBehaviourAnalysisState(val n: Int = 9)
+import com.snow.dreamdiary.feature_dreams.domain.util.DreamAffectables
+
+data class DreamBehaviourAnalysisState(
+    val affectable: DreamAffectables = DreamAffectables.Occurence,
+    val percentValues: List<Double> = listOf(Double.NaN, Double.NaN, Double.NaN, Double.NaN)
+)
