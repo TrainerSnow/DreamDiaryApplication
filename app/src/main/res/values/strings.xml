@@ -98,4 +98,6 @@
     <string name="expand">Expand</string>
     <string name="undo">Undo</string>
     <string name="deleted_dream">Deleted Dream</string>
+    <string name="dream_occurence">Dream occurence</string>
+    <string name="dream_comfortness">Dream Comfortness</string>
 </resources>
