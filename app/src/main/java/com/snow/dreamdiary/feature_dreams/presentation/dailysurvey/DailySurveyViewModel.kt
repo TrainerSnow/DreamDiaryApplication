@@ -104,7 +104,7 @@ class DailySurveyViewModel @Inject constructor(
 
                     _state.value = state.value.copy(
                         surveyData = state.value.surveyData.copy(
-                            timeSlept = timesSlept.toLong(),
+                            timeSlept = timesSlept,
                             dreamsNum = if (
                                 state.value.surveyData.didDream
                             )
