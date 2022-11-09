@@ -40,26 +40,57 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDreamUseCases(repository: DreamRepository): DreamUseCases {
+        val getDreams = GetDreamsUseCase(repository) //
+        val deleteDreams = DeleteDreamUseCase(repository) //
+        val addDream = AddDreamUseCase(repository) //
+        val editDream = EditDreamUseCase(repository) //
+        val getNewFeelings = GetNewFeelingsUseCase(repository) //
+        val getNewLocations = GetNewLocationsUseCase(repository)//
+        val getNewPersons = GetNewPersonsUseCase(repository) //
+        val getFeelings = GetFeelingsUseCase(repository) //
+        val getLocations = GetLocationsUseCase(repository) //
+        val getPersons = GetPersonsUseCase(repository) //
+        val getDreamById = FindDreamByIdUseCase(repository) //
+        val getDreamsForSearchConfig = GetDreamsForSearchConfigUseCase(repository) //
+        val getModifiersInTime = GetModifiersInTimeUseCase(repository) //
+        val getComfortnesses = GetComfortnessesUseCase(repository) //
+        val getModifierTimeStamps = GetModifierTimeStampsUseCase(repository) //
+        val getDreamTimeStamps = GetDreamTimeStampsUseCase(repository) //
+        val getComfortnessTimeStamps = GetComfortnessTimeStampsUseCase(repository) //
+        val getEarliestDreamTimeStamp = GetEarliestDreamTimeStampUseCase(repository) //
+
+
+        val getDreamsOnDayTimestampsUseCase = GetDreamsOnDayTimestampsUseCase(
+            getDreamsUseCase = getDreams
+        ) //
+
+        val getDreamsAffectablesAverage = GetDreamAffectablesAverageUseCase(
+            getDreamsUseCase = getDreams,
+            getEarliestDreamTimeStampUseCase = getEarliestDreamTimeStamp,
+            getDreamsOnDayTimestampsUseCase = getDreamsOnDayTimestampsUseCase
+        ) //
+
         return DreamUseCases(
-            getDreams = GetDreamsUseCase(repository),
-            deleteDreams = DeleteDreamUseCase(repository),
-            addDream = AddDreamUseCase(repository),
-            editDream = EditDreamUseCase(repository),
-            getNewFeelings = GetNewFeelingsUseCase(repository),
-            getNewLocations = GetNewLocationsUseCase(repository),
-            getNewPersons = GetNewPersonsUseCase(repository),
-            getFeelings = GetFeelingsUseCase(repository),
-            getLocations = GetLocationsUseCase(repository),
-            getPersons = GetPersonsUseCase(repository),
-            getDreamById = FindDreamByIdUseCase(repository),
-            getDreamsForSearchConfig = GetDreamsForSearchConfigUseCase(repository),
-            getModifiersInTime = GetModifiersInTimeUseCase(repository),
-            getComfortnesses = GetComfortnessesUseCase(repository),
-            getModifierTimeStamps = GetModifierTimeStampsUseCase(repository),
-            getDreamTimeStamps = GetDreamTimeStampsUseCase(repository),
-            getComfortnessTimeStamps = GetComfortnessTimeStampsUseCase(repository),
-            getEarliestDreamTimeStamp = GetEarliestDreamTimeStampUseCase(repository),
-            getDreamsAffectablesAverage = GetDreamAffectablesAverageUseCase(GetDreamsUseCase(repository), GetEarliestDreamTimeStampUseCase(repository))
+            getDreams = getDreams,
+            deleteDreams = deleteDreams,
+            addDream = addDream,
+            editDream = editDream,
+            getNewFeelings = getNewFeelings,
+            getNewLocations = getNewLocations,
+            getNewPersons = getNewPersons,
+            getFeelings = getFeelings,
+            getLocations = getLocations,
+            getPersons = getPersons,
+            getDreamById = getDreamById,
+            getDreamsForSearchConfig = getDreamsForSearchConfig,
+            getModifiersInTime = getModifiersInTime,
+            getComfortnesses = getComfortnesses,
+            getModifierTimeStamps = getModifierTimeStamps,
+            getDreamTimeStamps = getDreamTimeStamps,
+            getComfortnessTimeStamps = getComfortnessTimeStamps,
+            getEarliestDreamTimeStamp = getEarliestDreamTimeStamp,
+            getDreamsAffectablesAverage = getDreamsAffectablesAverage,
+            getDreamsOnDayTimestampsUseCase = getDreamsOnDayTimestampsUseCase,
         )
     }
 
@@ -84,29 +115,77 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSurveyUseCases(repository: DailySurveyRepository): SurveyUseCases {
+        val addSurvey = AddSurveyUseCase(repository)
+        val getSurveys = GetSurveysUseCase(repository)
+        val getDailySurveyPartAverage = GetDailySurveyPartAverageUseCase(getSurveys)
+        val getSurveyPartsOverAverage = GetSurveyPartsOverAverage(
+            getSurveysUseCase = getSurveys,
+            getDailySurveyPartAverageUseCase = getDailySurveyPartAverage
+        )
+        val getSurveyPartsBelowAverage = GetSurveyPartsBelowAverage(
+            getSurveysUseCase = getSurveys,
+            getDailySurveyPartAverageUseCase = getDailySurveyPartAverage
+        )
+        val getEffectiveSurveyData = GetEffectiveSurveyDataUseCase(GetSurveysUseCase(repository))
+        val getTimeStampsDailySurveyPartOverAverage = GetTimeStampsDailySurveyPartOverAverage(
+            getDailySurveyPartAverageUseCase = getDailySurveyPartAverage,
+            getSurveysUseCase = getSurveys
+        )
+
         return SurveyUseCases(
-            addSurvey = AddSurveyUseCase(repository),
-            getSurveys = GetSurveysUseCase(repository),
-            getDailySurveyPartAverage = GetDailySurveyPartAverageUseCase(
-                GetSurveysUseCase(repository)
-            ),
-            getSurveyPartsOverAverage = GetSurveyPartsOverAverage(
-                GetSurveysUseCase(repository),
-                GetDailySurveyPartAverageUseCase(
-                    GetSurveysUseCase(
-                        repository
-                    )
-                )
-            ),
-            getSurveyPartsBelowAverage = GetSurveyPartsBelowAverage(
-                GetSurveysUseCase(repository),
-                GetDailySurveyPartAverageUseCase(
-                    GetSurveysUseCase(
-                        repository
-                    )
-                )
-            ),
-            getEffectiveSurveyData = GetEffectiveSurveyDataUseCase(GetSurveysUseCase(repository))
+            addSurvey = addSurvey, //
+            getSurveys = getSurveys, //
+            getDailySurveyPartAverage = getDailySurveyPartAverage, //
+            getSurveyPartsOverAverage = getSurveyPartsOverAverage, //
+            getSurveyPartsBelowAverage = getSurveyPartsBelowAverage, //
+            getEffectiveSurveyData = getEffectiveSurveyData, //
+            getTimeStampsDailySurveyPartOverAverage = getTimeStampsDailySurveyPartOverAverage //
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideDreamSurveyUseCases(
+        surveyRepo: DailySurveyRepository,
+        dreamRepo: DreamRepository
+    ): DreamSurveyUseCases {
+
+        val getSurveysUseCase = GetSurveysUseCase(surveyRepo)
+
+        val getDreamsUseCase = GetDreamsUseCase(dreamRepo)
+
+        val getDailySurveyPartAverageUseCase = GetDailySurveyPartAverageUseCase(
+            getSurveysUseCase = getSurveysUseCase
+        )
+
+        val getEarliestDreamTimeStampUseCase = GetEarliestDreamTimeStampUseCase(dreamRepo)
+
+        val getTimeStampsDailySurveyPartOverAverage = GetTimeStampsDailySurveyPartOverAverage(
+            getDailySurveyPartAverageUseCase = getDailySurveyPartAverageUseCase,
+            getSurveysUseCase = getSurveysUseCase
+        )
+
+        val getDreamsOnDayTimestampsUseCase = GetDreamsOnDayTimestampsUseCase(getDreamsUseCase)
+
+        val getDreamAffectablesAverageUseCase = GetDreamAffectablesAverageUseCase(
+            getDreamsUseCase = getDreamsUseCase,
+            getEarliestDreamTimeStampUseCase = getEarliestDreamTimeStampUseCase,
+            getDreamsOnDayTimestampsUseCase = getDreamsOnDayTimestampsUseCase
+        )
+
+        val getAffectableAvgSpecificDays = GetAffectableAvgSpecificDays(
+            getTimeStampsDailySurveyPartOverAverage = getTimeStampsDailySurveyPartOverAverage,
+            getDreamAffectablesAverageUseCase = getDreamAffectablesAverageUseCase
+        )
+
+        val getPercentChangeAffectableBySurveyDataPart = GetPercentChangeAffectableBySurveyDataPart(
+            getDailySurveyPartAverageUseCase = getDailySurveyPartAverageUseCase,
+            getAffectableAvgSpecificDays = getAffectableAvgSpecificDays
+        )
+
+        return DreamSurveyUseCases(
+            getAffectableAvgSpecificDays = getAffectableAvgSpecificDays,
+            getPercentChangeAffectableBySurveyDataPart = getPercentChangeAffectableBySurveyDataPart
         )
     }
 }
