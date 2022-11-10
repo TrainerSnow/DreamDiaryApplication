@@ -47,15 +47,15 @@ fun OptionsOverviewScreen(
                 ),
                 actions = {
                     IconButton(
-                        onClick = { viewModel.onEvent(OptionsOverviewEvent.Backup) }
+                        onClick = { /*TODO*/ }
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Download,
+                            imageVector = Icons.Rounded.Backup,
                             contentDescription = stringResource(id = R.string.download_data)
                         )
                     }
                     IconButton(
-                        onClick = { viewModel.onEvent(OptionsOverviewEvent.RestoreBackup) }
+                        onClick = { /*TODO*/ }
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Restore,
