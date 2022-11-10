@@ -87,8 +87,6 @@ class OptionsOverviewViewModel @Inject constructor(
                     val dreamCacheFile = File(chacheDir.path.plus("/dreams_cached.csv"))
                     val surveyCacheFile = File(chacheDir.path.plus("/surveys_cached.csv"))
 
-                    val toZipFiles = listOf(dreamCacheFile, surveyCacheFile)
-
                     dreamCacheFile.apply {
                         val fos = outputStream()
                         fos.write(dreamContent.toString().encodeToByteArray())
@@ -133,6 +131,11 @@ class OptionsOverviewViewModel @Inject constructor(
 
                     zipout.close()
                     fos.close()
+
+                    /*
+                    Delete Cache Files
+                     */
+                    filesToZip.forEach { it.delete() }
 
                 }
             }
