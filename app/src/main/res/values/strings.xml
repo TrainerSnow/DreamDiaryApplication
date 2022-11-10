@@ -108,4 +108,5 @@
     <string name="physical_activity">Physical activity</string>
     <string name="health">Health</string>
     <string name="daily_comfortness">Daily Comfortness</string>
+    <string name="cant_be_calculated">Can\'t be calculated</string>
 </resources>

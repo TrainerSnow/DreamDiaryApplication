@@ -70,8 +70,12 @@ fun DreamBehaviourAnalysisScreen(
             labels.forEachIndexed { index, it ->
                 Row() {
                     Text(
-                        text = "${stringResource(id = it)}: " + viewModel.state.value.percentValues[index],
-                        color = if (viewModel.state.value.percentValues[index] > 0)
+                        text = "${stringResource(id = it)}: " + if(viewModel.state.value.percentValues[index] == null) stringResource(
+                            id = R.string.cant_be_calculated
+                        ) else viewModel.state.value.percentValues[index],
+                        color = if(viewModel.state.value.percentValues[index] == null)
+                            MaterialTheme.colorScheme.onBackground
+                        else if (viewModel.state.value.percentValues[index]!! > 0)
                             Color.Green
                         else
                             Color.Red,
