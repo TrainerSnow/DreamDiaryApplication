@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
-import com.snow.dreamdiary.common.util.TimeFormatUtil
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import com.snow.dreamdiary.feature_dreams.presentation.optionsoverview.components.OptionsItem
 import kotlinx.coroutines.flow.collectLatest
@@ -45,7 +44,25 @@ fun OptionsOverviewScreen(
                 },
                 colors = TopAppBarDefaults.smallTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
-                )
+                ),
+                actions = {
+                    IconButton(
+                        onClick = { /*TODO*/ }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Backup,
+                            contentDescription = stringResource(id = R.string.download_data)
+                        )
+                    }
+                    IconButton(
+                        onClick = { /*TODO*/ }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Restore,
+                            contentDescription = stringResource(id = R.string.upload_data)
+                        )
+                    }
+                }
             )
         }
     ) {
