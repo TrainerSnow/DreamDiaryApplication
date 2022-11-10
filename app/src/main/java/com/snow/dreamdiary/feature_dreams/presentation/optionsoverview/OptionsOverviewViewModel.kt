@@ -24,6 +24,12 @@ class OptionsOverviewViewModel @Inject constructor(
                     _actionFlow.emit(UIEvent.GoToScreen(event.screen))
                 }
             }
+            OptionsOverviewEvent.Backup -> {
+
+            }
+            OptionsOverviewEvent.RestoreBackup -> {
+
+            }
         }
     }
 

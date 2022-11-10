@@ -47,7 +47,7 @@ fun OptionsOverviewScreen(
                 ),
                 actions = {
                     IconButton(
-                        onClick = { /*TODO*/ }
+                        onClick = { viewModel.onEvent(OptionsOverviewEvent.Backup) }
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Backup,
@@ -55,7 +55,7 @@ fun OptionsOverviewScreen(
                         )
                     }
                     IconButton(
-                        onClick = { /*TODO*/ }
+                        onClick = { viewModel.onEvent(OptionsOverviewEvent.RestoreBackup) }
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Restore,
