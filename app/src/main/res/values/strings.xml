@@ -109,6 +109,4 @@
     <string name="health">Health</string>
     <string name="daily_comfortness">Daily Comfortness</string>
     <string name="cant_be_calculated">Can\'t be calculated</string>
-    <string name="download_data">Download data</string>
-    <string name="upload_data">Upload data</string>
 </resources>
