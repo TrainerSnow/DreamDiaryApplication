@@ -22,13 +22,14 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDreamDatabase(app: Application): DreamDatabase {
-        return Room.databaseBuilder(
+        val builder = Room.databaseBuilder(
             app,
             DreamDatabase::class.java,
             DreamDatabase.DATABASE_NAME
         )
             .fallbackToDestructiveMigration()
-            .build()
+
+        return builder.build()
     }
 
     @Provides
@@ -97,13 +98,14 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDailySurveyDatabase(app: Application): DailySurveyDataDatabase {
-        return Room.databaseBuilder(
+        val builder = Room.databaseBuilder(
             app,
             DailySurveyDataDatabase::class.java,
             DailySurveyDataDatabase.DATABASE_NAME
         )
             .fallbackToDestructiveMigration()
-            .build()
+
+        return builder.build()
     }
 
     @Provides
