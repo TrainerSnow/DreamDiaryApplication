@@ -11,4 +11,6 @@ interface DailySurveyRepository {
 
     suspend fun canInsertSurvey(): Boolean
 
+    suspend fun deleteAllSurveys()
+
 }

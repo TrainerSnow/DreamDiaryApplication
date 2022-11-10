@@ -58,6 +58,7 @@ object AppModule {
         val getDreamTimeStamps = GetDreamTimeStampsUseCase(repository) //
         val getComfortnessTimeStamps = GetComfortnessTimeStampsUseCase(repository) //
         val getEarliestDreamTimeStamp = GetEarliestDreamTimeStampUseCase(repository) //
+        val deleteAllDreams = DeleteAllDreamsUseCase(repository) //
 
 
         val getDreamsOnDayTimestampsUseCase = GetDreamsOnDayTimestampsUseCase(
@@ -91,6 +92,7 @@ object AppModule {
             getEarliestDreamTimeStamp = getEarliestDreamTimeStamp,
             getDreamsAffectablesAverage = getDreamsAffectablesAverage,
             getDreamsOnDayTimestampsUseCase = getDreamsOnDayTimestampsUseCase,
+            deleteAllDreamsUseCase = deleteAllDreams
         )
     }
 
@@ -131,6 +133,7 @@ object AppModule {
             getDailySurveyPartAverageUseCase = getDailySurveyPartAverage,
             getSurveysUseCase = getSurveys
         )
+        val deleteAllSurveysUseCase = DeleteAllSurveysUseCase(repository)
 
         return SurveyUseCases(
             addSurvey = addSurvey, //
@@ -139,7 +142,8 @@ object AppModule {
             getSurveyPartsOverAverage = getSurveyPartsOverAverage, //
             getSurveyPartsBelowAverage = getSurveyPartsBelowAverage, //
             getEffectiveSurveyData = getEffectiveSurveyData, //
-            getTimeStampsDailySurveyPartOverAverage = getTimeStampsDailySurveyPartOverAverage //
+            getTimeStampsDailySurveyPartOverAverage = getTimeStampsDailySurveyPartOverAverage, //
+            deleteAllSurveysUseCase = deleteAllSurveysUseCase //
         )
     }
 

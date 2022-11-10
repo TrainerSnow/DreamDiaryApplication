@@ -21,4 +21,5 @@ data class DreamUseCases(
     val getEarliestDreamTimeStamp: GetEarliestDreamTimeStampUseCase,
     val getDreamsAffectablesAverage: GetDreamAffectablesAverageUseCase,
     val getDreamsOnDayTimestampsUseCase: GetDreamsOnDayTimestampsUseCase,
+    val deleteAllDreamsUseCase: DeleteAllDreamsUseCase
 )

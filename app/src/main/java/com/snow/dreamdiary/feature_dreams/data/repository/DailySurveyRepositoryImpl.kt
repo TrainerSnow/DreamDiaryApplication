@@ -33,4 +33,8 @@ class DailySurveyRepositoryImpl(
         return flag
     }
 
+    override suspend fun deleteAllSurveys() {
+        surveyDao.deleteAllSurveys()
+    }
+
 }

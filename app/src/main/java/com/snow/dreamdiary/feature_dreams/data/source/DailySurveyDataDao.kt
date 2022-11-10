@@ -13,6 +13,9 @@ interface DailySurveyDataDao {
     @Query("SELECT * FROM dailysurveydata")
     fun getSurveys(): Flow<List<DailySurveyData>>
 
+    @Query("DELETE FROM dailysurveydata")
+    fun deleteAllSurveys()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDailySurveyData(data: DailySurveyData)
 

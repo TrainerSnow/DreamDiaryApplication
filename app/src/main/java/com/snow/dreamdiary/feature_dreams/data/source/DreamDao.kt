@@ -25,6 +25,9 @@ interface DreamDao {
     @Query("SELECT * FROM dream WHERE id = :id")
     suspend fun getDreamById(id: Int): Dream?
 
+    @Query("DELETE FROM dream")
+    suspend fun deleteAllDreams()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDream(dream: Dream)
 

@@ -7,5 +7,6 @@ class SurveyUseCases(
     val getSurveyPartsOverAverage: GetSurveyPartsOverAverage,
     val getSurveyPartsBelowAverage: GetSurveyPartsBelowAverage,
     val getEffectiveSurveyData: GetEffectiveSurveyDataUseCase,
-    val getTimeStampsDailySurveyPartOverAverage: GetTimeStampsDailySurveyPartOverAverage
+    val getTimeStampsDailySurveyPartOverAverage: GetTimeStampsDailySurveyPartOverAverage,
+    deleteAllSurveysUseCase: DeleteAllSurveysUseCase
 )

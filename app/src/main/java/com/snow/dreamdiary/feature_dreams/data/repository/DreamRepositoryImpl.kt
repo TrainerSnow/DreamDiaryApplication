@@ -140,4 +140,8 @@ class DreamRepositoryImpl(
         dreamDao.deleteDream(dream)
     }
 
+    override suspend fun deleteAllDreams() {
+        dreamDao.deleteAllDreams()
+    }
+
 }

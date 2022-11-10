@@ -21,4 +21,6 @@ interface DreamRepository {
 
     suspend fun deleteDream(dream: Dream)
 
+    suspend fun deleteAllDreams()
+
 }
