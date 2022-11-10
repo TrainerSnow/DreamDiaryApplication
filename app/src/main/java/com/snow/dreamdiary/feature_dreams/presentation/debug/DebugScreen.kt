@@ -8,5 +8,5 @@ import com.snow.dreamdiary.feature_dreams.presentation.behaviouranalysis.DreamBe
 
 @Composable
 fun DebugScreen(navController: NavHostController) {
-    DreamBehaviourAnalysisScreen(navController = navController)
+
 }
