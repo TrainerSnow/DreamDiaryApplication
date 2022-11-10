@@ -14,6 +14,6 @@ abstract class DailySurveyDataDatabase : RoomDatabase() {
     abstract val dailySurveyDataDao: DailySurveyDataDao
 
     companion object {
-        const val DATABASE_NAME = "surveys_db"
+        const val DATABASE_NAME = "surveys.db"
     }
 }

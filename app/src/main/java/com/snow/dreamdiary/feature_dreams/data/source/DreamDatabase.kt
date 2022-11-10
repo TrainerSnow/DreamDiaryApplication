@@ -16,6 +16,6 @@ abstract class DreamDatabase : RoomDatabase() {
     abstract val dreamDao: DreamDao
 
     companion object {
-        const val DATABASE_NAME = "dreams_db"
+        const val DATABASE_NAME = "dreams.db"
     }
 }
