@@ -139,7 +139,7 @@ class OptionsOverviewViewModel @Inject constructor(
 
                 }
             }
-            OptionsOverviewEvent.RestoreBackup -> {
+            is OptionsOverviewEvent.RestoreBackup -> {
 
             }
         }
