@@ -84,7 +84,7 @@ fun ViewDreamsScreen(
 
                 if (viewModel.state.value.dreams.isNotEmpty()) {
                     items(
-                        count = viewModel.state.value.dreams.size - 1
+                        count = viewModel.state.value.dreams.size
                     ) { i ->
                         val id = viewModel.state.value.dreams[i].id ?: throw IllegalStateException("The Id of the dream is null.")
                         DreamPreviewCard(
