@@ -78,7 +78,7 @@ class SimpleStatsViewModel @Inject constructor(
             is SimpleStatsEvent.ChangeTimeFrom -> {
                 _state.value = state.value.copy(
                     fromDateValue = event.newTime,
-                    fromDateVis = TimeFormatUtil.getMillisFormatted(event.newTime)
+                    fromDateVis = TimeFormatUtil.getMillisDayFormatted(event.newTime)
                 )
                 viewModelScope.launch {
                     val modifierPair = dreamUseCases.getModifiersInTime(
@@ -101,7 +101,7 @@ class SimpleStatsViewModel @Inject constructor(
             is SimpleStatsEvent.ChangeTimeTo -> {
                 _state.value = state.value.copy(
                     toDateValue = event.newTime,
-                    toDateVis = TimeFormatUtil.getMillisFormatted(event.newTime)
+                    toDateVis = TimeFormatUtil.getMillisDayFormatted(event.newTime)
                 )
                 viewModelScope.launch {
                     val modifierPair = dreamUseCases.getModifiersInTime(

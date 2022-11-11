@@ -68,7 +68,7 @@ fun ViewDreamScreen(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "${stringResource(id = R.string.dream_from)} ${
-                        TimeFormatUtil.getMillisFormatted(
+                        TimeFormatUtil.getMillisDayFormatted(
                             dream.dreamtAt
                         )
                     }",

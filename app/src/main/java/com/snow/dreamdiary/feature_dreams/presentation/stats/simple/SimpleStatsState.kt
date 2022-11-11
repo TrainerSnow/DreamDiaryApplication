@@ -9,10 +9,10 @@ data class SimpleStatsState(
     var showComfortness: Boolean = false,
 
     var fromDateValue: Long = System.currentTimeMillis(),
-    var fromDateVis: String = TimeFormatUtil.getMillisFormatted(fromDateValue),
+    var fromDateVis: String = TimeFormatUtil.getMillisDayFormatted(fromDateValue),
 
     var toDateValue: Long = System.currentTimeMillis(),
-    var toDateVis: String = TimeFormatUtil.getMillisFormatted(toDateValue),
+    var toDateVis: String = TimeFormatUtil.getMillisDayFormatted(toDateValue),
 
     var showDialog: Boolean = false,
 

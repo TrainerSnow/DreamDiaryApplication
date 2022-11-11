@@ -90,7 +90,7 @@ fun SearchDreamtScreen(
         ) {
             Text(
                 text = "${stringResource(id = R.string.from_date)} ${
-                    TimeFormatUtil.getMillisFormatted(
+                    TimeFormatUtil.getMillisDayFormatted(
                         viewModel.state.value.mode.fromTime
                     )
                 }",
@@ -111,7 +111,7 @@ fun SearchDreamtScreen(
         ) {
             Text(
                 text = "${stringResource(id = R.string.to_date)} ${
-                    TimeFormatUtil.getMillisFormatted(
+                    TimeFormatUtil.getMillisDayFormatted(
                         viewModel.state.value.mode.toTime
                     )
                 }",

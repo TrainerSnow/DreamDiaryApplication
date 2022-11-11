@@ -69,7 +69,7 @@ fun DreamPreviewCard(
             )
             Text(
                 text = "${stringResource(id = R.string.dream_from)} ${
-                    TimeFormatUtil.getMillisFormatted(
+                    TimeFormatUtil.getMillisDayFormatted(
                         dream.dreamtAt
                     )
                 }",

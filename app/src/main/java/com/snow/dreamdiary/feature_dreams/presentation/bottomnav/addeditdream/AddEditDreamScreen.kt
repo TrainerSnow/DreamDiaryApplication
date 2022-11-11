@@ -10,7 +10,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Edit
-import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material.icons.sharp.CalendarMonth
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -299,7 +298,7 @@ fun AddEditDreamScreen(
                     ) {
                         Text(
                             text = "${stringResource(id = R.string.selected_date_x)} ${
-                                TimeFormatUtil.getMillisFormatted(
+                                TimeFormatUtil.getMillisDayFormatted(
                                     if (dreamtAt.value == 0L) System.currentTimeMillis() else dreamtAt.value
                                 )
                             }",

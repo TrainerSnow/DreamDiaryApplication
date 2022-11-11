@@ -7,14 +7,24 @@ import java.util.*
 object TimeFormatUtil {
 
     fun getTodayFormatted(): String {
-        return getMillisFormatted(System.currentTimeMillis())
+        return getMillisDayFormatted(System.currentTimeMillis())
     }
 
-    fun getMillisFormatted(millis: Long): String {
+    fun getMillisDayFormatted(millis: Long): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = millis
 
         val format = DateTimeFormat.forPattern("dd.MM.yyyy")
+        val ld = LocalDate(millis)
+
+        return ld.toString(format)
+    }
+
+    fun getMillisDayTimeFormatted(millis: Long): String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = millis
+
+        val format = DateTimeFormat.forPattern("dd.MM.yyyy_hh:mm:ss")
         val ld = LocalDate(millis)
 
         return ld.toString(format)

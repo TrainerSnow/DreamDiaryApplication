@@ -108,7 +108,7 @@ fun DreamItem(
                 )
                 Text(
                     text = "-${
-                        TimeFormatUtil.getMillisFormatted(dream.dreamtAt)
+                        TimeFormatUtil.getMillisDayFormatted(dream.dreamtAt)
                     }",
                     style = MaterialTheme.typography.bodyLarge
                 )
