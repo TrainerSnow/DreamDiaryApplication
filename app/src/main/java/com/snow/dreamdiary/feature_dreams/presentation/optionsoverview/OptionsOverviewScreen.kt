@@ -60,7 +60,7 @@ fun OptionsOverviewScreen(
                         onClick = { viewModel.onEvent(OptionsOverviewEvent.ToggleInfoDialog) }
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Backup,
+                            imageVector = Icons.Rounded.Download,
                             contentDescription = stringResource(id = R.string.download_data)
                         )
                     }
@@ -68,7 +68,7 @@ fun OptionsOverviewScreen(
                         onClick = { viewModel.onEvent(OptionsOverviewEvent.ToggleWarningDialog) }
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Restore,
+                            imageVector = Icons.Rounded.UploadFile,
                             contentDescription = stringResource(id = R.string.upload_data)
                         )
                     }
