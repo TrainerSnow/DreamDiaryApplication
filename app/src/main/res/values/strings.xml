@@ -111,4 +111,7 @@
     <string name="cant_be_calculated">Can\'t be calculated</string>
     <string name="download_data">Download data</string>
     <string name="upload_data">Upload data</string>
+    <string name="zip_generated_info">A backup .zip file containing your current Dream and Daily Survey data was generated under your \"Documents\" folder in your internal smartphone files.</string>
+    <string name="warning_reload_backup">Reloading a backup will replace your current data with the ones from the backup file. This action is permanent. There is no possibility of restoring the deleted dreams.</string>
+    <string name="warning">Warning</string>
 </resources>

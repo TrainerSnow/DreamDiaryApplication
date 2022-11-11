@@ -1,7 +1,8 @@
 package com.snow.dreamdiary.feature_dreams.presentation.optionsoverview
 
 import android.os.Environment
-import android.util.Log
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.snow.dreamdiary.DreamApp
@@ -18,7 +19,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.apache.commons.csv.CSVFormat
 import java.io.File
 import java.io.StringReader
@@ -34,6 +34,9 @@ class OptionsOverviewViewModel @Inject constructor(
     private val dreamUseCases: DreamUseCases,
     private val surveyUseCases: SurveyUseCases
 ) : ViewModel() {
+
+    private val _state = mutableStateOf(OptionsOverviewState())
+    val state: State<OptionsOverviewState> = _state
 
     private val _actionFlow = MutableSharedFlow<UIEvent>()
     val actionFlow = _actionFlow.asSharedFlow()
@@ -218,6 +221,16 @@ class OptionsOverviewViewModel @Inject constructor(
                         surveyUseCases.addSurvey(it)
                     }
                 }
+            }
+            OptionsOverviewEvent.ToggleInfoDialog -> {
+                _state.value = state.value.copy(
+                    showInfoDialog = !state.value.showInfoDialog
+                )
+            }
+            OptionsOverviewEvent.ToggleWarningDialog -> {
+                _state.value = state.value.copy(
+                    showWarningDialog = !state.value.showWarningDialog
+                )
             }
         }
     }

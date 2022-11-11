@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.snow.dreamdiary.R
+import com.snow.dreamdiary.common.presentation.components.PositiveButtonInfoDialog
+import com.snow.dreamdiary.common.presentation.components.YesNoButtonDialog
 import com.snow.dreamdiary.feature_dreams.presentation.navigation.DreamScreens
 import com.snow.dreamdiary.feature_dreams.presentation.optionsoverview.components.OptionsItem
 import kotlinx.coroutines.flow.collectLatest
@@ -55,7 +57,7 @@ fun OptionsOverviewScreen(
                 ),
                 actions = {
                     IconButton(
-                        onClick = { viewModel.onEvent(OptionsOverviewEvent.Backup) }
+                        onClick = { viewModel.onEvent(OptionsOverviewEvent.ToggleInfoDialog) }
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Backup,
@@ -63,7 +65,7 @@ fun OptionsOverviewScreen(
                         )
                     }
                     IconButton(
-                        onClick = { fileLauncher.launch("*/*") }
+                        onClick = { viewModel.onEvent(OptionsOverviewEvent.ToggleWarningDialog) }
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Restore,
@@ -140,5 +142,44 @@ fun OptionsOverviewScreen(
                 }
             }
         }
+    }
+
+    if (viewModel.state.value.showInfoDialog) {
+        PositiveButtonInfoDialog(
+            text = stringResource(id = R.string.zip_generated_info),
+            onDismissRequest = {
+                viewModel.onEvent(OptionsOverviewEvent.ToggleInfoDialog)
+                viewModel.onEvent(OptionsOverviewEvent.Backup)
+            },
+            icon = {
+                Icon(
+                    imageVector = Icons.Rounded.Info,
+                    contentDescription = stringResource(id = R.string.ok),
+                    modifier = Modifier
+                        .size(64.dp)
+                )
+            }
+        )
+    }
+
+    if (viewModel.state.value.showWarningDialog) {
+        YesNoButtonDialog(
+            text = stringResource(id = R.string.warning_reload_backup),
+            icon = {
+                Icon(
+                    imageVector = Icons.Rounded.Warning,
+                    contentDescription = stringResource(id = R.string.warning),
+                    modifier = Modifier
+                        .size(64.dp)
+                )
+            },
+            onDismissRequest = { viewModel.onEvent(OptionsOverviewEvent.ToggleWarningDialog) },
+            onYesClick = {
+                viewModel.onEvent(OptionsOverviewEvent.ToggleWarningDialog)
+                fileLauncher.launch("*/*")
+            },
+            onNoClick = {
+                viewModel.onEvent(OptionsOverviewEvent.ToggleWarningDialog)
+            })
     }
 }
