@@ -26,7 +26,9 @@ object TimeFormatUtil {
 
     fun getMillisDayTimeFormatted(millis: Long): String {
         val time = Calendar.getInstance()
-        return "${time.get(Calendar.DAY_OF_YEAR)}.${time.get(Calendar.MONTH) + 1}.${time.get(Calendar.YEAR)}_${time.get(Calendar.HOUR_OF_DAY)}-${time.get(Calendar.MINUTE)}-${time.get(Calendar.SECOND)}-${time.get(Calendar.MILLISECOND)}"
+        time.timeInMillis = millis
+
+        return "${time.get(Calendar.DAY_OF_MONTH)}.${time.get(Calendar.MONTH) + 1}.${time.get(Calendar.YEAR)}_${time.get(Calendar.HOUR_OF_DAY)}-${time.get(Calendar.MINUTE)}-${time.get(Calendar.SECOND)}-${time.get(Calendar.MILLISECOND)}"
     }
 
 }
