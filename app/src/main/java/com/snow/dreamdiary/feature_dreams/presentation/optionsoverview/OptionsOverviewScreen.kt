@@ -1,5 +1,7 @@
 package com.snow.dreamdiary.feature_dreams.presentation.optionsoverview
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -25,6 +27,12 @@ fun OptionsOverviewScreen(
     navController: NavHostController,
     viewModel: OptionsOverviewViewModel = hiltViewModel()
 ) {
+
+    val fileLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()){
+        if(it != null){
+            viewModel.onEvent(OptionsOverviewEvent.RestoreBackup(it))
+        }
+    }
 
     LaunchedEffect(key1 = true) {
         viewModel.actionFlow.collectLatest {
@@ -55,7 +63,7 @@ fun OptionsOverviewScreen(
                         )
                     }
                     IconButton(
-                        onClick = { viewModel.onEvent(OptionsOverviewEvent.RestoreBackup) }
+                        onClick = { fileLauncher.launch("*/*") }
                     ) {
                         Icon(
                             imageVector = Icons.Rounded.Restore,
